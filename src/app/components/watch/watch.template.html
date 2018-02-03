@@ -26,7 +26,7 @@
                     {{watch.price}}
                 </div>
                 <div class="card-watch__price_price d-inline-block">
-                    {{watch.price | discount:watch.discount}}
+                    {{watch.price | discount:watch.discount | toFixed }}
                 </div>
             </ng-template>
         </div>

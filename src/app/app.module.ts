@@ -20,6 +20,11 @@ import {WatchComponent} from './components/watch/watch.component';
 
 // Pipes
 import {DiscountPipe} from './pipes/discount/discount';
+import {ToFixedPipe} from './pipes/toFixed/toFixed';
+
+// Services
+import {CurrencyResolverService} from './services/price/currency-resolver';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +40,9 @@ import {DiscountPipe} from './pipes/discount/discount';
     AboutUsComponent,
     IndexViewComponent,
     WatchComponent,
-    DiscountPipe
+    DiscountPipe,
+    ToFixedPipe,
+    CurrencyResolverService
   ],
   imports: [
     BrowserModule,

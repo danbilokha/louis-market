@@ -1,0 +1,22 @@
+.card-watch {
+
+    max-width: 300px;
+
+    &__image {
+        &_img {
+            max-width: 250px;
+            max-height: 250px;
+        }
+    }
+
+    &__price {
+        font-size: 1.5rem;
+        &_price {
+
+            &-old {
+                text-decoration: line-through;
+                color: gray;
+            }
+        }
+    }
+}

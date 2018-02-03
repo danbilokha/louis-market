@@ -2,7 +2,14 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
-    "baseUrl": "src",
+    "baseUrl": "./src",
+    "paths": {
+      "@louis": ["app/*"],
+      "@pages/*": ["app/page/*"],
+      "@components/*": ["app/components/*"],
+      "@services/*": ["app/services/*"],
+      "@pipes/*": ["app/pipes/*"]
+    },
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",

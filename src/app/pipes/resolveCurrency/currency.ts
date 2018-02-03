@@ -1,6 +1,6 @@
 import {Pipe} from '@angular/core';
 
-//import {} from '../../'
+import {CurrencyResolverService} from '@services/price/currency-resolver';
 
 @Pipe({
     name: 'currency'

@@ -7,9 +7,14 @@ import {CurrencyResolverService} from '@services/price/currency-resolver';
 })
 class CurrencyPipe {
 
-    //constructor()
+    constructor(private currencyResolverService:CurrencyResolverService) {
 
-    transform(value: number, currency: string = 'UAH'): string {
+    }
+
+    transform(value: number, currency: string): string {
+        if(currency === undefined)
+            currency = this.currencyResolverService.getCurrentCurrency;
+            
         return `${value} ${currency.toUpperCase()}`;
     }
 }

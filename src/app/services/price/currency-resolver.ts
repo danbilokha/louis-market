@@ -2,7 +2,12 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 class CurrencyResolverService {
-    public currency: string = 'UAH';
+
+    private _currentCurrency: string = 'UAH';
+
+    public get getCurrentCurrency(): string {
+        return this._currentCurrency;
+    }
 }
 
 export {CurrencyResolverService};

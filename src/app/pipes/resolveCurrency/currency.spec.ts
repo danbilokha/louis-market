@@ -9,24 +9,29 @@ describe('CurrencyPipe', () => {
 
     beforeEach(() => {
         currencyResolverMock = new CurrencyResolverService();
-        spyOn(currencyResolverMock, 'getCurrentCurrency');
         sut = new CurrencyPipe(currencyResolverMock);
     })
 
     describe('transform', () => {
 
         it('should set UAH', () => {
-            expect(sut.transform(2, 'uah'))
+            (currencyResolverMock as any)._currentCurrency = 'UAH';
+
+            expect(sut.transform(2))
                 .toBe('2 UAH')
         })
 
         it('should set USD', () => {
-            expect(sut.transform(2, 'usd'))
+            (currencyResolverMock as any)._currentCurrency = 'USD';
+
+            expect(sut.transform(2))
                 .toBe('2 USD')
         })
 
         it('should set EUR', () => {
-            expect(sut.transform(2, 'eur'))
+            (currencyResolverMock as any)._currentCurrency = 'EUR';
+
+            expect(sut.transform(2))
                 .toBe('2 EUR')
         })
     })

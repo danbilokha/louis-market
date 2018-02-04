@@ -10,15 +10,15 @@ describe('CurrencyResolverService', () => {
 
     describe('getCurrentCurrency', () => {
 
-        it('should get default UAH', () => {
-            expect(sut.getCurrentCurrency)
-                .toBe('UAH');
-        })
-
-        it('should get USD', () => {
-            (sut as any)._currentCurrency = 'USD';
+        it('should get default USD', () => {
             expect(sut.getCurrentCurrency)
                 .toBe('USD');
+        })
+
+        it('should get UAH', () => {
+            (sut as any)._currentCurrency = 'UAH';
+            expect(sut.getCurrentCurrency)
+                .toBe('UAH');
         })
     })
 
@@ -72,4 +72,15 @@ describe('CurrencyResolverService', () => {
         })
     })
 
+    describe('calculatePrice', () => {
+        it('should calculate price when USD right', () => {
+            expect(sut.calculatePrice(2, 'USD'))
+                .toBe(2);
+        })
+
+        it('should calculate price when UAH right', () => {
+            expect(sut.calculatePrice(2, 'UAH'))
+                .toBe(2 * usdTOuahCoef);
+        })
+    })
 })

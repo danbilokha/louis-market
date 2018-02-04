@@ -3,7 +3,7 @@ import {Pipe} from '@angular/core';
 import {CurrencyResolverService} from '@services/price/currency-resolver';
 
 @Pipe({
-    name: 'currency'
+    name: 'currency-sign'
 })
 class CurrencyPipe {
 
@@ -11,11 +11,8 @@ class CurrencyPipe {
 
     }
 
-    transform(value: number, currency?: string): string {
-        if(currency === undefined)
-            currency = this.currencyResolverService.getCurrentCurrency;
-
-        return `${value} ${currency.toUpperCase()}`;
+    transform(value: number): string {
+        return `${value} ${this.currencyResolverService.getCurrentCurrency.toUpperCase()}`;
     }
 }
 

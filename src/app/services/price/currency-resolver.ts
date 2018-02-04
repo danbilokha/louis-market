@@ -5,7 +5,7 @@ import {usdTOuahCoef, eurTOuahCoef} from './currency-resolver.dictionary';
 @Injectable()
 class CurrencyResolverService {
 
-    private _currentCurrency: string = 'UAH';
+    private _currentCurrency: string = 'USD';
 
     public get getCurrentCurrency(): string {
         return this._currentCurrency;

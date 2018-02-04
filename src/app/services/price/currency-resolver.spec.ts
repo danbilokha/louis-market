@@ -1,0 +1,75 @@
+import {CurrencyResolverService} from './currency-resolver';
+import {usdTOuahCoef, eurTOuahCoef} from './currency-resolver.dictionary';
+
+describe('CurrencyResolverService', () => {
+    let sut: CurrencyResolverService;
+
+    beforeEach(() => {
+        sut = new CurrencyResolverService();
+    })
+
+    describe('getCurrentCurrency', () => {
+
+        it('should get default UAH', () => {
+            expect(sut.getCurrentCurrency)
+                .toBe('UAH');
+        })
+
+        it('should get USD', () => {
+            (sut as any)._currentCurrency = 'USD';
+            expect(sut.getCurrentCurrency)
+                .toBe('USD');
+        })
+    })
+
+    describe('getCurrencyCoef', () => {
+
+        beforeEach(() => {
+            spyOn(sut, 'getCurrentCurrency')
+                .and.returnValue('UAH');
+        })
+
+        it('should call with USD and UAH currency', () => {
+            spyOn(sut, 'getCurrencyCoef');
+            sut.getCurrencyCoef('USD', 'UAH');
+
+            expect(sut.getCurrencyCoef)
+                .toHaveBeenCalledWith('USD', 'UAH');
+        })
+
+        it('should get Coef for currency', () => {
+            spyOn((sut as any), 'resolveCurrencyCoef')
+                .and.returnValue(usdTOuahCoef);
+
+            expect(sut.getCurrencyCoef('usd', 'uah'))
+                .toBe(usdTOuahCoef);
+        })
+    })
+
+    describe('resolveCurrencyCoef', () => {
+
+        it('should call with USD and UAH currency', () => {
+            spyOn((sut as any), 'resolveCurrencyCoef');
+            (sut as any).resolveCurrencyCoef('USD', 'UAH');
+
+            expect((sut as any).resolveCurrencyCoef)
+                .toHaveBeenCalledWith('USD', 'UAH');
+        })
+
+        it('should resolve the 1 if currency is the same', () => {
+            expect((sut as any).resolveCurrencyCoef('usd', 'usd'))
+                .toBe(1);
+        })
+
+        it('should get currency coef the right for usd to uah', () => {
+            expect((sut as any).resolveCurrencyCoef('usd', 'uah'))
+                .toBe(usdTOuahCoef);
+        })
+
+        it('should get currency coef the right for eur to uah', () => {
+            expect((sut as any).resolveCurrencyCoef('eur', 'uah'))
+                .toBe(eurTOuahCoef);
+        })
+    })
+
+})

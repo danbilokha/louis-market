@@ -1,19 +1,19 @@
 import {CurrencyPipe} from './currency';
+import {CurrencyResolverService} from '@services/price/currency-resolver';
+
 
 describe('CurrencyPipe', () => {
 
     let sut: CurrencyPipe;
+    let currencyResolverMock: CurrencyResolverService;
 
     beforeEach(() => {
-        sut = new CurrencyPipe();
+        currencyResolverMock = new CurrencyResolverService();
+        spyOn(currencyResolverMock, 'getCurrentCurrency');
+        sut = new CurrencyPipe(currencyResolverMock);
     })
 
     describe('transform', () => {
-
-        it('should set UAH as a default', () => {
-            expect(sut.transform(2))
-                .toBe('2 UAH')
-        })
 
         it('should set UAH', () => {
             expect(sut.transform(2, 'uah'))

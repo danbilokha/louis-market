@@ -11,10 +11,10 @@ class CurrencyPipe {
 
     }
 
-    transform(value: number, currency: string): string {
+    transform(value: number, currency?: string): string {
         if(currency === undefined)
             currency = this.currencyResolverService.getCurrentCurrency;
-            
+
         return `${value} ${currency.toUpperCase()}`;
     }
 }

@@ -21,6 +21,8 @@ import {WatchComponent} from './components/watch/watch.component';
 // Pipes
 import {DiscountPipe} from './pipes/discount/discount';
 import {ToFixedPipe} from './pipes/toFixed/toFixed';
+import {CurrencySignPipe} from '@pipes/currencySign/currencySign';
+import {CalculatePricePipe} from '@pipes/calculatePrice/calculatePrice';
 
 // Services
 import {CurrencyResolverService} from './services/price/currency-resolver';
@@ -42,16 +44,19 @@ import {CurrencyResolverService} from './services/price/currency-resolver';
     WatchComponent,
     DiscountPipe,
     ToFixedPipe,
-    CurrencyResolverService
+    CurrencySignPipe,
+    CalculatePricePipe
   ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
     FormsModule,
     RouterModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    CurrencyResolverService,    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

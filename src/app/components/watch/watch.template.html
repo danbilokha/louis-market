@@ -23,10 +23,10 @@
             </div>
             <ng-template #newPrice>
                 <div class="card-watch__price_price-old d-inline-block">
-                    {{watch.price}}
+                    {{watch.price | currencyPrice:'UAH'}}
                 </div>
                 <div class="card-watch__price_price d-inline-block">
-                    {{watch.price | discount:watch.discount | toFixed }}
+                    {{watch.price | currencyPrice:'UAH' | discount:watch.discount | toFixed:2 | currencySign:'UAH' }}
                 </div>
             </ng-template>
         </div>

@@ -1,4 +1,4 @@
-{
+const data = {
     "id": "asdasdas",
     "name": "test mock name",
     "image": "./assets/img/watch/image/Alexa Collins La Reine Collection/la reine square stars edition silver.jpg",
@@ -20,3 +20,5 @@
         }
     ]
 }
+
+export {data};

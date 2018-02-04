@@ -11,7 +11,7 @@ class CurrencyResolverService {
         return this._currentCurrency;
     }
 
-    public getCurrencyCoef(currency: string, currencyTo: string): number {
+    private getCurrencyCoef(currency: string, currencyTo: string): number {
         return this.resolveCurrencyCoef(currency, currencyTo);
     }
 

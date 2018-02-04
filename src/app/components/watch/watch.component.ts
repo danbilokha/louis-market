@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 import {Watch} from './watch.dictionary';
+import {data} from './Mock/data';
 
 @Component({
     selector: 'louis-watch',
@@ -12,9 +13,7 @@ class WatchComponent implements OnInit {
     public watch: Watch;
 
     ngOnInit() {
-        let data = require('./Mock/data.json');
         this.watch = data;
-        console.log(this.watch);
     }
 }
 

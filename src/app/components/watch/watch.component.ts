@@ -12,8 +12,15 @@ class WatchComponent implements OnInit {
     @Input()
     public watch: Watch;
 
+    public priceMap:object;
+
     ngOnInit() {
         this.watch = data;
+        this.priceMap = {
+            currencyTo: 'UAH',
+            discount: this.watch.discount,
+            toFixed: 2
+        };
     }
 }
 

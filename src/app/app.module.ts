@@ -23,6 +23,7 @@ import {DiscountPipe} from './pipes/discount/discount';
 import {ToFixedPipe} from './pipes/toFixed/toFixed';
 import {CurrencySignPipe} from '@pipes/currencySign/currencySign';
 import {CalculatePricePipe} from '@pipes/calculatePrice/calculatePrice';
+import {PriceShowPipe} from '@pipes/priceShow/priceShow.ts';
 
 // Services
 import {CurrencyResolverService} from './services/price/currency-resolver';
@@ -45,7 +46,8 @@ import {CurrencyResolverService} from './services/price/currency-resolver';
     DiscountPipe,
     ToFixedPipe,
     CurrencySignPipe,
-    CalculatePricePipe
+    CalculatePricePipe,
+    PriceShowPipe
   ],
   imports: [
     BrowserModule,

@@ -26,7 +26,7 @@
                     {{watch.price | currencyPrice:'UAH'}}
                 </div>
                 <div class="card-watch__price_price d-inline-block">
-                    {{watch.price | currencyPrice:'UAH' | discount:watch.discount | toFixed:2 | currencySign:'UAH' }}
+                    {{watch.price | priceShow:priceMap }}
                 </div>
             </ng-template>
         </div>

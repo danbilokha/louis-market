@@ -22,7 +22,7 @@ class PriceShowPipe {
         let toFixedPipe = new ToFixedPipe();
         let discountPipe = new DiscountPipe();
         let calculatePricePipe = new CalculatePricePipe(this.currencyResolverService);
-        
+
         return currencySignPipe.transform(
             toFixedPipe.transform(
                 discountPipe.transform(

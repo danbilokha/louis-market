@@ -13,7 +13,11 @@ describe('PriceProcessChangePipe', () => {
     let discountPipe: DiscountPipe;
     let toFixedPipe: ToFixedPipe;
     let currencySignPipe: CurrencySignPipe;
-    let priceMap: object;
+    let priceMap: {
+        currencyTo: string,
+        discount: number,
+        toFixed: number
+    };
 
     beforeEach(() => {
         priceMap = {
@@ -21,27 +25,41 @@ describe('PriceProcessChangePipe', () => {
             discount: 2,
             toFixed: 2
         };
+        
+        currencyResolverService = new CurrencyResolverService();
+        
+        calculatePricePipe = new CalculatePricePipe(currencyResolverService);
+        discountPipe = new DiscountPipe();
+        toFixedPipe = new ToFixedPipe();
+        currencySignPipe = new CurrencySignPipe();
+        
+        
 
-        spyOn(calculatePricePipe, 'transform');
-        spyOn(discountPipe, 'transform');
-        spyOn(toFixedPipe, 'transform');
-        spyOn(currencySignPipe, 'transform');
         sut = new PriceShowPipe(currencyResolverService);
     })
 
     describe('transform', () => {
-        it('shoult call all the related pipes', () => {
+
+        beforeEach(() => {
+            spyOn(calculatePricePipe, 'transform');
+            spyOn(discountPipe, 'transform');
+            spyOn(toFixedPipe, 'transform');
+            spyOn(currencySignPipe, 'transform');
+
             sut.transform(2, priceMap);
-
-            calculatePricePipe.transform(2, 'UAH');
-            discountPipe.transform(2, 2);
-            toFixedPipe.transform(2, 2);
-            currencySignPipe.transform(2, 'UAH');
-
-            expect(calculatePricePipe.transform)
-                .toHaveBeenCalled();
-            expect(calculatePricePipe.transform)
-                .toHaveBeenCalledTimes(1);
         })
+
+        describe('should call currencySignPipe', () => {
+
+            it('shoult have been called', () => {
+                expect(currencySignPipe.transform)
+                    .toHaveBeenCalled();
+            })
+
+            it('should have been called once', () => {
+                expect(currencySignPipe.transform)
+                    .toHaveBeenCalledTimes(1);
+            })
+        });
     })
 })

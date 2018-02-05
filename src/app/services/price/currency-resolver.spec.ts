@@ -30,10 +30,10 @@ describe('CurrencyResolverService', () => {
         })
 
         it('should call with USD and UAH currency', () => {
-            spyOn(sut, 'getCurrencyCoef');
-            sut.getCurrencyCoef('USD', 'UAH');
+            spyOn(sut as any, 'getCurrencyCoef');
+            (sut as any).getCurrencyCoef('USD', 'UAH');
 
-            expect(sut.getCurrencyCoef)
+            expect((sut as any).getCurrencyCoef)
                 .toHaveBeenCalledWith('USD', 'UAH');
         })
 
@@ -41,7 +41,7 @@ describe('CurrencyResolverService', () => {
             spyOn((sut as any), 'resolveCurrencyCoef')
                 .and.returnValue(usdTOuahCoef);
 
-            expect(sut.getCurrencyCoef('usd', 'uah'))
+            expect((sut as any).getCurrencyCoef('usd', 'uah'))
                 .toBe(usdTOuahCoef);
         })
     })

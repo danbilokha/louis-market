@@ -22,11 +22,6 @@ class PriceShowPipe {
     transform(price: number = 5, {currencyTo, discount = 0, toFixed = 2}:
             {currencyTo: string, discount: number, toFixed: number}) {
 
-        // let currencySignPipe = new CurrencySignPipe();
-        // let toFixedPipe = new ToFixedPipe();
-        // let discountPipe = new DiscountPipe();
-        // let calculatePricePipe = new CalculatePricePipe(this.currencyResolverService);
-
         return this.currencySignPipe.transform(
             this.toFixedPipe.transform(
                 this.discountPipe.transform(

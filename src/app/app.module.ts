@@ -58,6 +58,10 @@ import {DbService} from '@services/db/dbService';
     AppRoutingModule
   ],
   providers: [
+    DiscountPipe,
+    ToFixedPipe,
+    CurrencySignPipe,
+    CalculatePricePipe,
     CurrencyResolverService,
     WatchService,
     DbService

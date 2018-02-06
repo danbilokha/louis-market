@@ -8,11 +8,14 @@ import {CurrencyResolverService} from '@services/price/currency-resolver';
 describe('PriceProcessChangePipe', () => {
     
     let sut: PriceShowPipe;
-    let currencyResolverService: CurrencyResolverService;
-    let calculatePricePipe: CalculatePricePipe;
-    let discountPipe: DiscountPipe;
-    let toFixedPipe: ToFixedPipe;
-    let currencySignPipe: CurrencySignPipe;
+
+    let currencyResolverService: any;
+
+    let calculatePricePipe: any;
+    let discountPipe: any;
+    let toFixedPipe: any;
+    let currencySignPipe: any;
+
     let priceMap: {
         currencyTo: string,
         discount: number,
@@ -22,44 +25,94 @@ describe('PriceProcessChangePipe', () => {
     beforeEach(() => {
         priceMap = {
             currencyTo: 'UAH',
-            discount: 2,
+            discount: 0,
             toFixed: 2
         };
         
-        currencyResolverService = new CurrencyResolverService();
+        currencyResolverService = {
+            calculatePrice: jasmine.createSpy('calculatePrice')
+        }
         
-        calculatePricePipe = new CalculatePricePipe(currencyResolverService);
-        discountPipe = new DiscountPipe();
-        toFixedPipe = new ToFixedPipe();
-        currencySignPipe = new CurrencySignPipe();
+        calculatePricePipe = {
+            transform: jasmine.createSpy('transform')
+                .and.returnValue(2)
+        };
+        discountPipe = {
+            transform: jasmine.createSpy('transform')
+                .and.returnValue(3)
+        };
+        toFixedPipe = {
+            transform: jasmine.createSpy('transform')
+                .and.returnValue('3.00')
+        };
+        currencySignPipe = {
+            transform: jasmine.createSpy('transform')
+        };
         
-        
-
-        sut = new PriceShowPipe(currencyResolverService);
+        sut = new PriceShowPipe(
+            currencyResolverService,
+            currencySignPipe,
+            toFixedPipe,
+            discountPipe,
+            calculatePricePipe);
     })
 
     describe('transform', () => {
 
         beforeEach(() => {
-            spyOn(calculatePricePipe, 'transform');
-            spyOn(discountPipe, 'transform');
-            spyOn(toFixedPipe, 'transform');
-            spyOn(currencySignPipe, 'transform');
-
             sut.transform(2, priceMap);
         })
 
-        describe('should call currencySignPipe', () => {
-
-            it('shoult have been called', () => {
+        describe('currencySignPipe', () => {
+            it('should have been called', () => {
                 expect(currencySignPipe.transform)
-                    .toHaveBeenCalled();
+                    .toHaveBeenCalledWith('3.00', priceMap.currencyTo);
             })
 
             it('should have been called once', () => {
                 expect(currencySignPipe.transform)
                     .toHaveBeenCalledTimes(1);
             })
+        });
+
+        describe('toFixedPipe', () => {
+            it('should have been called', () => {
+                expect(toFixedPipe.transform)
+                    .toHaveBeenCalledWith(3, priceMap.toFixed);
+            })
+
+            it('should have been called once', () => {
+                expect(toFixedPipe.transform)
+                    .toHaveBeenCalledTimes(1);
+            })
+        });
+
+        describe('discountPipe', () => {
+
+            it('should have been called', () => {
+                expect(discountPipe.transform)
+                    .toHaveBeenCalledWith(2, priceMap.discount);
+            })
+
+            it('should have been called once', () => {
+                expect(calculatePricePipe.transform)
+                    .toHaveBeenCalledTimes(1);
+            })
+
+        });
+
+        describe('calculatePricePipe', () => {
+
+            it('should have been called', () => {
+                expect(calculatePricePipe.transform)
+                    .toHaveBeenCalledWith(2, priceMap.currencyTo);
+            })
+
+            it('should have been called once', () => {
+                expect(calculatePricePipe.transform)
+                    .toHaveBeenCalledTimes(1);
+            })
+
         });
     })
 })

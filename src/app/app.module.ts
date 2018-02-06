@@ -27,7 +27,8 @@ import {PriceShowPipe} from '@pipes/priceShow/priceShow.ts';
 
 // Services
 import {CurrencyResolverService} from './services/price/currency-resolver';
-
+import {WatchService} from '@services/watchService/watchService';
+import {DbService} from '@services/db/dbService';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,9 @@ import {CurrencyResolverService} from './services/price/currency-resolver';
     AppRoutingModule
   ],
   providers: [
-    CurrencyResolverService,    
+    CurrencyResolverService,
+    WatchService,
+    DbService
   ],
   bootstrap: [AppComponent]
 })

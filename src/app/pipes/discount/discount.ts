@@ -5,7 +5,7 @@ import {Pipe} from '@angular/core';
 })
 class DiscountPipe {
     
-    transform(value, discount) {
+    transform(value, discount): number {
         return (value - (value * discount / 100));
     }
 }

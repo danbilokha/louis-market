@@ -16,7 +16,6 @@ import {TopWatchesComponent} from './page/landing/top-watches/top-watches.compon
 import {KeepInTouchComponent} from './page/landing/keep-in-touch/keep-in-touch.component';
 import {AboutUsComponent} from './page/landing/about-us/about-us.component';
 import {IndexViewComponent} from './page/home/index-view/index-view.component';
-import {WatchComponent} from './components/watch/watch.component';
 
 // Pipes
 import {DiscountPipe} from './pipes/discount/discount';
@@ -28,7 +27,10 @@ import {PriceShowPipe} from '@pipes/priceShow/priceShow.ts';
 // Services
 import {CurrencyResolverService} from './services/price/currency-resolver';
 import {WatchService} from '@services/watchService/watchService';
-import {DbService} from '@services/db/dbService';
+import {DbService} from '@db/dbService';
+
+import {ComponentModule} from '@components/component.module';
+import {DbModule} from '@db/db.module';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,6 @@ import {DbService} from '@services/db/dbService';
     KeepInTouchComponent,
     AboutUsComponent,
     IndexViewComponent,
-    WatchComponent,
     DiscountPipe,
     ToFixedPipe,
     CurrencySignPipe,
@@ -55,7 +56,9 @@ import {DbService} from '@services/db/dbService';
     NgbModule.forRoot(),
     FormsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ComponentModule,
+    DbModule
   ],
   providers: [
     DiscountPipe,

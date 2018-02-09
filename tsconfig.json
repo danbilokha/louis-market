@@ -9,7 +9,8 @@
       "@components/*": ["app/components/*"],
       "@services/*": ["app/services/*"],
       "@pipes/*": ["app/pipes/*"],
-      "@effects/*": ["app/effects/*"]
+      "@effects/*": ["app/effects/*"],
+      "@db/*": ["app/db/*"]
     },
     "sourceMap": true,
     "declaration": false,

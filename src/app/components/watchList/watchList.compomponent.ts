@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
-import {DbService} from '@db/dbService';
-import {SCHEMA, Watch} from "@louis";
 import {Observable} from "rxjs/Observable";
 import "rxjs/add/operator/take";
+
+import {DbService} from '@db/dbService';
+import {SCHEMA} from "@db/schema";
+import {Watch} from "@components/watch//watch.dictionary";
 
 @Component({
     selector: 'louis-watch-watchList',

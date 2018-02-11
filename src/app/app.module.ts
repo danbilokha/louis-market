@@ -18,8 +18,8 @@ import {AboutUsComponent} from './page/landing/about-us/about-us.component';
 import {IndexViewComponent} from './page/home/index-view/index-view.component';
 
 // Pipes
-import {DiscountPipe} from './pipes/discount/discount';
-import {ToFixedPipe} from './pipes/toFixed/toFixed';
+import {DiscountPipe} from '@pipes/discount/discount';
+import {ToFixedPipe} from '@pipes/toFixed/toFixed';
 import {CurrencySignPipe} from '@pipes/currencySign/currencySign';
 import {CalculatePricePipe} from '@pipes/calculatePrice/calculatePrice';
 import {PriceShowPipe} from '@pipes/priceShow/priceShow.ts';
@@ -44,12 +44,7 @@ import {DbModule} from '@db/db.module';
     TopWatchesComponent,
     KeepInTouchComponent,
     AboutUsComponent,
-    IndexViewComponent,
-    DiscountPipe,
-    ToFixedPipe,
-    CurrencySignPipe,
-    CalculatePricePipe,
-    PriceShowPipe
+    IndexViewComponent
   ],
   imports: [
     BrowserModule,

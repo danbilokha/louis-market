@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule, } from '@angular/common';
-import { BrowserModule  } from '@angular/platform-browser';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {BrowserModule } from '@angular/platform-browser';
+import {Routes, RouterModule} from '@angular/router';
 
 import {HomeComponent} from '@pages/home/home.component';
 import {ProfileComponent} from '@pages/profile/profile.component';
@@ -14,6 +14,7 @@ const routes: Routes =[
     { path: 'user-profile',     component: ProfileComponent },
     { path: 'signup',           component: SignupComponent },
     { path: 'landing',          component: LandingComponent },
+    { path: 'admin',            loadChildren: '../specific-rights/admin/admin.module#AdminModule' },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: "**",               component: NotFoundComponent }
 ];

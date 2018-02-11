@@ -333,7 +333,7 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 }
 
 .navbar-transparent {
-  background-color: transparent !important;
+  background-color: transparent;
   border-bottom: 1px solid transparent;
 }
 

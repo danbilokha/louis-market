@@ -1,11 +1,21 @@
 import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import {RouterModule} from '@angular/router';
 
-import {StuffComponent} from './pages/stuff/stuff.component';
+import {AdminRoutingModule} from './settings/admin.routing';
+
+import {AdminComponent} from './admin.component';
+import {AdminIndexComponent} from './pages/index/index.component';
+import {AdminStuffComponent} from './pages/stuff/stuff.component';
 
 @NgModule({
     declarations: [
-        StuffComponent
+        AdminComponent,
+        AdminIndexComponent,
+        AdminStuffComponent
+    ],
+    imports: [
+        RouterModule,
+        AdminRoutingModule
     ]
 })
 class AdminModule {

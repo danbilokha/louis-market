@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 
 import {WatchComponent} from './watch/watch.component';
 import {WatchListComponent} from './watchList/watchList.component';
@@ -24,7 +23,6 @@ import {PriceShowPipe} from '@pipes/priceShow/priceShow.ts';
     ],
     imports: [
         BrowserModule,
-        FormsModule
     ],
     exports: [
         WatchComponent,

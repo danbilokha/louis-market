@@ -4,7 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 
+// Modules
 import {AppRoutingModule} from '@settings/app.routing';
+import {AdminModule} from './specific-rights/admin/admin.module';
+import {ComponentModule} from '@components/component.module';
+import {DbModule} from '@db/db.module';
+
 import {AppComponent} from './app.component';
 import {HomeComponent} from '@pages/home/home.component';
 import {SignupComponent} from '@pages/signup/signup.component';
@@ -29,9 +34,6 @@ import {PriceShowPipe} from '@pipes/priceShow/priceShow.ts';
 import {CurrencyResolverService} from './services/price/currency-resolver';
 import {WatchService} from '@services/watchService/watchService';
 
-import {ComponentModule} from '@components/component.module';
-import {DbModule} from '@db/db.module';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +56,8 @@ import {DbModule} from '@db/db.module';
     RouterModule,
     AppRoutingModule,
     ComponentModule,
-    DbModule
+    DbModule,
+    AdminModule
   ],
   providers: [
     DiscountPipe,

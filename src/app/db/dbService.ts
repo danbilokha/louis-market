@@ -1,23 +1,31 @@
 import {Injectable} from '@angular/core';
+import {AngularFireDatabase} from 'angularfire2/database';
+import {Observable} from 'rxjs/Observable';
 
-import {AngularFirestore} from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
+import {SCHEMA} from '@db/schema';
+import * as mapping from '@db/db.dictionary';
 
 @Injectable()
 class DbService {
 
-    constructor(private db: AngularFirestore) {
+    constructor(private db: AngularFireDatabase) {
 
     }
 
-    public getDbData(entity: string): Observable<any> {
-        console.log(this.db.collection(entity).valueChanges());
-        return this.db.collection(entity).valueChanges();
-    }
+    public getDbData = (entity: string, skip?: number, take?: number): Observable<any> => 
+        this.db
+            .object(`${SCHEMA.DATA}`)
+            .valueChanges()
+            .map(data => data[entity])
+            .map(mapping.skip(skip))
+            .map(mapping.take(take));
 
     public setDbData(entity: string, value: any): void {
-        this.db.collection(entity).add(value);
+        this.db
+            .list(`${SCHEMA.DATA}/${entity}`)
+            .push(value);
     }
+
 }
 
 export {DbService};

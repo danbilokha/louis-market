@@ -4,6 +4,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import {AngularFireDatabaseModule, AngularFireDatabase} from 'angularfire2/database';
 
+import {DbService} from './dbService';
 import {environment} from 'environments/environment';
 
 @NgModule({
@@ -12,6 +13,9 @@ import {environment} from 'environments/environment';
         AngularFirestoreModule,
         AngularFireAuthModule,
         AngularFireDatabaseModule,
+    ],
+    providers: [
+        DbService
     ]
 })
 class DbModule {

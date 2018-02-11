@@ -1,0 +1,53 @@
+{
+    "DATA": {
+        "WATCH": [
+            {
+                "id":  "123123123"
+                ,  "name":  "text name"
+                ,  "image":  "image in binary"
+                ,  "price": 500
+                ,  "currency": "USD" 
+                ,  "description":  "text desc"
+                ,  "type":  "text type"
+                ,  "isAvailable": true
+                ,  "discount": 10
+            },
+            {
+                
+                "id":  "22222"
+                ,  "name":  "text name 2"
+                ,  "image":  "image in binary 2"
+                ,  "price": 7500
+                ,  "currency": "EUR" 
+                ,  "description":  "text desc 2"
+                ,  "type":  "text type 2"
+                ,  "isAvailable": true
+                ,  "discount": 50
+            },
+            {
+                
+                "id":  "33333"
+                ,  "name":  "text name 3"
+                ,  "image":  "image in binary 3"
+                ,  "price": 650
+                ,  "currency": "USD" 
+                ,  "description":  "text desc 3"
+                ,  "type":  "text type 3"
+                ,  "isAvailable": true
+                ,  "discount": 7
+            },
+            {
+                
+                "id":  "44444"
+                ,  "name":  "text name 4"
+                ,  "image":  "image in binary 4"
+                ,  "price": 70500
+                ,  "currency": "UAH" 
+                ,  "description":  "text desc 4"
+                ,  "type":  "text type 4"
+                ,  "isAvailable": true
+                ,  "discount": 15
+            }
+        ]
+    }
+}

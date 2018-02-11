@@ -5,25 +5,27 @@ class Watch {
         , public name: string
         , public image: string
         , public price: number
+        , public currency: string
         , public description: string
         , public type: string
         , public isAvailable: boolean
-        , public comments: Array<WatchComment>
+        , public comments?: Array<Comment>
         , public discount?: number
         ) {
         
     }
 }
 
-class WatchComment {
+class Comment {
     constructor(
         public id: string
         , public date: string
         , public comment: string
-        , public authorId?: string
+        , public watchId: string 
+        , public authorId: string
     ) {
         
     }
 }
 
-export {Watch, WatchComment};
+export {Watch, Comment};

@@ -1,0 +1,5 @@
+<div class="watch-list">
+    <ng-template ngFor let-watch [ngForOf]="watchList$ | async">
+        <louis-watch [watch]="watch"></louis-watch>
+    </ng-template>
+</div>

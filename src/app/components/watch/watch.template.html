@@ -1,5 +1,5 @@
 <div class="card card-watch">
-    <h3 class="card-watch__title title">{{watch.name}}</h3>
+    <h3 class="card-watch__title title"><a href="{{watch.id}}">{{watch.name}}</a></h3>
     <div class="card-watch__content text-center">
         <div class="card-watch__links social-line">
             <a href="#" class="btn btn-neutral btn-facebook btn-just-icon">
@@ -13,17 +13,19 @@
                 </a>
         </div>
         <div class="card-watch__image text-center">
-            <img class="card-watch__image_img" src="{{watch.image}}" alt="{{watch.name}}" />
+            <a href="{{watch.id}}">
+                <img class="card-watch__image_img" src="{{watch.image}}" alt="{{watch.name}}" />
+            </a>
         </div>
         <div class="card-watch__price">
             <div *ngIf="!(watch.discount && watch.discount !== 0); else newPrice">
                 <div class="card-watch__price_price d-inline-block">
-                    {{watch.price}}
+                    {{watch.price | priceShow:priceMap}}
                 </div>
             </div>
             <ng-template #newPrice>
                 <div class="card-watch__price_price-old d-inline-block">
-                    {{watch.price | currencyPrice:'UAH'}}
+                    {{watch.price | currencyPrice:'UAH' | toFixed: 2}}
                 </div>
                 <div class="card-watch__price_price d-inline-block">
                     {{watch.price | priceShow:priceMap }}
@@ -32,8 +34,7 @@
         </div>
     </div>
     <div class="card-watch__footer">
-        <a href="#" class="btn btn-link btn-success">Оформить</a>
-        <a href="#" class="btn btn-link btn-info">Детальней</a>
+        <a href="{{watch.id}}" class="btn btn-link btn-success">Оформить</a>
+        <a href="{{watch.id}}" class="btn btn-link btn-info">Детальней</a>
     </div>
 </div>
-

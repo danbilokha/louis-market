@@ -5,11 +5,12 @@
     "baseUrl": "./src",
     "paths": {
       "@louis": ["app/*"],
-      "@pages/*": ["app/page/*"],
+      "@pages/*": ["app/pages/*"],
       "@components/*": ["app/components/*"],
       "@services/*": ["app/services/*"],
       "@pipes/*": ["app/pipes/*"],
       "@effects/*": ["app/effects/*"],
+      "@settings/*": ["app/settings/*"],
       "@db/*": ["app/db/*"]
     },
     "sourceMap": true,

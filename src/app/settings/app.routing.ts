@@ -3,10 +3,11 @@ import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './page/home/home.component';
-import { ProfileComponent } from './page/profile/profile.component';
-import { SignupComponent } from './page/signup/signup.component';
-import { LandingComponent } from './page/landing/landing.component';
+import {HomeComponent} from '@pages/home/home.component';
+import {ProfileComponent} from '@pages/profile/profile.component';
+import {SignupComponent} from '@pages/signup/signup.component';
+import {LandingComponent} from '@pages/landing/landing.component';
+import {NotFoundComponent} from "@pages/notFound/not-found.component";
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
@@ -14,7 +15,7 @@ const routes: Routes =[
     { path: 'signup',           component: SignupComponent },
     { path: 'landing',          component: LandingComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: "**", redirectTo: 'home' } // TODO: PageNotFound
+    { path: "**",               component: NotFoundComponent }
 ];
 
 @NgModule({

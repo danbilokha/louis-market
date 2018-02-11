@@ -1,6 +1,9 @@
 .card-watch {
-
+    display: inline-block;
+    
     max-width: 300px;
+    padding: 5px;
+    margin: 5px;
 
     &__image {
         &_img {
@@ -10,9 +13,7 @@
     }
 
     &__price {
-        font-size: 1.5rem;
         &_price {
-
             &-old {
                 text-decoration: line-through;
                 color: gray;

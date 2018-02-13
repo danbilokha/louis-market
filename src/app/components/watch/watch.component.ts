@@ -13,6 +13,7 @@ class WatchComponent implements OnInit {
     public watch: Watch;
 
     public priceMap:object;
+    public watchMock: any = data;
 
     ngOnInit() {
         this.priceMap = {

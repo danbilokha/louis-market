@@ -4,6 +4,7 @@ import {CalculatePricePipe} from '../calculatePrice/calculatePrice';
 import {DiscountPipe} from '../discount/discount';
 import {ToFixedPipe} from '../toFixed/toFixed';
 import {CurrencySignPipe} from '../currencySign/currencySign';
+import {AddSpacePipe} from '../addSpace/addSpace';
 import {CurrencyResolverService} from '@services/price/currency-resolver';
 
 @Pipe({
@@ -13,9 +14,10 @@ class PriceShowPipe {
 
     constructor(private currencyResolverService: CurrencyResolverService,
         private currencySignPipe:CurrencySignPipe,
+        private addSpacePipe: AddSpacePipe,
         private toFixedPipe: ToFixedPipe,
         private discountPipe: DiscountPipe,
-        private calculatePricePipe: CalculatePricePipe) {
+        private calculatePricePipe: CalculatePricePipe,) {
 
     }
 
@@ -23,11 +25,13 @@ class PriceShowPipe {
             {currencyTo: string, discount: number, toFixed: number}) {
 
         return this.currencySignPipe.transform(
-            this.toFixedPipe.transform(
-                this.discountPipe.transform(
-                        this.calculatePricePipe.transform(price, currencyTo)
-                    , discount)
-                , toFixed),
+            this.addSpacePipe.transform(
+                this.toFixedPipe.transform(
+                    this.discountPipe.transform(
+                            this.calculatePricePipe.transform(price, currencyTo)
+                        , discount)
+                    , toFixed),
+                ),
             currencyTo);
     }
 }

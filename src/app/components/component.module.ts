@@ -10,6 +10,7 @@ import {ToFixedPipe} from '@pipes/toFixed/toFixed';
 import {CurrencySignPipe} from '@pipes/currencySign/currencySign';
 import {CalculatePricePipe} from '@pipes/calculatePrice/calculatePrice';
 import {PriceShowPipe} from '@pipes/priceShow/priceShow.ts';
+import {AddSpacePipe} from '@pipes/addSpace/addSpace';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import {PriceShowPipe} from '@pipes/priceShow/priceShow.ts';
         ToFixedPipe,
         CurrencySignPipe,
         CalculatePricePipe,
-        PriceShowPipe
+        PriceShowPipe,
+        AddSpacePipe
     ],
     imports: [
         BrowserModule,

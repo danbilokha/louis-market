@@ -391,8 +391,8 @@ module.exports = {
       ]
     }),
     new InsertConcatAssetsWebpackPlugin([
-      "scripts"
-    ]),
+          "scripts"
+      ]),
     new CopyWebpackPlugin([
       {
         "context": "C:\\beloha\\work\\startup\\LOUIS_XVI\\project\\Landing\\src/",

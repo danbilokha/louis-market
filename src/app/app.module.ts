@@ -51,7 +51,9 @@ import {WatchService} from '@services/watchService/watchService';
     NotFoundComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({
+        appId: 'louis'
+    }),
     NgbModule.forRoot(),
     FormsModule,
     RouterModule,

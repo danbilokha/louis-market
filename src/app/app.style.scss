@@ -1,0 +1,13 @@
+::ng-deep {
+
+  .form {
+    &__controls {
+      float: right;
+
+      &:after {
+        clear: both;
+      }
+    }
+  }
+
+}

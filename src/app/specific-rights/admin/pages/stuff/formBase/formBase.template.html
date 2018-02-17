@@ -1,0 +1,97 @@
+<form>
+    <div class="form-group form form-admin">
+        <label for="name">Название</label>
+        <input
+                name="name"
+                [(ngModel)]="name"
+                type="text"
+                class="form-control"
+                id="name"
+                required>
+    </div>
+    <div class="form-group">
+        <label for="image">Фото</label>
+        <input
+                name="image"
+                [(ngModel)]="image"
+                type="text"
+                class="form-control"
+                id="image"
+                required>
+    </div>
+    <div class="form-group">
+        <label for="price">Цена</label>
+        <input
+                name="price"
+                [(ngModel)]="price"
+                type="number"
+                class="form-control"
+                id="price"
+                required>
+    </div>
+    <div class="form-group">
+        <label for="currency">Валюта</label>
+        <select
+                name="currency"
+                [(ngModel)]="currency"
+                class="form-control"
+                id="currency"
+                required>
+            <option value="usd" selected>USD</option>
+            <option value="eur">EUR</option>
+            <option value="uah">UAH</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="description">Описание</label>
+        <textarea
+                name="description"
+                [(ngModel)]="description"
+                type="text"
+                class="form-control"
+                id="description"
+                required>
+            </textarea>
+    </div>
+    <div class="form-group">
+        <label for="type">Тип</label>
+        <input
+                name="type"
+                [(ngModel)]="type"
+                type="text"
+                class="form-control"
+                id="type"
+                required>
+    </div>
+    <div class="form-group">
+        <label for="isAvailable">Доступно?</label>
+        <input
+                name="isAvailable"
+                [(ngModel)]="isAvailable"
+                type="text"
+                class="form-control"
+                id="isAvailable"
+                required>
+    </div>
+    <div class="form-group">
+        <label for="discount">Скидка</label>
+        <input
+                name="discount"
+                [(ngModel)]="discount"
+                type="number"
+                class="form-control"
+                id="discount">
+    </div>
+
+    <div class="form__controls">
+        <button
+            (click)="onReset()"
+            type="reset"
+            class="btn btn-success">Очистить</button>
+
+        <button
+            (click)="onSubmit()"
+            type="submit"
+            class="btn btn-success">Создать</button>
+    </div>
+</form>

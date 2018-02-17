@@ -8,8 +8,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @Component({
     selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    templateUrl: './app.template.html',
+    styleUrls: ['./app.style.scss']
 })
 export class AppComponent implements OnInit {
     private _router: Subscription;

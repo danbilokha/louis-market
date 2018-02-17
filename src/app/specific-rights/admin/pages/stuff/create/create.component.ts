@@ -6,7 +6,6 @@ import {Component} from '@angular/core';
     styleUrls: ['./create.style.scss']
 })
 class AdminStuffCreateComponent {
-
 }
 
 export {AdminStuffCreateComponent};

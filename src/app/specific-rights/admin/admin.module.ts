@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import {CommonModule} from '@angular/common';
 
 import {AdminRoutingModule} from './settings/admin.routing';
 
@@ -11,7 +12,9 @@ import {AdminStuffCreateComponent} from './pages/stuff/create/create.component';
 import {AdminStuffDeleteComponent} from './pages/stuff/delete/delete.component';
 import {AdminStuffUpdateComponent} from './pages/stuff/update/update.component';
 import {FormBaseComponent} from './pages/stuff/formBase/formBase.component';
-import {CommonModule} from '@angular/common';
+
+// TODO: Del duplicate load of Material module in Lazy loaded component
+import {UiModule} from '@ui/ui.module';
 
 @NgModule({
     declarations: [
@@ -21,13 +24,14 @@ import {CommonModule} from '@angular/common';
         AdminStuffCreateComponent,
         AdminStuffDeleteComponent,
         AdminStuffUpdateComponent,
-        FormBaseComponent
+        FormBaseComponent,
     ],
     imports: [
         RouterModule,
         FormsModule,
         CommonModule,
-        AdminRoutingModule
+        AdminRoutingModule,
+        UiModule
     ]
 })
 class AdminModule {

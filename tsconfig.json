@@ -11,7 +11,8 @@
       "@pipes/*": ["app/pipes/*"],
       "@effects/*": ["app/effects/*"],
       "@settings/*": ["app/settings/*"],
-      "@db/*": ["app/db/*"]
+      "@db/*": ["app/db/*"],
+      "@ui/*": ["app/ui/*"]
     },
     "sourceMap": true,
     "declaration": false,

@@ -1,15 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { RouterModule } from '@angular/router';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {RouterModule} from '@angular/router';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 // Modules
 import {AppRoutingModule} from '@settings/app.routing';
 import {AdminModule} from './specific-rights/admin/admin.module';
 import {ComponentModule} from '@components/component.module';
 import {DbModule} from '@db/db.module';
+import {UiModule} from '@ui/ui.module';
 
+// Components
 import {AppComponent} from './app.component';
 import {HomeComponent} from '@pages/home/home.component';
 import {SignupComponent} from '@pages/signup/signup.component';
@@ -36,39 +39,42 @@ import {CurrencyResolverService} from './services/price/currency-resolver';
 import {WatchService} from '@services/watchService/watchService';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    SignupComponent,
-    LandingComponent,
-    ProfileComponent,
-    NavbarComponent,
-    FooterComponent,
-    TopWatchesComponent,
-    KeepInTouchComponent,
-    AboutUsComponent,
-    IndexViewComponent,
-    NotFoundComponent
-  ],
-  imports: [
-    BrowserModule,
-    NgbModule.forRoot(),
-    FormsModule,
-    RouterModule,
-    AppRoutingModule,
-    ComponentModule,
-    DbModule,
-    AdminModule
-  ],
-  providers: [
-    DiscountPipe,
-    ToFixedPipe,
-    CurrencySignPipe,
-    CalculatePricePipe,
-    AddSpacePipe,
-    CurrencyResolverService,
-    WatchService,
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        SignupComponent,
+        LandingComponent,
+        ProfileComponent,
+        NavbarComponent,
+        FooterComponent,
+        TopWatchesComponent,
+        KeepInTouchComponent,
+        AboutUsComponent,
+        IndexViewComponent,
+        NotFoundComponent,
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        NgbModule.forRoot(),
+        FormsModule,
+        RouterModule,
+        UiModule,
+        AppRoutingModule,
+        ComponentModule,
+        DbModule,
+        AdminModule
+    ],
+    providers: [
+        DiscountPipe,
+        ToFixedPipe,
+        CurrencySignPipe,
+        CalculatePricePipe,
+        AddSpacePipe,
+        CurrencyResolverService,
+        WatchService,
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

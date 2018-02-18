@@ -4,14 +4,13 @@ import {NgModule} from '@angular/core';
 import {SliderComponent} from './slider/slider.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
     declarations: [
         SliderComponent
     ],
     imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
         MatCardModule,
         MatButtonModule,
         MatCheckboxModule,

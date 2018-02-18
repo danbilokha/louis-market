@@ -106,7 +106,18 @@
             </div>
             <div class="form-group">
                 <label for="isAvailable">Доступно?</label>
-                <louis-slider></louis-slider>
+                <mat-slider
+                        class="example-margin"
+                        [disabled]="disabled"
+                        [invert]="invert"
+                        [max]="max"
+                        [min]="min"
+                        [step]="step"
+                        [thumb-label]="thumbLabel"
+                        [tick-interval]="tickInterval"
+                        [(ngModel)]="value"
+                        [vertical]="vertical">
+                </mat-slider>
                 <input
                         name="isAvailable"
                         [(ngModel)]="isAvailable"

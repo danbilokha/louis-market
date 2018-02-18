@@ -37,7 +37,24 @@ class FormBaseComponent {
         }
     ];
 
+    public autoTicks: boolean = true;
+    public disabled: boolean = false;
+    public invert: boolean = false;
+    public max: number = 1;
+    public min: number = 0;
+    public showTicks: boolean = false;
+    public step: number = 1;
+    public thumbLabel: boolean = true;
+    public value: number = 0;
+    public vertical: boolean = false;
 
+    get tickInterval(): number | 'auto' {
+        return this.showTicks ? (this.autoTicks ? 'auto' : this._tickInterval) : 0;
+    }
+    set tickInterval(v) {
+        this._tickInterval = Number(v);
+    }
+    private _tickInterval = 1;
 
     public onReset(): void {
 

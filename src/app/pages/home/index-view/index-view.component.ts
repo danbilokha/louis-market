@@ -6,7 +6,6 @@ import {Component} from '@angular/core';
     styleUrls: ['./index-view.style.scss']
 })
 class IndexViewComponent {
-
 }
 
 export {IndexViewComponent};

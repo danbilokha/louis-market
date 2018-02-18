@@ -11,6 +11,7 @@ import {AdminStuffCreateComponent} from './pages/stuff/create/create.component';
 import {AdminStuffDeleteComponent} from './pages/stuff/delete/delete.component';
 import {AdminStuffUpdateComponent} from './pages/stuff/update/update.component';
 import {FormBaseComponent} from './pages/stuff/formBase/formBase.component';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -25,6 +26,7 @@ import {FormBaseComponent} from './pages/stuff/formBase/formBase.component';
     imports: [
         RouterModule,
         FormsModule,
+        CommonModule,
         AdminRoutingModule
     ]
 })

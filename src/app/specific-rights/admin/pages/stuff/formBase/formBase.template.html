@@ -105,14 +105,8 @@
                 </textarea>
             </div>
             <div class="form-group">
-                <label for="isAvailable">Доступно?</label>
-                <input
-                        name="isAvailable"
-                        [(ngModel)]="isAvailable"
-                        type="text"
-                        class="form-control"
-                        id="isAvailable"
-                        required>
+                <label>Доступно?</label>
+                <louis-slider [value]="value"></louis-slider> {{ value }}
             </div>
         </div>
     </div>

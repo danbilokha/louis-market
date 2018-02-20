@@ -30,7 +30,8 @@ import {UiModule} from '@ui/ui.module';
         RouterModule,
         FormsModule,
         CommonModule,
-        AdminRoutingModule
+        AdminRoutingModule,
+        UiModule
     ]
 })
 class AdminModule {

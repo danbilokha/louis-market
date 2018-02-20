@@ -8,28 +8,32 @@ import {AdminStuffCreateComponent} from '../pages/stuff/create/create.component'
 import {AdminStuffDeleteComponent} from '../pages/stuff/delete/delete.component';
 import {AdminStuffUpdateComponent} from '../pages/stuff/update/update.component';
 
-const routes: Routes =[
-    { path: '',             component: AdminComponent,
+const routes: Routes = [
+    {
+        path: '', component: AdminComponent,
         children: [
-            { path: 'main',          component: AdminIndexComponent },
-            { path: 'stuff',         component: AdminStuffComponent,
+            {path: 'main', component: AdminIndexComponent},
+            {
+                path: 'stuff', component: AdminStuffComponent,
                 children: [
-                    { path: 'create',          component: AdminStuffCreateComponent },
-                    { path: 'delete',          component: AdminStuffDeleteComponent },
-                    { path: 'update',          component: AdminStuffUpdateComponent },
-                ] },
-        ] },
+                    {path: 'create', component: AdminStuffCreateComponent},
+                    {path: 'delete', component: AdminStuffDeleteComponent},
+                    {path: 'update', component: AdminStuffUpdateComponent},
+                ]
+            },
+        ]
+    },
     // { path: '',              component: AdminComponent, pathMatch: 'full' },
-    { path: "**", redirectTo: '' }
+    {path: '**', redirectTo: ''}
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes)
-  ],
-  exports: [
-  ],
+    imports: [
+        RouterModule.forChild(routes)
+    ],
+    exports: [],
 })
-class AdminRoutingModule { }
+class AdminRoutingModule {
+}
 
 export {AdminRoutingModule}

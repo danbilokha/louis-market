@@ -1,11 +1,10 @@
-import {Component, EventEmitter} from '@angular/core';
-import {UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions} from 'ngx-uploader';
-import {read} from 'fs';
+import {Component} from '@angular/core';
+import {LouisImage} from './Image.dictionary';
 
 @Component({
     selector: 'louis-form-base',
     templateUrl: './formBase.template.html',
-    styleUrls: ['./formBase.style.scss']
+    styleUrls: ['./formBase.style.scss', './image.style.scss']
 })
 class FormBaseComponent {
 
@@ -17,6 +16,13 @@ class FormBaseComponent {
     public type: string = 'automatic';
     public isAvailable: boolean = true;
     public discount?: number = 0;
+
+    // isAvailabe
+    public value: number = 1;
+
+    // Image
+    public imageLoadBtnText: string = "Загрузить фотографии";
+    public images: Array<LouisImage> = [];
 
     public currencies: Array<any> = [
         {
@@ -39,65 +45,23 @@ class FormBaseComponent {
         }
     ];
 
-    public value: number = 1;
 
     public valueChanged = (newValue: number): void => {
         this.value = newValue;
         this.isAvailable = newValue === 1;
     };
 
-    options: UploaderOptions;
-    files: UploadFile[] = [];
-    uploadInput: EventEmitter<UploadInput> = new EventEmitter<UploadInput>();
-    humanizeBytes: Function = humanizeBytes;
-    dragOver: boolean;
-
-    onUploadOutput(output: UploadOutput): void {
-        let reader = new FileReader();
-        reader.onload = () => {
-            let binaryFile = reader.result;
-        }
-        reader.onerror = () => {
-        }
-        reader.onloadend = () => {
-
-        }
-        reader.readAsDataURL(output.file);
-        console.log(output);
-        if (output.type === 'allAddedToQueue') { // when all files added in queue
-            // uncomment this if you want to auto upload files when added
-            // const event: UploadInput = {
-            //   type: 'uploadAll',
-            //   url: '/upload',
-            //   method: 'POST',
-            //   data: { foo: 'bar' }
-            // };
-            // this.uploadInput.emit(event);
-        } else if (output.type === 'addedToQueue' && typeof output.file !== 'undefined') { // add file to array when added
-            this.files.push(output.file);
-            console.log(this.files);
-        } else if (output.type === 'uploading' && typeof output.file !== 'undefined') {
-            // update current data in files array for uploading file
-            const index = this.files.findIndex(file => typeof output.file !== 'undefined' && file.id === output.file.id);
-            this.files[index] = output.file;
-        } else if (output.type === 'removed') {
-            // remove file from array when removed
-            this.files = this.files.filter((file: UploadFile) => file !== output.file);
-        } else if (output.type === 'dragOver') {
-            this.dragOver = true;
-        } else if (output.type === 'dragOut') {
-            this.dragOver = false;
-        } else if (output.type === 'drop') {
-            this.dragOver = false;
-        }
+    public onClearImages(): void {
+        this.images = [];
     }
 
-    removeFile(id: string): void {
-        this.uploadInput.emit({type: 'remove', id: id});
-    }
-
-    removeAllFiles(): void {
-        this.uploadInput.emit({type: 'removeAll'});
+    public onLoadImages($event: any): void {
+        const target: HTMLInputElement = $event.target as HTMLInputElement;
+        for(let i = 0, len = target.files.length; i < len; i++) {
+            if(!this.isAlreadyUploaded(target.files[i].name)) {
+                this.uploadingImage(target.files[i]);
+            }
+        }
     }
 
     public onReset(): void {
@@ -106,6 +70,47 @@ class FormBaseComponent {
 
     public onSubmit(): void {
         console.log(this.name, this.price, this.currency)
+    }
+
+    private isAlreadyUploaded(name: string): boolean { /* tslint:disable:member-ordering */
+        let isAlreadyUploaded = false;
+
+        name = this.getImageName(name);
+        this.images.map(image => {
+            if (image.name === name) {
+                isAlreadyUploaded = true;
+
+            }
+        });
+
+        return isAlreadyUploaded;
+    }
+
+    private uploadingImage(image: File): void { /* tslint:disable:member-ordering */
+        const reader = new FileReader();
+
+        reader.onload = () => {
+            const binary = reader.result;
+            const louisImage = new LouisImage(
+                this.getImageName(image.name),
+                image.size,
+                image.type,
+                binary,
+                !!this.images.length);
+
+            this.images.push(louisImage);
+            console.log(this.images);
+        };
+        reader.onerror = () => {
+        };
+        reader.onloadend = () => {
+        };
+
+        reader.readAsDataURL(image);
+    }
+
+    private getImageName(name: string): string {
+        return name.slice(0, name.indexOf('.'));
     }
 }
 

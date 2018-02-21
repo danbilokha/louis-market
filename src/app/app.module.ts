@@ -5,13 +5,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-// Modules
-import {AppRoutingModule} from '@settings/app.routing';
-import {AdminModule} from './specific-rights/admin/admin.module';
-import {ComponentModule} from '@components/component.module';
-import {DbModule} from '@db/db.module';
-import {UiModule} from '@ui/ui.module';
-
 // Components
 import {AppComponent} from './app.component';
 import {HomeComponent} from '@pages/home/home.component';
@@ -37,6 +30,13 @@ import {AddSpacePipe} from '@pipes/addSpace/addSpace';
 // Services
 import {CurrencyResolverService} from './services/price/currency-resolver';
 import {WatchService} from '@services/watchService/watchService';
+
+// Modules
+import {AppRoutingModule} from '@settings/app.routing';
+import {AdminModule} from './specific-rights/admin/admin.module';
+import {ComponentModule} from '@components/component.module';
+import {DbModule} from '@db/db.module';
+import {UiModule} from '@ui/ui.module';
 
 @NgModule({
     declarations: [

@@ -8,5 +8,6 @@
         [thumb-label]="thumbLabel"
         [tick-interval]="tickInterval"
         [(ngModel)]="value"
+        (change)="onValueChanged(value)"
         [vertical]="vertical">
 </mat-slider>

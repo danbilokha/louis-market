@@ -18,7 +18,8 @@ class SliderComponent {
     @Input() public vertical: boolean = false;
 
     @Output()
-    public valueChange = new EventEmitter<number>();
+    public valueChanged = new EventEmitter<number>();
+    public onValueChanged = (newValue: number): void => this.valueChanged.emit(newValue);
 
     private _tickInterval = 1;
 

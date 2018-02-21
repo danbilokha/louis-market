@@ -13,8 +13,8 @@ import {AdminStuffDeleteComponent} from './pages/stuff/delete/delete.component';
 import {AdminStuffUpdateComponent} from './pages/stuff/update/update.component';
 import {FormBaseComponent} from './pages/stuff/formBase/formBase.component';
 
-// TODO: Del duplicate load of Material module in Lazy loaded component
 import {UiModule} from '@ui/ui.module';
+import {NgUploaderModule} from 'ngx-uploader';
 
 @NgModule({
     declarations: [
@@ -31,7 +31,8 @@ import {UiModule} from '@ui/ui.module';
         FormsModule,
         CommonModule,
         AdminRoutingModule,
-        UiModule
+        NgUploaderModule,
+        UiModule,
     ]
 })
 class AdminModule {

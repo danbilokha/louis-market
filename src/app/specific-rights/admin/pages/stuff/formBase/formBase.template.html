@@ -1,6 +1,6 @@
 <form>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-7">
 
             <div class="form-group form form-admin">
                 <label for="name">Название</label>
@@ -14,13 +14,26 @@
                         required>
             </div>
             <div class="form-group">
+                <label for="description">Описание</label>
+                <textarea
+                        name="description"
+                        [(ngModel)]="description"
+                        type="text"
+                        rows="5"
+                        class="form-control"
+                        id="description"
+                        placeholder="Введите описание товара"
+                        required>
+                </textarea>
+            </div>
+            <div class="form-group">
                 <label for="type">Тип</label>
                 <select
-                    name="type"
-                    [(ngModel)]="type"
-                    class="form-control"
-                    id="type"
-                    required>
+                        name="type"
+                        [(ngModel)]="type"
+                        class="form-control"
+                        id="type"
+                        required>
                     <option *ngFor="let type of types" [value]="type.value"
                             [selected]="type.value === 'automatic'">
                         {{type.display}}
@@ -70,43 +83,41 @@
                 <button
                         (click)="onReset()"
                         type="reset"
-                        class="btn btn-success">Очистить
+                        mat-raised-button color="warn">Очистить
                 </button>
 
                 <button
                         (click)="onSubmit()"
                         type="submit"
-                        class="btn btn-success">Создать
+                        mat-raised-button color="primary">Создать
                 </button>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-5">
             <div class="form-group">
-                <label for="image">Фото</label>
-                <input
-                        name="image"
-                        [(ngModel)]="image"
-                        type="text"
-                        class="form-control"
-                        id="image"
-                        required>
-            </div>
-            <div class="form-group">
-                <label for="description">Описание</label>
-                <textarea
-                        name="description"
-                        [(ngModel)]="description"
-                        type="text"
-                        rows="5"
-                        class="form-control"
-                        id="description"
-                        placeholder="Введите описание товара"
-                        required>
-                </textarea>
+                <label>Фото</label>
+                <div class="drop-container" ngFileDrop (uploadOutput)="onUploadOutput($event)"
+                     [ngClass]="{ 'is-drop-over': dragOver }" multiple>
+                    <h1>Drag &amp; Drop</h1>
+                </div>
+
+                <label class="upload-button">
+                    <input type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)"
+                           [uploadInput]="uploadInput" multiple>
+                    or choose file(s)
+                </label>
+
+                <button
+                        mat-raised-button
+                        type="button"
+                        class="start-upload-btn"
+                        (click)="removeAllFiles()">
+                    Удалить все фото
+                </button>
             </div>
             <div class="form-group">
                 <label>Доступно?</label>
-                <louis-slider [value]="value"></louis-slider> {{ value }}
+                <louis-slider [value]="value" (valueChanged)="valueChanged($event)"></louis-slider>
             </div>
         </div>
     </div>

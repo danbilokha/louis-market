@@ -12,13 +12,18 @@ import {FormsModule} from '@angular/forms';
     imports: [
         CommonModule,
         FormsModule,
+        // Material modules
         MatCardModule,
         MatButtonModule,
         MatCheckboxModule,
-        MatSliderModule,
+        MatSliderModule
     ],
     exports: [
         SliderComponent,
+        MatCardModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatSliderModule
     ]
 })
 class UiModule { }

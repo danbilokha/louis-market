@@ -11,6 +11,7 @@
       "@pipes/*": ["app/pipes/*"],
       "@effects/*": ["app/effects/*"],
       "@settings/*": ["app/settings/*"],
+      "@common/*": ["app/common/*"],
       "@db/*": ["app/db/*"],
       "@ui/*": ["app/ui/*"]
     },

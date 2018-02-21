@@ -4,10 +4,12 @@ import {NgModule} from '@angular/core';
 import {SliderComponent} from './slider/slider.component';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {UploadImagesComponent} from './upload-images/upload-images.component';
 
 @NgModule({
     declarations: [
-        SliderComponent
+        SliderComponent,
+        UploadImagesComponent
     ],
     imports: [
         CommonModule,
@@ -20,6 +22,7 @@ import {FormsModule} from '@angular/forms';
     ],
     exports: [
         SliderComponent,
+        UploadImagesComponent,
         MatCardModule,
         MatButtonModule,
         MatCheckboxModule,

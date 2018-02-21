@@ -1,0 +1,39 @@
+<div class="image-wrapper">
+    <div class="image-load-wrapper">
+        <div class="image-load__field">
+            <label for="images" class="image-load__field_text">{{ imageLoaFieldText }}</label>
+        </div>
+        <div class="image-load__btn">
+            <label for="images" class="btn btn-success image-load__btn_show">
+                <i class="fa fa-cloud-upload"></i>{{ imageLoadBtnText }}
+            </label>
+            <input
+                    id="images"
+                    class="image-load__btn_hide"
+                    type="file"
+                    [(ngModel)]="images"
+                    (change)="onLoadImages($event)"
+                    name="images"
+                    accept="image/*"
+                    multiple>
+        </div>
+    </div>
+
+    <div class="image-preview-wrapper">
+        <ng-container *ngFor="let image of images">
+            <img
+                    src="{{image.binary}}"
+                    alt="{{image.name}}"
+                    class="image form-image image-preview__img">
+        </ng-container>
+    </div>
+
+    <div class="image-control-wrapper">
+        <button
+                class="image-control__btn_reset"
+                mat-raised-button color="warn"
+                (click)="onClearImages()">
+            Удалить все фото
+        </button>
+    </div>
+</div>

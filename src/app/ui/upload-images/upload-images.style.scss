@@ -1,0 +1,77 @@
+.image {
+
+  &-wrapper {
+    // TODO: hide scroll if too many images
+    overflow: hidden;
+  }
+
+  &-load {
+
+    &__field {
+      position: relative;
+      width: 100%;
+      height: 100px;
+
+      background: gray;
+
+      &_text {
+        text-align: center;
+        color: white;
+        transform: translateY(50%);
+      }
+    }
+
+    &__btn {
+
+      margin-top: 5px;
+      border-bottom: 2px solid gray;
+
+      & > * {
+        width: 100%;
+      }
+
+      &_hide {
+        display: none;
+      }
+
+      &_show {
+        border: 1px solid #ccc;
+        display: inline-block;
+        padding: 6px 12px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-preview {
+
+    &-wrapper {
+      margin-top: 5px;
+      padding: 5px;
+
+      text-align: center;
+      border-bottom: 2px solid gray;
+
+      max-height: 350px;
+      overflow-y: auto;
+    }
+
+    &__img {
+      max-height: 100px;
+      max-width: 100px;
+    }
+
+  }
+
+  &-control {
+
+    &-wrapper {
+      margin-top: 5px;
+
+      & > * {
+        width: 100%;
+      }
+    }
+  }
+}
+

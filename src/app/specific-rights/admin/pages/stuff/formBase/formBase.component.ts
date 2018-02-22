@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {LouisImage} from '../../../../../common/dictionaries/Image.dictionary';
+import {LouisImage} from '@common/dictionaries/Image.dictionary';
 
 @Component({
     selector: 'louis-form-base',
@@ -9,7 +9,7 @@ import {LouisImage} from '../../../../../common/dictionaries/Image.dictionary';
 class FormBaseComponent {
 
     public name: string;
-    public image: string;
+    public images: Array<LouisImage>;
     public price: number;
     public currency: string = 'usd';
     public description: string;
@@ -40,14 +40,14 @@ class FormBaseComponent {
             value: 'quartz', display: 'quartz'
         }
     ];
-
-
     public valueChanged = (newValue: number): void => {
         this.value = newValue;
         this.isAvailable = newValue === 1;
     };
 
-
+    public loadedImages(images: Array<LouisImage>) {
+        this.images = images;
+    }
 
     public onReset(): void {
 

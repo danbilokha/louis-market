@@ -1,7 +1,11 @@
 <div class="image-wrapper">
     <div class="image-load-wrapper">
         <div class="image-load__field">
-            <label for="images" class="image-load__field_text">{{ imageLoaFieldText }}</label>
+            <label
+                    for="images"
+                    class="image-load__field_text">
+                {{ imageLoaFieldText }}
+            </label>
         </div>
         <div class="image-load__btn">
             <label for="images" class="btn btn-success image-load__btn_show">
@@ -22,10 +26,18 @@
     <div class="image-preview-wrapper">
         <ng-container *ngFor="let image of images">
             <img
+                    (click)="onImageClick($event)"
+                    name="{{image.name}}"
                     src="{{image.binary}}"
                     alt="{{image.name}}"
-                    class="image form-image image-preview__img">
+                    class="image form-image image-preview__img"
+                    [ngClass]="image.isMain ? 'image-preview__img_main' : null">
         </ng-container>
+        <label
+                *ngIf="images.length"
+                class="hint image-preview__hint">
+            Картинка с рамкой будет отображаться как основная
+        </label>
     </div>
 
     <div class="image-control-wrapper">

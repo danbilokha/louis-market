@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {LouisImage} from '@common/dictionaries/Image.dictionary';
 
 @Component({
@@ -11,10 +11,23 @@ class UploadImagesComponent {
     @Input() public imageLoaFieldText: string = 'Кликните чтобы загрузить фотографии';
     @Input() public imageLoadBtnText: string = 'Загрузить фотографии';
 
+    @Output() public loadedImages: EventEmitter<Array<LouisImage>> = new EventEmitter<Array<LouisImage>>();
+
     public images: Array<LouisImage> = [];
 
     public onClearImages(): void {
         this.images = [];
+    }
+
+    public onImageClick({target}): void {
+        const imageName = target.name;
+        const imageArr = [...this.images];
+
+        for(let i = 0, len = imageArr.length; i < len; i += 1) {
+            imageArr[i].isMain = imageArr[i].name === imageName;
+        }
+
+        this.emitImages();
     }
 
     public onLoadImages($event: any): void {
@@ -33,7 +46,6 @@ class UploadImagesComponent {
         this.images.map(image => {
             if (image.name === name) {
                 isAlreadyUploaded = true;
-
             }
         });
 
@@ -50,9 +62,9 @@ class UploadImagesComponent {
                 image.size,
                 image.type,
                 binary,
-                !!this.images.length);
+                !this.images.length);
 
-            this.images.push(louisImage);
+            this.addImage(louisImage);
         };
         reader.onerror = () => {
         };
@@ -64,6 +76,16 @@ class UploadImagesComponent {
 
     private getImageName(name: string): string {
         return name.slice(0, name.indexOf('.'));
+    }
+
+    private addImage(image: LouisImage): void {
+        this.images.push(image);
+
+        this.emitImages();
+    }
+
+    private emitImages(imageArr: Array<LouisImage> = this.images): void {
+        this.loadedImages.emit(imageArr);
     }
 }
 

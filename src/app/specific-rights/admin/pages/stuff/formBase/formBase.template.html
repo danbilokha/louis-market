@@ -96,7 +96,7 @@
         <div class="col-md-5">
             <div class="form-group">
                 <label>Фото</label>
-                <louis-upload-images></louis-upload-images>
+                <louis-upload-images (loadedImages)="loadedImages($event)"></louis-upload-images>
             </div>
             <div class="form-group">
                 <label>Доступно?</label>

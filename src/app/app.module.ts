@@ -18,6 +18,8 @@ import {KeepInTouchComponent} from '@pages/landing/keep-in-touch/keep-in-touch.c
 import {AboutUsComponent} from '@pages/landing/about-us/about-us.component';
 import {IndexViewComponent} from '@pages/home/index-view/index-view.component';
 import {NotFoundComponent} from '@pages/notFound/not-found.component';
+import {CatalogComponent} from '@pages/catalog/catalog.component.ts';
+
 
 // Pipes
 import {DiscountPipe} from '@pipes/discount/discount';
@@ -52,6 +54,7 @@ import {UiModule} from '@ui/ui.module';
         AboutUsComponent,
         IndexViewComponent,
         NotFoundComponent,
+        CatalogComponent,
     ],
     imports: [
         BrowserModule,

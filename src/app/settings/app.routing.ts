@@ -8,12 +8,14 @@ import {ProfileComponent} from '@pages/profile/profile.component';
 import {SignupComponent} from '@pages/signup/signup.component';
 import {LandingComponent} from '@pages/landing/landing.component';
 import {NotFoundComponent} from "@pages/notFound/not-found.component";
+import {CatalogComponent} from '@pages/catalog/catalog.component.ts';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
     { path: 'user-profile',     component: ProfileComponent },
     { path: 'signup',           component: SignupComponent },
     { path: 'landing',          component: LandingComponent },
+    { path: 'catalog',          component: CatalogComponent },
     { path: 'admin',            loadChildren: '../specific-rights/admin/admin.module#AdminModule' },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: "**",               component: NotFoundComponent }

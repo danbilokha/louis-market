@@ -8,7 +8,7 @@ import {takeWatches, skipWatches} from './watchList.dictionary';
 import {Watch} from '@common/dictionaries/watch.dictionary';
 
 @Component({
-    selector: 'louis-watch-watchList',
+    selector: 'louis-c-watch-watch-list',
     templateUrl: './watchList.template.html',
     styleUrls: ['./watchList.style.scss']
 })

@@ -3,18 +3,18 @@
     <div class="card-watch__content text-center">
         <div class="card-watch__links social-line">
             <a href="#" class="btn btn-neutral btn-facebook btn-just-icon">
-                    <i class="fa fa-facebook-square"></i>
-                </a>
-                <a href="#" class="btn btn-neutral btn-google btn-just-icon">
-                    <i class="fa fa-google-plus"></i>
-                </a>
-                <a href="#" class="btn btn-neutral btn-twitter btn-just-icon">
-                    <i class="fa fa-twitter"></i>
-                </a>
+                <i class="fa fa-facebook-square"></i>
+            </a>
+            <a href="#" class="btn btn-neutral btn-google btn-just-icon">
+                <i class="fa fa-google-plus"></i>
+            </a>
+            <a href="#" class="btn btn-neutral btn-twitter btn-just-icon">
+                <i class="fa fa-twitter"></i>
+            </a>
         </div>
         <div class="card-watch__image text-center">
-            <a href="{{watch.id}}">
-                <img class="card-watch__image_img" src="{{mainImage}}" alt="{{watch.name}}" />
+            <a [routerLink]="['/watch',watch.name]">
+                <img class="card-watch__image_img" src="{{mainImage}}" alt="{{watch.name}}"/>
             </a>
         </div>
         <div class="card-watch__price">
@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="card-watch__footer">
-        <a href="{{watch.id}}" class="btn btn-link btn-success">Оформить</a>
-        <a href="{{watch.id}}" class="btn btn-link btn-info">Детальней</a>
+        <a [routerLink]="['/order',watch.name]" class="btn btn-link btn-success">Оформить</a>
+        <a [routerLink]="['/watch',watch.name]" class="btn btn-link btn-info">Детальней</a>
     </div>
 </div>

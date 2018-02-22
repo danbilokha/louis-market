@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
+import {RouterModule} from '@angular/router';
 
 import {WatchComponent} from './watch/watch.component';
 import {WatchListComponent} from './watchList/watchList.component';
@@ -25,6 +26,7 @@ import {AddSpacePipe} from '@pipes/addSpace/addSpace';
     ],
     imports: [
         BrowserModule,
+        RouterModule
     ],
     exports: [
         WatchComponent,

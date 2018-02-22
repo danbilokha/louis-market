@@ -1,3 +1,9 @@
+.form {
+  &-base {
+    border-top: 2px solid gray;
+  }
+}
+
 .custom-component-drop-zone {
   width: 300px;
   height: 300px;

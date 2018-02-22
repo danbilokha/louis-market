@@ -16,6 +16,8 @@ class WatchComponent implements OnInit {
     public watchMock: any = data;
 
     ngOnInit() {
+        console.log(this.watch);
+
         this.priceMap = {
             currencyTo: 'UAH',
             discount: this.watch.discount,

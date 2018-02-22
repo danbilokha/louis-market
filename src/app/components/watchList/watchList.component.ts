@@ -18,6 +18,7 @@ class WatchListComponent implements OnInit {
     @Input() take: number = takeWatches;
 
     public watchList$: Observable<Array<Watch>>;
+
     private getWatchList = (skip: number, take: number): Observable<Array<Watch>> =>
         this.dbService
             .getDbData(SCHEMA.WATCH, skip, take);

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 
-import {Watch} from './watch.dictionary';
+import {Watch} from '@common/dictionaries/watch.dictionary';
 import {data} from './Mock/data';
 
 @Component({

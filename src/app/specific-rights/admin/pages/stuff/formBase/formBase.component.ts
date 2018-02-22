@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {LouisImage} from '@common/dictionaries/Image.dictionary';
+import {Watch} from '@common/dictionaries/watch.dictionary';
 
 @Component({
     selector: 'louis-form-base',
@@ -50,14 +51,32 @@ class FormBaseComponent {
     }
 
     public onReset(): void {
-
+        this.name = '';
+        this.description = '';
+        this.type = 'automatic';
+        this.currency = 'usd';
+        this.price = null;
+        this.discount = 0;
     }
 
     public onSubmit(): void {
-        console.log(this.name, this.price, this.currency)
+
+        if (this.name || this.description || this.price || this.images) {
+            return;
+        }
+
+        let watch = new Watch(this.name,
+            this.images,
+            this.price,
+            this.currency,
+            this.description,
+            this.type,
+            this.isAvailable,
+            this.discount);
+
+        console.log(watch);
+
     }
-
-
 }
 
 export {FormBaseComponent}

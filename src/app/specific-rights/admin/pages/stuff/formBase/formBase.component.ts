@@ -1,6 +1,9 @@
 import {Component} from '@angular/core';
 import {LouisImage} from '@common/dictionaries/Image.dictionary';
 import {Watch} from '@common/dictionaries/watch.dictionary';
+import * as _ from 'lodash';
+import {DbService} from '@db/dbService';
+import {SCHEMA} from '@db/schema';
 
 @Component({
     selector: 'louis-form-base',
@@ -46,6 +49,9 @@ class FormBaseComponent {
         this.isAvailable = newValue === 1;
     };
 
+    public constructor(private dbService: DbService) {
+    }
+
     public loadedImages(images: Array<LouisImage>) {
         this.images = images;
     }
@@ -61,11 +67,16 @@ class FormBaseComponent {
 
     public onSubmit(): void {
 
-        if (this.name || this.description || this.price || this.images) {
+        if (_.isNil(this.name)
+            || _.isNil(this.description)
+            || _.isNil(this.price)
+            || _.isNil(this.images)) {
+
+            console.log('CANNOT ADD NEW WATCH');
             return;
         }
 
-        let watch = new Watch(this.name,
+        const watch = new Watch(this.name,
             this.images,
             this.price,
             this.currency,
@@ -74,8 +85,7 @@ class FormBaseComponent {
             this.isAvailable,
             this.discount);
 
-        console.log(watch);
-
+        this.dbService.setDbData(SCHEMA.WATCH, watch);
     }
 }
 

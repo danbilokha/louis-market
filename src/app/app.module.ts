@@ -8,7 +8,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // Components
 import {AppComponent} from './app.component';
 import {HomeComponent} from '@pages/home/home.component';
-import {SignupComponent} from '@pages/signup/signup.component';
+import {SignUpComponent} from '@pages/sign-up/sign-up.component';
 import {LandingComponent} from '@pages/landing/landing.component';
 import {ProfileComponent} from '@pages/profile/profile.component';
 import {NavbarComponent} from './common/navbar/navbar.component';
@@ -19,7 +19,7 @@ import {AboutUsComponent} from '@pages/landing/about-us/about-us.component';
 import {IndexViewComponent} from '@pages/home/index-view/index-view.component';
 import {NotFoundComponent} from '@pages/notFound/not-found.component';
 import {CatalogComponent} from '@pages/catalog/catalog.component.ts';
-
+import {WatchPageComponent} from '@pages/watch/watch.component';
 
 // Pipes
 import {DiscountPipe} from '@pipes/discount/discount';
@@ -44,7 +44,7 @@ import {UiModule} from '@ui/ui.module';
     declarations: [
         AppComponent,
         HomeComponent,
-        SignupComponent,
+        SignUpComponent,
         LandingComponent,
         ProfileComponent,
         NavbarComponent,
@@ -55,6 +55,7 @@ import {UiModule} from '@ui/ui.module';
         IndexViewComponent,
         NotFoundComponent,
         CatalogComponent,
+        WatchPageComponent
     ],
     imports: [
         BrowserModule,

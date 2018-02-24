@@ -22,6 +22,7 @@ class DbService {
             .map(mapping.skip(skip))
             .map(mapping.take(take));
 
+
     public setDbData(entity: string, value: any): void {
         this.db
             .list(`${SCHEMA.DATA}/${entity}`)

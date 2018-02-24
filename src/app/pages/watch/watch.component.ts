@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Watch} from '@common/dictionaries/watch.dictionary';
 
 @Component({
     selector: 'louis-watch-page',
@@ -7,6 +8,10 @@ import {Component} from '@angular/core';
 })
 
 class WatchPageComponent {
+
+    @Input()
+    public watch: Watch;
+
 }
 
 export {WatchPageComponent};

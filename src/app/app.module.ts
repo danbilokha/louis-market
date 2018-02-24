@@ -31,7 +31,7 @@ import {AddSpacePipe} from '@pipes/addSpace/addSpace';
 
 // Services
 import {CurrencyResolverService} from './services/price/currency-resolver';
-import {WatchService} from '@services/watchService/watchService';
+import {WatchService} from '@services/watch/watch';
 
 // Modules
 import {AppRoutingModule} from '@settings/app.routing';
@@ -39,6 +39,7 @@ import {AdminModule} from './specific-rights/admin/admin.module';
 import {ComponentModule} from '@components/component.module';
 import {DbModule} from '@db/db.module';
 import {UiModule} from '@ui/ui.module';
+import {BaseWatchPageComponent} from '@pages/watch/base-watch.component';
 
 @NgModule({
     declarations: [
@@ -55,6 +56,7 @@ import {UiModule} from '@ui/ui.module';
         IndexViewComponent,
         NotFoundComponent,
         CatalogComponent,
+        BaseWatchPageComponent,
         WatchPageComponent
     ],
     imports: [

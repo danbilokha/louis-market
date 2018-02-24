@@ -2,9 +2,6 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
 
-import {WatchComponent} from './watch/watch.component';
-import {WatchListComponent} from './watchList/watchList.component';
-
 // Pipes
 import {DiscountPipe} from '@pipes/discount/discount';
 import {ToFixedPipe} from '@pipes/toFixed/toFixed';
@@ -12,6 +9,10 @@ import {CurrencySignPipe} from '@pipes/currencySign/currencySign';
 import {CalculatePricePipe} from '@pipes/calculatePrice/calculatePrice';
 import {PriceShowPipe} from '@pipes/priceShow/priceShow.ts';
 import {AddSpacePipe} from '@pipes/addSpace/addSpace';
+
+import {WatchComponent} from './watch/watch.component';
+import {WatchListComponent} from './watchList/watchList.component';
+import {LoaderComponent} from './loader/loader.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import {AddSpacePipe} from '@pipes/addSpace/addSpace';
         CurrencySignPipe,
         CalculatePricePipe,
         PriceShowPipe,
-        AddSpacePipe
+        AddSpacePipe,
+        LoaderComponent
     ],
     imports: [
         BrowserModule,
@@ -30,7 +32,8 @@ import {AddSpacePipe} from '@pipes/addSpace/addSpace';
     ],
     exports: [
         WatchComponent,
-        WatchListComponent
+        WatchListComponent,
+        LoaderComponent
     ]
 })
 class ComponentModule {

@@ -1,6 +1,27 @@
-@import './common/styles/card.scss';
+@import './common/styles/variables';
+@import './common/styles/card';
+@import './common/styles/reusable';
 
 ::ng-deep {
+
+  .loading {
+
+    &-wrapper {
+      position: relative;
+    }
+
+    &-background {
+      @extend %absolute-all-screen;
+      background-color: gray;
+      opacity: 0.5;
+    }
+
+    &-loader {
+      @extend %element-on-center;
+    }
+
+    z-index: $l-position-max-z-index;
+  }
 
   .form {
     &__controls {

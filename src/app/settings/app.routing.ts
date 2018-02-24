@@ -9,10 +9,11 @@ import {LandingComponent} from '@pages/landing/landing.component';
 import {NotFoundComponent} from '@pages/notFound/not-found.component';
 import {CatalogComponent} from '@pages/catalog/catalog.component';
 import {WatchPageComponent} from '@pages/watch/watch.component';
+import {BaseWatchPageComponent} from '@pages/watch/base-watch.component';
 
 const routes: Routes = [
     {path: 'home', component: HomeComponent},
-    {path: 'watch/:name', component: WatchPageComponent},
+    {path: 'watch/:name', component: BaseWatchPageComponent},
     {path: 'sign-up', component: SignUpComponent},
     {path: 'landing', component: LandingComponent},
     {path: 'catalog', component: CatalogComponent},

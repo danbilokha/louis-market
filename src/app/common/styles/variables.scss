@@ -8,4 +8,10 @@ $l-color-white-2: #fdf9f9;
 $l-color-grey-0: #f8f8fa;
 $l-color-grey-1: #e5e6eb;
 $l-color-grey-2: #c0c2ce;
-$l-color-grey-3: #afafaf
+$l-color-grey-3: #afafaf;
+
+
+/*
+  position
+ */
+$l-position-max-z-index: 9999; // Should be used be temporary ui element

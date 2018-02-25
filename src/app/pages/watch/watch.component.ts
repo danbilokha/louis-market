@@ -30,8 +30,6 @@ class WatchPageComponent implements OnInit {
             discount: this.watch.discount,
             toFixed: 2
         };
-
-        console.log(this.imagesArray);
     }
 
     private getMainImage(images: Array<LouisImage>): LouisImage {

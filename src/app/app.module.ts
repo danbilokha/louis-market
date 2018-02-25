@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -21,6 +21,7 @@ import {NotFoundComponent} from '@pages/notFound/not-found.component';
 import {CatalogComponent} from '@pages/catalog/catalog.component.ts';
 import {WatchPageComponent} from '@pages/watch/watch.component';
 import {WatchCommentsComponent} from '@pages/watch/comments/watch-comments.component';
+import {OrderPageComponent} from '@pages/order/order.component';
 
 // Pipes
 import {DiscountPipe} from '@pipes/discount/discount';
@@ -62,11 +63,13 @@ import {ModalGalleryModule} from 'angular-modal-gallery';
         BaseWatchPageComponent,
         WatchPageComponent,
         WatchCommentsComponent,
+        OrderPageComponent
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         NgbModule.forRoot(),
+        ReactiveFormsModule,
         FormsModule,
         RouterModule,
         UiModule,

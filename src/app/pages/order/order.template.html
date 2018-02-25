@@ -1,0 +1,80 @@
+<div class="l-wrapper order-wrapper">
+
+    <div
+            class="page-header page-header-xs"
+            data-parallax="true"
+            style="background-image: url('../assets/img/fabio-mangione.jpg');">
+        <div class="filter"></div>
+    </div>
+
+    <div class="order-content">
+        <h3>Оформьте предзаказ - получите скидку 20%!</h3>
+
+        <div class="row">
+            <div class="col-md-5">
+                <div *ngIf="watch">
+                    <div class="l-section">
+                        <img
+                                src="{{mainImage.binary}}"
+                                alt="{{mainImage.name}}"
+                                class="img-circle img-no-padding img-responsive">
+                    </div>
+                    <div class="l-section">
+                        <h4>Описание</h4>
+                        <p>{{watch.description}}</p>
+                    </div>
+                    <div class="l-section watch-page__section">
+                        <h4>Цена</h4>
+                        <div *ngIf="!(watch.discount && watch.discount !== 0); else newPrice">
+                            <div class="card-watch__price_price d-inline-block">
+                                {{watch.price | priceShow:priceMap}}
+                            </div>
+                        </div>
+                        <ng-template #newPrice>
+                            <div class="d-inline-block card-watch__price_price-old l-price-old">
+                                {{watch.price | currencyPrice:'UAH' | toFixed: 2}}
+                            </div>
+                            <div class="card-watch__price_price d-inline-block">
+                                {{watch.price | priceShow:priceMap }}
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7">
+                <form novalidate
+                      [formGroup]="orderForm"
+                      class="l-card l-form order-form">
+
+                    <div class="l-form__group">
+                        <mat-form-field>
+                            <input matInput
+                                   placeholder="Имя"
+                                   class="l-form__control" formControlName="name">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="l-form__group">
+                        <mat-form-field>
+                            <input matInput
+                                   placeholder="Контактные данные: почта, телефон"
+                                   class="l-form__control" formControlName="contacts">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="l-form__controls">
+                        <button
+                                click="onSubmit()"
+                                class="btn btn-success">
+                            Оставить заявку
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{orderForm.value | json}}
+

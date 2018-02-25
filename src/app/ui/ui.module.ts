@@ -1,4 +1,7 @@
-import {MatButtonModule, MatCardModule, MatCheckboxModule, MatSliderModule} from '@angular/material';
+import {
+    MatButtonModule, MatCardModule, MatCheckboxModule, MatFormFieldModule, MatInputModule,
+    MatSliderModule
+} from '@angular/material';
 import {NgModule} from '@angular/core';
 
 import {SliderComponent} from './slider/slider.component';
@@ -15,6 +18,8 @@ import {UploadImagesComponent} from './upload-images/upload-images.component';
         CommonModule,
         FormsModule,
         // Material modules
+        MatInputModule,
+        MatFormFieldModule,
         MatCardModule,
         MatButtonModule,
         MatCheckboxModule,
@@ -23,6 +28,8 @@ import {UploadImagesComponent} from './upload-images/upload-images.component';
     exports: [
         SliderComponent,
         UploadImagesComponent,
+        MatInputModule,
+        MatFormFieldModule,
         MatCardModule,
         MatButtonModule,
         MatCheckboxModule,

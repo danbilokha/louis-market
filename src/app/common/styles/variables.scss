@@ -10,8 +10,14 @@ $l-color-grey-1: #e5e6eb;
 $l-color-grey-2: #c0c2ce;
 $l-color-grey-3: #afafaf;
 
+$l-color-black: #000000;
+
 
 /*
-  position
+  size
  */
-$l-position-max-z-index: 9999; // Should be used be temporary ui element
+// ====================== position
+$l-size-position-max-z-index: 9999; // Should be used be temporary ui element
+
+// ====================== size
+$l-size-ui-animation: 35px;

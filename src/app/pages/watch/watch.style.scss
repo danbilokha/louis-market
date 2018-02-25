@@ -1,7 +1,27 @@
-.watch-page {
+@import "../../common/styles/variables";
 
+.watch-page {
 
   &__image {
     margin: 5px;
   }
 }
+
+
+::ng-deep {
+  // custom style
+  a.close-popup.close-popup.close-popup {
+    top: 75px;
+    right: 40px;
+  }
+
+  .ng-gallery {
+    img.ng-thumb.ng-thumb.ng-thumb {
+      height: 125px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: $l-size-border-radius-m;
+    }
+  }
+}
+

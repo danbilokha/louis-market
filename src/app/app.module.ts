@@ -40,6 +40,9 @@ import {ComponentModule} from '@components/component.module';
 import {DbModule} from '@db/db.module';
 import {UiModule} from '@ui/ui.module';
 import {BaseWatchPageComponent} from '@pages/watch/base-watch.component';
+import 'hammerjs';
+import 'mousetrap';
+import {ModalGalleryModule} from 'angular-modal-gallery';
 
 @NgModule({
     declarations: [
@@ -69,7 +72,8 @@ import {BaseWatchPageComponent} from '@pages/watch/base-watch.component';
         AppRoutingModule,
         ComponentModule,
         DbModule,
-        AdminModule
+        AdminModule,
+        ModalGalleryModule.forRoot()
     ],
     providers: [
         DiscountPipe,

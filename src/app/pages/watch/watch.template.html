@@ -21,15 +21,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 watch-page__image-wrapper">
-                    <ng-container
-                            *ngFor="let image of watch.images">
-                        <img
-                                class="img-rounded img-no-padding img-responsive
-                                l-image l-image-preview l-clickable-element
-                                watch-page__image"
-                                src="{{image.binary}}">
-                    </ng-container>
-
+                    <modal-gallery [modalImages]="imagesArray"></modal-gallery>
                 </div>
                 <div class="col-md-6 ml-auto mr-auto text-center">
                     <p>{{watch.description}}</p>

@@ -10,9 +10,12 @@ import {CalculatePricePipe} from '@pipes/calculatePrice/calculatePrice';
 import {PriceShowPipe} from '@pipes/priceShow/priceShow.ts';
 import {AddSpacePipe} from '@pipes/addSpace/addSpace';
 
+// Components
 import {WatchComponent} from './watch/watch.component';
 import {WatchListComponent} from './watchList/watchList.component';
 import {LoaderComponent} from './loader/loader.component';
+import {CommentComponent} from './comment/comment.component';
+import {CommentListComponent} from './commentList/commentList.component';
 
 @NgModule({
     declarations: [
@@ -24,7 +27,9 @@ import {LoaderComponent} from './loader/loader.component';
         CalculatePricePipe,
         PriceShowPipe,
         AddSpacePipe,
-        LoaderComponent
+        LoaderComponent,
+        CommentComponent,
+        CommentListComponent
     ],
     imports: [
         BrowserModule,
@@ -33,7 +38,15 @@ import {LoaderComponent} from './loader/loader.component';
     exports: [
         WatchComponent,
         WatchListComponent,
-        LoaderComponent
+        LoaderComponent,
+        DiscountPipe,
+        ToFixedPipe,
+        CurrencySignPipe,
+        CalculatePricePipe,
+        PriceShowPipe,
+        AddSpacePipe,
+        CommentComponent,
+        CommentListComponent
     ]
 })
 class ComponentModule {

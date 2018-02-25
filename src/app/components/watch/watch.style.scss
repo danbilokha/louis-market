@@ -11,13 +11,4 @@
             max-height: 250px;
         }
     }
-
-    &__price {
-        &_price {
-            &-old {
-                text-decoration: line-through;
-                color: gray;
-            }
-        }
-    }
 }

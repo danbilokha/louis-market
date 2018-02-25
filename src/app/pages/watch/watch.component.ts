@@ -17,12 +17,19 @@ class WatchPageComponent implements OnInit {
 
     public imagesArray: Array<Image>;
     public mainImage: LouisImage;
+    public priceMap: object;
 
     ngOnInit() {
         console.log(this.watch);
 
         this.mainImage = this.getMainImage(this.watch.images);
         this.imagesArray = this.getImagesArrayForExternalLibrary(this.watch.images);
+
+        this.priceMap = {
+            currencyTo: 'UAH',
+            discount: this.watch.discount,
+            toFixed: 2
+        };
 
         console.log(this.imagesArray);
     }

@@ -20,13 +20,13 @@ import {IndexViewComponent} from '@pages/home/index-view/index-view.component';
 import {NotFoundComponent} from '@pages/notFound/not-found.component';
 import {CatalogComponent} from '@pages/catalog/catalog.component.ts';
 import {WatchPageComponent} from '@pages/watch/watch.component';
+import {WatchCommentsComponent} from '@pages/watch/comments/watch-comments.component';
 
 // Pipes
 import {DiscountPipe} from '@pipes/discount/discount';
 import {ToFixedPipe} from '@pipes/toFixed/toFixed';
 import {CurrencySignPipe} from '@pipes/currencySign/currencySign';
 import {CalculatePricePipe} from '@pipes/calculatePrice/calculatePrice';
-import {PriceShowPipe} from '@pipes/priceShow/priceShow';
 import {AddSpacePipe} from '@pipes/addSpace/addSpace';
 
 // Services
@@ -60,7 +60,8 @@ import {ModalGalleryModule} from 'angular-modal-gallery';
         NotFoundComponent,
         CatalogComponent,
         BaseWatchPageComponent,
-        WatchPageComponent
+        WatchPageComponent,
+        WatchCommentsComponent,
     ],
     imports: [
         BrowserModule,

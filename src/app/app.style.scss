@@ -4,6 +4,17 @@
 
 ::ng-deep {
 
+  .l {
+
+    &-price {
+
+      &-old {
+        text-decoration: line-through;
+        color: gray;
+      }
+    }
+  }
+
   .l-clickable-element {
     cursor: pointer;
   }

@@ -4,6 +4,18 @@
 
 ::ng-deep {
 
+  .l-clickable-element {
+    cursor: pointer;
+  }
+
+  .l-image {
+
+    &-preview {
+      max-width: 100px;
+      max-height: 100px;
+    }
+  }
+
   .loading {
 
     &-wrapper {

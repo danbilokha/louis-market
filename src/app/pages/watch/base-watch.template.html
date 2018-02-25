@@ -1,4 +1,6 @@
-<louis-watch-page *ngIf="watch; else watchLoading"></louis-watch-page>
+<louis-watch-page
+        *ngIf="watch; else watchLoading"
+        [watch]="watch"></louis-watch-page>
 
 <ng-template #watchLoading>
     <louis-loader></louis-loader>

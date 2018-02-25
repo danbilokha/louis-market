@@ -1,5 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Watch} from '@common/dictionaries/watch.dictionary';
+import {LouisImage} from '@common/dictionaries/Image.dictionary';
 
 @Component({
     selector: 'louis-watch-page',
@@ -7,11 +8,28 @@ import {Watch} from '@common/dictionaries/watch.dictionary';
     styleUrls: ['./watch.style.scss']
 })
 
-class WatchPageComponent {
+class WatchPageComponent implements OnInit {
 
     @Input()
     public watch: Watch;
 
+    public mainImage: LouisImage;
+
+    ngOnInit() {
+        console.log(this.watch);
+        this.mainImage = this.getMainImage(this.watch.images);
+    }
+
+    private getMainImage(images: Array<LouisImage>): LouisImage {
+
+        for(let i = 0, len = images.length; i < len; i += 1) {
+            if(images[i].isMain) {
+                return images[i];
+            }
+        }
+
+        return images[0];
+    }
 }
 
 export {WatchPageComponent};

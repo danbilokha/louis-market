@@ -9,18 +9,35 @@
         <div class="container">
             <div class="owner">
                 <div class="avatar">
-                    <img src="" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                    <img
+                            src="{{mainImage.binary}}"
+                            alt="{{mainImage.name}}"
+                            class="img-circle img-no-padding img-responsive">
                 </div>
                 <div class="name">
-                    <h4 class="title">Jane Faker<br /></h4>
-                    <h6 class="description">Music Producer</h6>
+                    <h4 class="title">{{watch.name}}<br /></h4>
+                    <!--<h6 class="description">Music Producer</h6>-->
                 </div>
             </div>
             <div class="row">
+                <div class="col-md-6 watch-page__image-wrapper">
+                    <ng-container
+                            *ngFor="let image of watch.images">
+                        <img
+                                class="img-rounded img-no-padding img-responsive
+                                l-image l-image-preview l-clickable-element
+                                watch-page__image"
+                                src="{{image.binary}}">
+                    </ng-container>
+
+                </div>
                 <div class="col-md-6 ml-auto mr-auto text-center">
-                    <p>An artist of considerable range, Jane Faker — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+                    <p>{{watch.description}}</p>
                     <br />
-                    <button class="btn btn-outline-default btn-round"><i class="fa fa-cog"></i> Settings</button>
+                    <button class="btn btn-outline-default btn-round">
+                        <i class="fa fa-shopping-bag"></i>
+                        Купить
+                    </button>
                 </div>
             </div>
             <br/>

@@ -6,7 +6,7 @@
 
     <div class="order-content">
 
-        <h3>Оформьте предзаказ - получите скидку 20%!</h3>
+        <h3>Оформьте предзаказ - получите скидку до 40%!</h3>
 
         <div class="row l-padding-s l-margin-s">
             <div class="col-md-5 l-card l-padding-l">
@@ -56,14 +56,22 @@
                     <div class="l-form__group">
                         <mat-form-field>
                             <input matInput
-                                   placeholder="Контактные данные: почта, телефон"
-                                   class="l-form__control" formControlName="contacts">
+                                   placeholder="Почта"
+                                   class="l-form__control" formControlName="email">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="l-form__group">
+                        <mat-form-field>
+                            <input matInput
+                                   placeholder="Телефон"
+                                   class="l-form__control" formControlName="phone">
                         </mat-form-field>
                     </div>
 
                     <div class="l-form__controls">
                         <button
-                                click="onSubmit()"
+                                (click)="onSubmit()"
                                 class="btn btn-success">
                             Оставить заявку
                         </button>

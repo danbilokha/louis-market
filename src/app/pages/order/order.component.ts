@@ -8,6 +8,8 @@ import {ResoveRouteParam} from '@services/resolve-route-param';
 import {ResoveWatchByName} from '@services/resolve-watch-by-name';
 import {WatchService} from '@services/watch/watch';
 import {Watch} from '@common/dictionaries/watch.dictionary';
+import {DbService} from '@db/dbService';
+import {PreOrder} from './order.dictionary';
 
 const ROUTE_ORDER_IDENTIFICATOR = 'name';
 
@@ -25,10 +27,13 @@ class OrderPageComponent extends ResoveRouteParam implements OnInit, OnDestroy, 
 
     public orderForm = new FormGroup({
         name: new FormControl(),
-        contacts: new FormControl()
+        email: new FormControl(),
+        phone: new FormControl()
     });
 
-    constructor(protected route: ActivatedRoute, public watchService: WatchService) {
+    constructor(protected route: ActivatedRoute,
+                public watchService: WatchService,
+                private dbService: DbService) {
         super(route, ROUTE_ORDER_IDENTIFICATOR);
     }
 
@@ -52,7 +57,14 @@ class OrderPageComponent extends ResoveRouteParam implements OnInit, OnDestroy, 
     }
 
     public onSubmit() {
-
+        const orderForm = this.orderForm;
+        this.dbService.setDbData('PREORDER',
+            new PreOrder(
+                orderForm.get('name').value,
+                orderForm.get('phone').value,
+                orderForm.get('email').value,
+                this.watch
+            ))
     }
 
     private watchInit(watch: Watch): void {

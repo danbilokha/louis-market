@@ -34,12 +34,6 @@ class OrderPageComponent extends ResoveRouteParam implements OnInit, OnDestroy, 
 
     ngOnInit() {
         super.ngOnInit();
-
-        this.priceMap = {
-            currencyTo: 'UAH',
-            discount: this.watch.discount,
-            toFixed: 2
-        };
     }
 
     ngOnDestroy() {
@@ -50,7 +44,7 @@ class OrderPageComponent extends ResoveRouteParam implements OnInit, OnDestroy, 
 
     public catchRouteParam(watchName: string): void {
         this.watchSubscription = this.resovleWatchByName(watchName)
-            .subscribe(watch => this.watch = watch);
+            .subscribe(watch => this.watchInit(watch));
     }
 
     public resovleWatchByName(watchName: string): Observable<Watch> {
@@ -59,6 +53,15 @@ class OrderPageComponent extends ResoveRouteParam implements OnInit, OnDestroy, 
 
     public onSubmit() {
 
+    }
+
+    private watchInit(watch: Watch): void {
+        this.watch = watch;
+        this.priceMap = {
+            currencyTo: 'UAH',
+            discount: this.watch.discount,
+            toFixed: 2
+        };
     }
 
 }

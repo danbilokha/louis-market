@@ -1,6 +1,11 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
+// TODO: Need investigation, seems unneeded
+// import 'hammerjs';
+// import 'mousetrap';
+
+import {ModalGalleryModule} from 'angular-modal-gallery';
 
 // Pipes
 import {DiscountPipe} from '@pipes/discount/discount';
@@ -18,6 +23,7 @@ import {CommentComponent} from './comment/comment.component';
 import {CommentListComponent} from './commentList/commentList.component';
 import {ModalComponent} from './modal/modal.component';
 import {HeaderComponent} from './header/header.component';
+import {ImagesComponent} from './images/images.component';
 
 @NgModule({
     declarations: [
@@ -33,11 +39,13 @@ import {HeaderComponent} from './header/header.component';
         CommentComponent,
         CommentListComponent,
         ModalComponent,
-        HeaderComponent
+        HeaderComponent,
+        ImagesComponent
     ],
     imports: [
         BrowserModule,
-        RouterModule
+        RouterModule,
+        ModalGalleryModule.forRoot()
     ],
     exports: [
         WatchComponent,
@@ -52,7 +60,8 @@ import {HeaderComponent} from './header/header.component';
         CommentComponent,
         CommentListComponent,
         ModalComponent,
-        HeaderComponent
+        HeaderComponent,
+        ImagesComponent
     ]
 })
 class ComponentModule {

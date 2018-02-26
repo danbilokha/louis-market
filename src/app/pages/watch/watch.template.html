@@ -1,10 +1,6 @@
 <div class="wrapper">
-    <div
-            class="page-header page-header-xs"
-            data-parallax="true"
-            style="background-image: url('../assets/img/fabio-mangione.jpg');">
-        <div class="filter"></div>
-    </div>
+    <louis-c-header></louis-c-header>
+
     <div class="section profile-content">
         <div class="container">
             <div class="owner">
@@ -19,9 +15,10 @@
                     <!--<h6 class="description">Music Producer</h6>-->
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-6 watch-page__image-wrapper text-center">
-                    <modal-gallery [modalImages]="imagesArray"></modal-gallery>
+                    <louis-c-images [imagesArray]="watch.images"></louis-c-images>
                 </div>
                 <div class="col-md-6 ml-auto mr-auto">
                     <div class="l-section watch-page__section">

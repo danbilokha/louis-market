@@ -39,6 +39,16 @@
       }
     }
 
+    &-margin-s {
+      margin: $l-size-indents-s;
+    }
+    &-margin-m {
+      margin: $l-size-indents-m;
+    }
+    &-margin-l {
+      margin: $l-size-indents-l;
+    }
+
     /*
       Image
      */

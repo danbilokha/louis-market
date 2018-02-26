@@ -1,14 +1,11 @@
+@import 'app/common/styles/variables.scss';
+
 .order {
 
   &-content {
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: $l-size-xl;
+    margin-right: $l-size-xl;
   }
-
-  &-form {
-    margin: 5px;
-  }
-
 }
 
 .mat-form-field.mat-form-field {

@@ -12,8 +12,11 @@ class ImagesComponent {
 
     public images: Array<Image>;
 
+    // @Input()
+    // public stylesOption: object;
+
     @Input()
-    set imagesArray(images: Array<LouisImage>) {
+    public set imagesArray(images: Array<LouisImage>) {
         this.images = louisImageMapToModalGalleryImage(images)
     };
 }

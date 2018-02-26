@@ -1,8 +1,14 @@
 @import './common/styles/variables';
 @import './common/styles/card';
 @import './common/styles/reusable';
+@import './common/styles/lines';
+@import './common/styles/kill-library';
 
 ::ng-deep {
+
+  h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+  }
 
   /*
     Louis custom style

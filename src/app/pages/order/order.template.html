@@ -10,26 +10,32 @@
 
         <div class="row l-padding-s l-margin-s">
             <div class="col-md-5 l-card l-padding-l">
-                    <div class="l-section">
-                        <h4>Описание</h4>
-                        <p>{{watch.description}}</p>
-                    </div>
-                    <div class="l-section">
-                        <h4>Цена</h4>
-                        <div *ngIf="!(watch.discount && watch.discount !== 0); else newPrice">
-                            <div class="d-inline-block">
-                                {{watch.price | priceShow:priceMap}}
-                            </div>
+                <div class="l-section">
+                    <h4>Описание</h4>
+                    <p>{{watch.description}}</p>
+                </div>
+                <div class="l-section">
+                    <h4>Цена</h4>
+                    <div *ngIf="!(watch.discount && watch.discount !== 0); else newPrice">
+                        <div class="d-inline-block">
+                            {{watch.price | priceShow:priceMap}}
                         </div>
-                        <ng-template #newPrice>
-                            <div class="d-inline-block l-price-old">
-                                {{watch.price | currencyPrice:'UAH' | toFixed: 2}}
-                            </div>
-                            <div class="d-inline-block">
-                                {{watch.price | priceShow:priceMap }}
-                            </div>
-                        </ng-template>
                     </div>
+                    <ng-template #newPrice>
+                        <div class="d-inline-block l-price-old">
+                            {{watch.price | currencyPrice:'UAH' | toFixed: 2}}
+                        </div>
+                        <div class="d-inline-block">
+                            {{watch.price | priceShow:priceMap }}
+                        </div>
+                    </ng-template>
+                </div>
+
+                <louis-c-delimiter></louis-c-delimiter>
+
+                <div class="l-section">
+                    <louis-c-images [imagesArray]="watch.images"></louis-c-images>
+                </div>
             </div>
 
             <div class="col-md-1"></div>

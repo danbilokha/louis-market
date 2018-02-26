@@ -12,3 +12,12 @@
   margin-right: 5px;
   width: 100%;
 }
+
+::ng-deep {
+  // custom style
+  .ng-gallery {
+    img.ng-thumb.ng-thumb.ng-thumb {
+      height: 100px;
+    }
+  }
+}

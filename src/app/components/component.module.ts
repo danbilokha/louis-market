@@ -24,6 +24,7 @@ import {CommentListComponent} from './commentList/commentList.component';
 import {ModalComponent} from './modal/modal.component';
 import {HeaderComponent} from './header/header.component';
 import {ImagesComponent} from './images/images.component';
+import {DelimiterComponent} from './delimiter/delimiter.component';
 
 @NgModule({
     declarations: [
@@ -40,7 +41,8 @@ import {ImagesComponent} from './images/images.component';
         CommentListComponent,
         ModalComponent,
         HeaderComponent,
-        ImagesComponent
+        ImagesComponent,
+        DelimiterComponent
     ],
     imports: [
         BrowserModule,
@@ -61,7 +63,8 @@ import {ImagesComponent} from './images/images.component';
         CommentListComponent,
         ModalComponent,
         HeaderComponent,
-        ImagesComponent
+        ImagesComponent,
+        DelimiterComponent
     ]
 })
 class ComponentModule {

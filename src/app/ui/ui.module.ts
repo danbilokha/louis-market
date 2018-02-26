@@ -36,6 +36,7 @@ import {UploadImagesComponent} from './upload-images/upload-images.component';
         MatSliderModule
     ]
 })
-class UiModule { }
+class UiModule {
+}
 
 export {UiModule};

@@ -1,0 +1,87 @@
+<div
+        *ngIf="watch; else watchLoading"
+        class="l-wrapper order-wrapper">
+
+    <louis-c-header></louis-c-header>
+
+    <div class="order-content">
+
+        <h3>Оформьте предзаказ - получите скидку до 40%!</h3>
+
+        <div class="row l-padding-s l-margin-s">
+            <div class="col-md-5 l-card l-padding-l">
+                <div class="l-section">
+                    <h4>Описание</h4>
+                    <p>{{watch.description}}</p>
+                </div>
+                <div class="l-section">
+                    <h4>Цена</h4>
+                    <div *ngIf="!(watch.discount && watch.discount !== 0); else newPrice">
+                        <div class="d-inline-block">
+                            {{watch.price | priceShow:priceMap}}
+                        </div>
+                    </div>
+                    <ng-template #newPrice>
+                        <div class="d-inline-block l-price-old">
+                            {{watch.price | currencyPrice:'UAH' | toFixed: 2}}
+                        </div>
+                        <div class="d-inline-block">
+                            {{watch.price | priceShow:priceMap }}
+                        </div>
+                    </ng-template>
+                </div>
+
+                <louis-c-delimiter></louis-c-delimiter>
+
+                <div class="l-section">
+                    <louis-c-images [imagesArray]="watch.images"></louis-c-images>
+                </div>
+            </div>
+
+            <div class="col-md-1"></div>
+
+            <div class="col-md-6 l-card l-padding-l">
+                <form novalidate
+                      [formGroup]="orderForm"
+                      class="l-form order-form">
+
+                    <div class="l-form__group">
+                        <mat-form-field>
+                            <input matInput
+                                   placeholder="Имя"
+                                   class="l-form__control" formControlName="name">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="l-form__group">
+                        <mat-form-field>
+                            <input matInput
+                                   placeholder="Почта"
+                                   class="l-form__control" formControlName="email">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="l-form__group">
+                        <mat-form-field>
+                            <input matInput
+                                   placeholder="Телефон"
+                                   class="l-form__control" formControlName="phone">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="l-form__controls">
+                        <button
+                                (click)="onSubmit()"
+                                class="btn btn-success">
+                            Оставить заявку
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #watchLoading>
+    <louis-loader></louis-loader>
+</ng-template>

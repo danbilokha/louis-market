@@ -1,0 +1,29 @@
+<div class="admin-wrapper">
+    <div class="row admin-nav">
+        <ul class="admin-nav__list">
+            <li class="admin-nav__element">
+                <a class="admin-nav__element_link" [routerLink]="'/home'">Домашняя страница (сайт)</a>
+            </li>
+            <li class="admin-nav__element">
+                <a class="admin-nav__element_link" [routerLink]="'/admin'">Домашняя страница (админка)</a>
+            </li>
+            <li class="admin-nav__element">
+                <a class="admin-nav__element_link" [routerLink]="'cabinet'">Кабинет</a>
+            </li>
+            <li class="admin-nav__element">
+                <a class="admin-nav__element_link" [routerLink]="'stuff'">Панель управления</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="row admin-content">
+        <div class="col-md-9">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="col-md-3">
+            <h4>
+                Новости
+            </h4>
+        </div>
+    </div>
+</div>

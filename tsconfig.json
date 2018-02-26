@@ -5,10 +5,15 @@
     "baseUrl": "./src",
     "paths": {
       "@louis": ["app/*"],
-      "@pages/*": ["app/page/*"],
+      "@pages/*": ["app/pages/*"],
       "@components/*": ["app/components/*"],
       "@services/*": ["app/services/*"],
-      "@pipes/*": ["app/pipes/*"]
+      "@pipes/*": ["app/pipes/*"],
+      "@effects/*": ["app/effects/*"],
+      "@settings/*": ["app/settings/*"],
+      "@common/*": ["app/common/*"],
+      "@db/*": ["app/db/*"],
+      "@ui/*": ["app/ui/*"]
     },
     "sourceMap": true,
     "declaration": false,

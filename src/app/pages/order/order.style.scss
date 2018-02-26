@@ -1,0 +1,23 @@
+@import '../../common/styles/variables.scss';
+
+.order {
+
+  &-content {
+    margin-left: $l-size-xl;
+    margin-right: $l-size-xl;
+  }
+}
+
+.mat-form-field.mat-form-field {
+  margin-right: 5px;
+  width: 100%;
+}
+
+::ng-deep {
+  // custom style
+  .ng-gallery {
+    img.ng-thumb.ng-thumb.ng-thumb {
+      height: 100px;
+    }
+  }
+}

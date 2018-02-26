@@ -1,0 +1,36 @@
+/*
+  COLORS
+ */
+$l-color-white-0: #fdfdff;
+$l-color-white-1: #fdfbfb;
+$l-color-white-2: #fdf9f9;
+
+$l-color-grey-0: #f8f8fa;
+$l-color-grey-1: #e5e6eb;
+$l-color-grey-2: #c0c2ce;
+$l-color-grey-3: #afafaf;
+
+$l-color-black: #000000;
+
+
+/*
+  size
+ */
+// ====================== position
+$l-size-s: 2px;
+$l-size-m: 5px;
+$l-size-l: 10px;
+$l-size-xl: 15px;
+$l-size-xxl: 25px;
+
+$l-size-position-max-z-index: 9999; // Should be used be temporary ui element
+$l-size-indents-s: $l-size-s;
+$l-size-indents-m: $l-size-m;
+$l-size-indents-l: $l-size-l;
+
+// ====================== size
+$l-size-ui-animation: 35px;
+// border
+$l-size-border-radius-s: $l-size-s;
+$l-size-border-radius-m: $l-size-m;
+$l-size-border-radius-l: $l-size-l;

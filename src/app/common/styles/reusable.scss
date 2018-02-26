@@ -1,0 +1,15 @@
+%absolute-all-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+}
+
+%element-on-center {
+  @extend %absolute-all-screen;
+  margin-left: auto;
+  margin-right: auto;
+  transform: translateY(50%);
+}

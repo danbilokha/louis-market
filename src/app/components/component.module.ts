@@ -17,6 +17,7 @@ import {LoaderComponent} from './loader/loader.component';
 import {CommentComponent} from './comment/comment.component';
 import {CommentListComponent} from './commentList/commentList.component';
 import {ModalComponent} from './modal/modal.component';
+import {HeaderComponent} from './header/header.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import {ModalComponent} from './modal/modal.component';
         LoaderComponent,
         CommentComponent,
         CommentListComponent,
-        ModalComponent
+        ModalComponent,
+        HeaderComponent
     ],
     imports: [
         BrowserModule,
@@ -49,7 +51,8 @@ import {ModalComponent} from './modal/modal.component';
         AddSpacePipe,
         CommentComponent,
         CommentListComponent,
-        ModalComponent
+        ModalComponent,
+        HeaderComponent
     ]
 })
 class ComponentModule {

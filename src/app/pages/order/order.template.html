@@ -8,8 +8,8 @@
 
         <h3>Оформьте предзаказ - получите скидку 20%!</h3>
 
-        <div class="row">
-            <div class="col-md-5 l-card ">
+        <div class="row l-padding-s l-margin-s">
+            <div class="col-md-5 l-card l-padding-l">
                     <div class="l-section">
                         <h4>Описание</h4>
                         <p>{{watch.description}}</p>
@@ -32,7 +32,9 @@
                     </div>
             </div>
 
-            <div class="col-md-7 l-card">
+            <div class="col-md-1"></div>
+
+            <div class="col-md-6 l-card l-padding-l">
                 <form novalidate
                       [formGroup]="orderForm"
                       class="l-form order-form">

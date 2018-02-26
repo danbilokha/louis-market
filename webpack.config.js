@@ -89,8 +89,6 @@ module.exports = {
     "styles": [
       "./node_modules\\bootstrap\\dist\\css\\bootstrap.min.css",
       "./src\\assets\\sass\\paper-kit.scss",
-      "./src\\assets\\css\\demo.css",
-      "./src\\assets\\css\\nucleo-icons.css"
     ]
   },
   "output": {
@@ -124,8 +122,6 @@ module.exports = {
         "exclude": [
           path.join(process.cwd(), "node_modules\\bootstrap\\dist\\css\\bootstrap.min.css"),
           path.join(process.cwd(), "src\\assets\\sass\\paper-kit.scss"),
-          path.join(process.cwd(), "src\\assets\\css\\demo.css"),
-          path.join(process.cwd(), "src\\assets\\css\\nucleo-icons.css")
         ],
         "test": /\.css$/,
         "use": [
@@ -150,8 +146,6 @@ module.exports = {
         "exclude": [
           path.join(process.cwd(), "node_modules\\bootstrap\\dist\\css\\bootstrap.min.css"),
           path.join(process.cwd(), "src\\assets\\sass\\paper-kit.scss"),
-          path.join(process.cwd(), "src\\assets\\css\\demo.css"),
-          path.join(process.cwd(), "src\\assets\\css\\nucleo-icons.css")
         ],
         "test": /\.scss$|\.sass$/,
         "use": [
@@ -184,8 +178,6 @@ module.exports = {
         "exclude": [
           path.join(process.cwd(), "node_modules\\bootstrap\\dist\\css\\bootstrap.min.css"),
           path.join(process.cwd(), "src\\assets\\sass\\paper-kit.scss"),
-          path.join(process.cwd(), "src\\assets\\css\\demo.css"),
-          path.join(process.cwd(), "src\\assets\\css\\nucleo-icons.css")
         ],
         "test": /\.less$/,
         "use": [
@@ -217,8 +209,6 @@ module.exports = {
         "exclude": [
           path.join(process.cwd(), "node_modules\\bootstrap\\dist\\css\\bootstrap.min.css"),
           path.join(process.cwd(), "src\\assets\\sass\\paper-kit.scss"),
-          path.join(process.cwd(), "src\\assets\\css\\demo.css"),
-          path.join(process.cwd(), "src\\assets\\css\\nucleo-icons.css")
         ],
         "test": /\.styl$/,
         "use": [
@@ -250,8 +240,6 @@ module.exports = {
         "include": [
           path.join(process.cwd(), "node_modules\\bootstrap\\dist\\css\\bootstrap.min.css"),
           path.join(process.cwd(), "src\\assets\\sass\\paper-kit.scss"),
-          path.join(process.cwd(), "src\\assets\\css\\demo.css"),
-          path.join(process.cwd(), "src\\assets\\css\\nucleo-icons.css")
         ],
         "test": /\.css$/,
         "use": [
@@ -276,8 +264,6 @@ module.exports = {
         "include": [
           path.join(process.cwd(), "node_modules\\bootstrap\\dist\\css\\bootstrap.min.css"),
           path.join(process.cwd(), "src\\assets\\sass\\paper-kit.scss"),
-          path.join(process.cwd(), "src\\assets\\css\\demo.css"),
-          path.join(process.cwd(), "src\\assets\\css\\nucleo-icons.css")
         ],
         "test": /\.scss$|\.sass$/,
         "use": [
@@ -310,8 +296,6 @@ module.exports = {
         "include": [
           path.join(process.cwd(), "node_modules\\bootstrap\\dist\\css\\bootstrap.min.css"),
           path.join(process.cwd(), "src\\assets\\sass\\paper-kit.scss"),
-          path.join(process.cwd(), "src\\assets\\css\\demo.css"),
-          path.join(process.cwd(), "src\\assets\\css\\nucleo-icons.css")
         ],
         "test": /\.less$/,
         "use": [
@@ -343,8 +327,6 @@ module.exports = {
         "include": [
           path.join(process.cwd(), "node_modules\\bootstrap\\dist\\css\\bootstrap.min.css"),
           path.join(process.cwd(), "src\\assets\\sass\\paper-kit.scss"),
-          path.join(process.cwd(), "src\\assets\\css\\demo.css"),
-          path.join(process.cwd(), "src\\assets\\css\\nucleo-icons.css")
         ],
         "test": /\.styl$/,
         "use": [

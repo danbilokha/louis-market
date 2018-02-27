@@ -56,7 +56,11 @@ class OrderPageComponent extends ResoveRouteParam implements OnInit, OnDestroy, 
         return this.watchService.getWatchByName(watchName);
     }
 
-    public onSubmit() {
+    public onClean(): void {
+        this.orderForm.reset();
+    }
+
+    public onSubmit(): void {
         const orderForm = this.orderForm;
         this.dbService.setDbData('PREORDER',
             new PreOrder(

@@ -1,34 +1,23 @@
-@import './common/styles/variables';
+@import 'common/styles/variable';
 @import './common/styles/card';
 @import './common/styles/reusable';
-@import './common/styles/lines';
+@import './common/styles/line';
 @import './common/styles/kill-library';
+@import './common/styles/indent';
+@import './common/styles/helper';
+@import './common/styles/image';
+@import './common/styles/positon';
 
 ::ng-deep {
-
-  h1,h2,h3,h4,h5,h6 {
-    margin: 0;
-  }
-
-  /*
-    Louis custom style
-   */
   .l {
 
-    /*
-      Price
-     */
     &-price {
-
       &-old {
         text-decoration: line-through;
         color: gray;
       }
     }
 
-    /*
-      Other
-     */
     &-clickable-element {
       cursor: pointer;
     }
@@ -44,63 +33,5 @@
         z-index: $l-size-position-max-z-index;
       }
     }
-
-    &-margin-s {
-      margin: $l-size-indents-s;
-    }
-    &-margin-m {
-      margin: $l-size-indents-m;
-    }
-    &-margin-l {
-      margin: $l-size-indents-l;
-    }
-
-    &-padding-s {
-      padding: $l-size-indents-s;
-    }
-    &-padding-m {
-      padding: $l-size-indents-m;
-    }
-    &-padding-l {
-      padding: $l-size-indents-l;
-    }
-
-    /*
-      Image
-     */
-    &-image {
-
-      &-preview {
-        max-width: 100px;
-        max-height: 100px;
-      }
-    }
-
-
-    /*
-      Form
-     */
-    &-form {
-      &__controls {
-        float: right;
-      }
-    }
-  }
-
-  .clearfix:after {
-    content: '';
-    display: block;
-    clear: both;
-  }
-
-  .form {
-    &__controls {
-      float: right;
-    }
-  }
-
-  .hint {
-    color: gray;
-    font-size: x-small;
   }
 }

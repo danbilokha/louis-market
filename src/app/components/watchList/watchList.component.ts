@@ -14,6 +14,7 @@ import {Watch} from '@common/dictionaries/watch.dictionary';
 })
 class WatchListComponent implements OnInit {
 
+    @Input() showPreloader: boolean = false;
     @Input() skip: number = skipWatches;
     @Input() take: number = takeWatches;
 
@@ -21,7 +22,11 @@ class WatchListComponent implements OnInit {
 
     private getWatchList = (skip: number, take: number): Observable<Array<Watch>> =>
         this.dbService
-            .getDbData(SCHEMA.WATCH, skip, take);
+            .getDbData(SCHEMA.WATCH, skip, take)
+            .map(v => {
+                console.log(v)
+                return v;
+            });
 
     constructor(private dbService: DbService) {
     }

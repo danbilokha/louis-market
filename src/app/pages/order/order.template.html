@@ -1,5 +1,5 @@
 <div
-        *ngIf="watch; else watchLoading"
+        *ngIf="watch; else watchLoader"
         class="l-wrapper order-wrapper">
 
     <louis-c-header></louis-c-header>
@@ -86,6 +86,6 @@
     </div>
 </div>
 
-<ng-template #watchLoading>
+<ng-template #watchLoader>
     <louis-loader></louis-loader>
 </ng-template>

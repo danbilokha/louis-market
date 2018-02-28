@@ -1,5 +1,11 @@
-<div class="watch-list">
+<div
+        *ngIf="!(showPreloader && !(watchList$ | async)); else watchLoader"
+        class="watch-list">
     <ng-template ngFor let-watch [ngForOf]="watchList$ | async">
         <louis-watch [watch]="watch"></louis-watch>
     </ng-template>
 </div>
+
+<ng-template #watchLoader>
+    <louis-loader></louis-loader>
+</ng-template>

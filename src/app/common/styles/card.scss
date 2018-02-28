@@ -6,6 +6,15 @@
     padding: 5px;
     box-shadow: 0 0 5px $l-color-grey-2;
 
+      & img {
+      max-width: 250px;
+      max-height: 250px;
+    }
+
+    &-inline {
+      display: inline-block;
+    }
+
     &-hoverable {
 
       transition: transform 300ms cubic-bezier(0.34, 2, 0.6, 1),
@@ -13,7 +22,7 @@
         -webkit-transform 300ms cubic-bezier(0.34, 2, 0.6, 1);
 
       &:hover {
-        box-shadow: 0px 12px 19px -7px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 12px 19px -7px rgba(0, 0, 0, 0.3);
         transform: translateY(-10px);
         -webkit-transform: translateY(-10px);
         -ms-transform: translateY(-10px);

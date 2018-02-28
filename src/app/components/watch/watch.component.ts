@@ -14,6 +14,9 @@ class WatchComponent implements OnInit, OnChanges {
     @Input()
     public watch: Watch;
 
+    @Input()
+    public extraClasses: string;
+
     public mainImage: string = data.image;
     public priceMap: object;
 

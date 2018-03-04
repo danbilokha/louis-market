@@ -20,7 +20,7 @@ const initState = {
     remoteData: null,
 };
 
-const remoteReducer = (state = initState, action): any => {
+let remoteReducer = (state = initState, action): any => {
     switch (action.type) {
         case FETCH_REMOTE_DATA:
             return {
@@ -37,4 +37,4 @@ const remoteReducer = (state = initState, action): any => {
     }
 };
 
-export {FetchRemoteData, RemoteData, remoteReducer};
+export {FETCH_REMOTE_DATA, REMOTE_DATA, FetchRemoteData, RemoteData, remoteReducer};

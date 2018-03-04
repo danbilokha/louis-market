@@ -12,6 +12,7 @@
       "@effects/*": ["app/effects/*"],
       "@settings/*": ["app/settings/*"],
       "@common/*": ["app/common/*"],
+      "@interfaces/*": ["app/interfaces/*"],
       "@db/*": ["app/db/*"],
       "@ui/*": ["app/ui/*"]
     },

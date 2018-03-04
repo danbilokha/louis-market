@@ -43,6 +43,7 @@ import {ComponentModule} from '@components/component.module';
 import {DbModule} from '@db/db.module';
 import {UiModule} from '@ui/ui.module';
 import {BaseWatchPageComponent} from '@pages/watch/base-watch.component';
+import {EffectModule} from './settings/effect.module';
 
 @NgModule({
     declarations: [
@@ -74,6 +75,7 @@ import {BaseWatchPageComponent} from '@pages/watch/base-watch.component';
         UiModule,
         AppRoutingModule,
         AppStoreModule,
+        EffectModule,
         ComponentModule,
         DbModule,
         AdminModule,

@@ -4,7 +4,10 @@ import {Subscription} from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
 import {DOCUMENT} from '@angular/platform-browser';
 import {LocationStrategy, PlatformLocation, Location} from '@angular/common';
+
 import {NavbarComponent} from './common/navbar/navbar.component';
+import {AppStoreService} from './services/store';
+import {FetchRemoteData} from './settings/remote';
 
 @Component({
     selector: 'app-root',
@@ -15,7 +18,12 @@ export class AppComponent implements OnInit {
     @ViewChild(NavbarComponent) navbar: NavbarComponent;
     private _router: Subscription;
 
-    constructor(private renderer: Renderer, private router: Router, @Inject(DOCUMENT,) private document: any, private element: ElementRef, public location: Location) {
+    constructor(private renderer: Renderer,
+                private router: Router,
+                @Inject(DOCUMENT,) private document: any,
+                private element: ElementRef,
+                public location: Location,
+                private store: AppStoreService) {
     }
 
     ngOnInit() {
@@ -52,6 +60,11 @@ export class AppComponent implements OnInit {
 
         }
 
+        this.fetchRemoteData();
+    }
+
+    private fetchRemoteData(): void { // tslint:disable-line
+        this.store.dispatch(new FetchRemoteData());
     }
 
     removeFooter() {

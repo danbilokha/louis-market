@@ -33,9 +33,11 @@ import {AddSpacePipe} from '@pipes/addSpace/addSpace';
 // Services
 import {CurrencyResolverService} from './services/price/currency-resolver';
 import {WatchService} from '@services/watch/watch';
+import {AppStoreService} from '@services/store';
 
 // Modules
 import {AppRoutingModule} from '@settings/app.routing';
+import {AppStoreModule} from '@settings/app.store';
 import {AdminModule} from './specific-rights/admin/admin.module';
 import {ComponentModule} from '@components/component.module';
 import {DbModule} from '@db/db.module';
@@ -71,6 +73,7 @@ import {BaseWatchPageComponent} from '@pages/watch/base-watch.component';
         RouterModule,
         UiModule,
         AppRoutingModule,
+        AppStoreModule,
         ComponentModule,
         DbModule,
         AdminModule,
@@ -83,6 +86,7 @@ import {BaseWatchPageComponent} from '@pages/watch/base-watch.component';
         AddSpacePipe,
         CurrencyResolverService,
         WatchService,
+        AppStoreService
     ],
     bootstrap: [AppComponent]
 })

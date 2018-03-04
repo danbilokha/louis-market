@@ -1,0 +1,5 @@
+
+interface AppState {
+}
+
+export {AppState};

@@ -18,12 +18,17 @@ class StoreEffect {
     @Effect()
     public fetchRemoteData$: Observable<FetchingRemoteData> = this.actions$
         .ofType(FETCH_REMOTE_DATA)
-        .map(() => new FetchingRemoteData());
+        .map(() => {
+            this.storeExternalService.fetchRemoteData();
+            return new FetchingRemoteData()
+        });
 
     @Effect()
     public setRemoteDataToInternalStore$: Observable<RemoteData> = this.actions$
         .ofType(FETCHING_REMOTE_DATA_SUCCESS)
-        .map(data => new RemoteData(data));
+        .map(({payload}: ExtendedAction) => {
+            return new RemoteData(payload)
+        });
 
     @Effect()
     public pushData$: Observable<void> = this.actions$

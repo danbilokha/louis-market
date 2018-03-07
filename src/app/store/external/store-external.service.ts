@@ -7,6 +7,7 @@ import * as mapping from 'app/store/store.calculation';
 import {toArray} from 'app/common/helpers/array';
 import {StoreInternalService} from 'app/store/internal/store-internal.service';
 import {FetchingRemoteDataSuccess} from '../store.action';
+import {Subscription} from 'rxjs/Subscription';
 
 @Injectable()
 class StoreExternalService {
@@ -18,19 +19,18 @@ class StoreExternalService {
     //         .map(mapping.skip(skip))
     //         .map(mapping.take(take));
 
-    private getAllData = (): Observable<any> =>
-        this.db
+    private getAllData = (): Observable<any> => this.db
             .object(`${SCHEMA.DATA}`)
             .valueChanges()
             .share();
 
-    private fetchingRemoteDataSuccess$: Observable<FetchingRemoteDataSuccess> = this.getAllData() // tslint:disable-line
-        .map(data => {
-            console.log(data);
-            return new FetchingRemoteDataSuccess(data);
-        });
+    constructor(private db: AngularFireDatabase,
+                private internalStore: StoreInternalService) {
+    }
 
-    constructor(private db: AngularFireDatabase) {
+    public fetchRemoteData(): Subscription {
+        return this.getAllData()
+            .subscribe(data => this.internalStore.dispatch(new FetchingRemoteDataSuccess(data)));
     }
 
     public pushData(entity: string, value: any): void {

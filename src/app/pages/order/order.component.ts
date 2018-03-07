@@ -8,7 +8,7 @@ import {ResoveRouteParam} from '@services/resolve-route-param';
 import {ResoveWatchByName} from '@services/resolve-watch-by-name';
 import {WatchService} from '@services/watch/watch';
 import {Watch} from '@common/dictionaries/watch.dictionary';
-import {DbService} from '@db/dbService';
+import {DbService} from 'store/external/dbService';
 import {PreOrder} from './order.dictionary';
 
 const ROUTE_ORDER_IDENTIFICATOR = 'name';

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
 
-import {AppState} from './store.dictionary';
+import {AppState} from '../services/store.dictionary';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()

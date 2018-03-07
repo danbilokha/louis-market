@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {LouisImage} from '@common/dictionaries/Image.dictionary';
 import {Watch} from '@common/dictionaries/watch.dictionary';
 import * as _ from 'lodash';
-import {DbService} from '@db/dbService';
-import {SCHEMA} from '@db/schema';
+import {DbService} from 'store/external/dbService';
+import {SCHEMA} from 'store/schema';
 
 @Component({
     selector: 'louis-form-base',

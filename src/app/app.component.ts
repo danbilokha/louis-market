@@ -6,8 +6,8 @@ import {DOCUMENT} from '@angular/platform-browser';
 import {LocationStrategy, PlatformLocation, Location} from '@angular/common';
 
 import {NavbarComponent} from './common/navbar/navbar.component';
-import {AppStoreService} from './services/store';
-import {FetchRemoteData} from './settings/remote';
+import {AppStoreService} from './db/store.service';
+import {FetchRemoteData} from './db/internal/store.reducer';
 
 @Component({
     selector: 'app-root',

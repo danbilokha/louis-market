@@ -4,11 +4,11 @@ import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
 import {Subscription} from 'rxjs/Subscription';
 
-import {SCHEMA} from '@db/schema';
-import * as mapping from '@db/db.dictionary';
-import {toArray} from '@common/helpers/array';
-import {AppStoreService} from '@services/store';
-import {FetchingRemoteDataError, FetchingRemoteDataSuccess, RemoteData} from '@settings/remote';
+import {SCHEMA} from 'app/db/schema';
+import * as mapping from 'app/db/store.dictionary';
+import {toArray} from 'app/common/helpers/array';
+import {AppStoreService} from 'app/db/store.service';
+import {FetchingRemoteDataError, FetchingRemoteDataSuccess, RemoteData} from 'app/db/internal/store.reducer';
 
 @Injectable()
 class DbService {
@@ -29,6 +29,7 @@ class DbService {
     private setDataToStore: Subscription = this.getAllData() // tslint:disable-line
         .subscribe(data => {
             if (data) {
+                console.log(data);
                 this.store.dispatch(new RemoteData(data));
                 this.store.dispatch(new FetchingRemoteDataSuccess());
             } else {

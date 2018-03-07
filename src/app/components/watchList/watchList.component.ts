@@ -3,11 +3,11 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/publishReplay';
 
-import {DbService} from '@db/dbService';
-import {SCHEMA} from '@db/schema';
+import {DbService} from 'store/external/dbService';
+import {SCHEMA} from 'store/schema';
 import {takeWatches, skipWatches} from './watchList.dictionary';
 import {Watch} from '@common/dictionaries/watch.dictionary';
-import {AppStoreService} from '@services/store';
+import {AppStoreService} from '@services/../../db/store';
 import {AppState} from '@services/store.dictionary';
 
 @Component({

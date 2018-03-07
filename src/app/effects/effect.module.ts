@@ -1,6 +1,6 @@
 import { EffectsModule } from '@ngrx/effects';
 import {NgModule} from '@angular/core';
-import {RemoteEffect} from './remote.effect';
+import {RemoteEffect} from '../db/store.effect';
 
 @NgModule({
     imports: [

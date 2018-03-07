@@ -1,7 +1,7 @@
 import {StoreModule} from '@ngrx/store';
 import {NgModule} from '@angular/core';
 
-import {remoteReducer} from './remote';
+import {remoteReducer} from './store.reducer';
 
 const appReducers = {
     remote: remoteReducer

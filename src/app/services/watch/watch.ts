@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Watch} from '@common/dictionaries/watch.dictionary';
-import {DbService} from '@db/dbService';
-import {SCHEMA} from '@db/schema';
+import {DbService} from 'store/external/dbService';
+import {SCHEMA} from 'store/schema';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()

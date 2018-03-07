@@ -1,6 +1,6 @@
 import {WatchListComponent} from './watchList.component';
 import {takeWatches, skipWatches} from './watchList.dictionary';
-import {SCHEMA} from "@db/schema";
+import {SCHEMA} from "store/schema";
 
 describe('WatchListComponent', () => {
     let sut: WatchListComponent;

@@ -3,10 +3,10 @@ import {Observable} from 'rxjs/Observable';
 import {Action} from '@ngrx/store';
 import {Actions, Effect} from '@ngrx/effects';
 
-import {FETCH_REMOTE_DATA, FetchingRemoteData} from './store.reducer';
+import {FETCH_REMOTE_DATA, FetchingRemoteData} from './store.action';
 
 @Injectable()
-class RemoteEffect {
+class StoreEffect {
 
     @Effect()
     fetchRemoteData$: Observable<Action> = this.actions$
@@ -20,4 +20,4 @@ class RemoteEffect {
 
 }
 
-export {RemoteEffect};
+export {StoreEffect};

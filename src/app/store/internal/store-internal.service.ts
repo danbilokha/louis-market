@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Store} from '@ngrx/store';
+import {Action, Store} from '@ngrx/store';
 
 import {AppState} from '../store.dictionary';
 import {Observable} from 'rxjs/Observable';
@@ -10,7 +10,7 @@ class StoreInternalService {
     constructor(private store: Store<AppState>) {
     }
 
-    public dispatch(action: any) {
+    public dispatch(action: Action) {
         this.store.dispatch(action);
     }
 

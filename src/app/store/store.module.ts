@@ -8,6 +8,8 @@ import {StoreModule} from '@ngrx/store';
 import {StoreExternalService} from './external/store-external.service';
 import {environment} from 'environments/environment';
 import {appReducers} from './store.dictionary';
+import {StoreInternalService} from './internal/store-internal.service';
+import {StoreEffect} from './store.effect';
 
 @NgModule({
     imports: [
@@ -18,7 +20,9 @@ import {appReducers} from './store.dictionary';
         StoreModule.forRoot(appReducers)
     ],
     providers: [
-        StoreExternalService
+        StoreExternalService,
+        StoreInternalService,
+        StoreEffect
     ]
 })
 class AppStoreModule {

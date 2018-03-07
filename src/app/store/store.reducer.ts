@@ -1,6 +1,5 @@
 import {FETCH_REMOTE_DATA, REMOTE_DATA} from './store.action';
 
-
 const initState = {
     data: null,
 };

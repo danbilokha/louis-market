@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {EmailValidator, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {DbService} from 'store/external/store-external.service';
+import {StoreService} from '@store/store.service';
 
 @Component({
     selector: 'louis-l-keep-in-touch',
@@ -13,7 +13,7 @@ class KeepInTouchComponent implements OnInit {
     public keepInTouchForm: FormGroup;
 
     constructor(protected fb: FormBuilder,
-                private db: DbService) {
+                private store: StoreService) {
     }
 
     ngOnInit() {
@@ -35,7 +35,7 @@ class KeepInTouchComponent implements OnInit {
 
     public onSubmit() {
         if(this.keepInTouchForm.valid) {
-            this.db.setDbData('USER_MESSAGE_FORM', this.keepInTouchForm.value);
+            this.store.set('USER_MESSAGE_FORM', this.keepInTouchForm.value);
             this.onClean();
         }
     }

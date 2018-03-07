@@ -31,16 +31,14 @@ import {CalculatePricePipe} from '@pipes/calculatePrice/calculatePrice';
 import {AddSpacePipe} from '@pipes/addSpace/addSpace';
 
 // Services
-import {CurrencyResolverService} from './services/price/currency-resolver';
-import {WatchService} from '@services/watch/watch';
-import {AppStoreService} from '@services/store/store';
+import {CurrencyResolverService} from './services/price/currency-resolver.service';
+import {WatchService} from '@services/watch/watch.service';
 
 // Modules
 import {AppRoutingModule} from '@settings/app.routing';
-import {AppStoreModule} from '@settings/store/internal/store';
+import {AppStoreModule} from '@store/store.module';
 import {AdminModule} from './specific-rights/admin/admin.module';
 import {ComponentModule} from '@components/component.module';
-import {AppStoreModule} from 'store/store.module';
 import {UiModule} from '@ui/ui.module';
 import {BaseWatchPageComponent} from '@pages/watch/base-watch.component';
 import {EffectModule} from './effects/effect.module';
@@ -87,8 +85,7 @@ import {EffectModule} from './effects/effect.module';
         CalculatePricePipe,
         AddSpacePipe,
         CurrencyResolverService,
-        WatchService,
-        AppStoreService
+        WatchService
     ],
     bootstrap: [AppComponent]
 })

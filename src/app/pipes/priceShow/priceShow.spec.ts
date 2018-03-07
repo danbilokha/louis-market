@@ -3,10 +3,10 @@ import {CalculatePricePipe} from '@pipes/calculatePrice/calculatePrice';
 import {DiscountPipe} from '@pipes/discount/discount';
 import {ToFixedPipe} from '@pipes/toFixed/toFixed';
 import {CurrencySignPipe} from '@pipes/currencySign/currencySign';
-import {CurrencyResolverService} from '@services/price/currency-resolver';
+import {CurrencyResolverService} from '@services/price/currency-resolver.service';
 
 describe('PriceProcessChangePipe', () => {
-    
+
     let sut: PriceShowPipe;
 
     let currencyResolverService: any;
@@ -28,11 +28,11 @@ describe('PriceProcessChangePipe', () => {
             discount: 0,
             toFixed: 2
         };
-        
+
         currencyResolverService = {
             calculatePrice: jasmine.createSpy('calculatePrice')
-        }
-        
+        };
+
         calculatePricePipe = {
             transform: jasmine.createSpy('transform')
                 .and.returnValue(2)
@@ -48,7 +48,7 @@ describe('PriceProcessChangePipe', () => {
         currencySignPipe = {
             transform: jasmine.createSpy('transform')
         };
-        
+
         sut = new PriceShowPipe(
             currencyResolverService,
             currencySignPipe,

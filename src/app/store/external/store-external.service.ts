@@ -29,15 +29,6 @@ class StoreExternalService {
             console.log(data);
             return new FetchingRemoteDataSuccess(data);
         });
-        // .subscribe(data => {
-        //     if (data) {
-        //         console.log(data);
-        //         this.store.dispatch(new RemoteData(data));
-        //         this.store.dispatch(new FetchingRemoteDataSuccess());
-        //     } else {
-        //         this.store.dispatch(new FetchingRemoteDataError());
-        //     }
-        // });
 
     constructor(private db: AngularFireDatabase) {
     }

@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Action} from '@ngrx/store';
 
 import {StoreInternalService} from './internal/store-internal.service';
 import {Observable} from 'rxjs/Observable';
+import {PushRemoteData} from './store.action';
 
 @Injectable()
 class StoreService {
@@ -10,7 +10,9 @@ class StoreService {
     constructor(private internalStore: StoreInternalService) {
     }
 
-    public set(action: Action): void {
+    public set(entity: string, value: any): void {
+        console.log(entity, value);
+        const action = new PushRemoteData({entity, value});
         this.internalStore.dispatch(action);
     }
 

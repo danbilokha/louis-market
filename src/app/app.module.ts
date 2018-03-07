@@ -33,14 +33,14 @@ import {AddSpacePipe} from '@pipes/addSpace/addSpace';
 // Services
 import {CurrencyResolverService} from './services/price/currency-resolver';
 import {WatchService} from '@services/watch/watch';
-import {AppStoreService} from '@services/db/store';
+import {AppStoreService} from '@services/store/store';
 
 // Modules
 import {AppRoutingModule} from '@settings/app.routing';
-import {AppStoreModule} from '@settings/db/internal/store';
+import {AppStoreModule} from '@settings/store/internal/store';
 import {AdminModule} from './specific-rights/admin/admin.module';
 import {ComponentModule} from '@components/component.module';
-import {DbModule} from 'store/db.module';
+import {AppStoreModule} from 'store/store.module';
 import {UiModule} from '@ui/ui.module';
 import {BaseWatchPageComponent} from '@pages/watch/base-watch.component';
 import {EffectModule} from './effects/effect.module';
@@ -77,7 +77,7 @@ import {EffectModule} from './effects/effect.module';
         AppStoreModule,
         EffectModule,
         ComponentModule,
-        DbModule,
+        AppStoreModule,
         AdminModule,
     ],
     providers: [

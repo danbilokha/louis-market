@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {LouisImage} from '@common/dictionaries/Image.dictionary';
 import {Watch} from '@common/dictionaries/watch.dictionary';
 import * as _ from 'lodash';
-import {DbService} from 'store/external/dbService';
+import {DbService} from 'store/external/store-external.service';
 import {SCHEMA} from 'store/schema';
 
 @Component({

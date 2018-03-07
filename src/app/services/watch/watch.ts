@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Watch} from '@common/dictionaries/watch.dictionary';
-import {DbService} from 'store/external/dbService';
+import {DbService} from 'store/external/store-external.service';
 import {SCHEMA} from 'store/schema';
 import {Observable} from 'rxjs/Observable';
 

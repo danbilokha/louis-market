@@ -3,11 +3,11 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/publishReplay';
 
-import {DbService} from 'store/external/dbService';
+import {DbService} from 'store/external/store-external.service';
 import {SCHEMA} from 'store/schema';
 import {takeWatches, skipWatches} from './watchList.dictionary';
 import {Watch} from '@common/dictionaries/watch.dictionary';
-import {AppStoreService} from '@services/../../db/store';
+import {AppStoreService} from '@services/../../store/store';
 import {AppState} from '@services/store.dictionary';
 
 @Component({
@@ -38,7 +38,7 @@ class WatchListComponent implements OnInit {
         this.watchList$ = this.getWatchList(this.skip, this.take);
         // this.store.select('remote')
         //     .map((data: AppState) => {
-        //         console.log(data.remoteData?.SCHEMA.WATCH);
+        //         console.log(data.data?.SCHEMA.WATCH);
         //         console.log(data);
         //         return data;
         //     })

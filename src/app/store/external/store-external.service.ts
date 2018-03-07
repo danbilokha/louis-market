@@ -1,17 +1,16 @@
 import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
 import {Subscription} from 'rxjs/Subscription';
 
-import {SCHEMA} from 'app/db/schema';
-import * as mapping from 'app/db/store.dictionary';
+import {SCHEMA} from 'app/store/schema';
+import * as mapping from 'app/store/store.calculation';
 import {toArray} from 'app/common/helpers/array';
-import {AppStoreService} from 'app/db/store.service';
-import {FetchingRemoteDataError, FetchingRemoteDataSuccess, RemoteData} from 'app/db/internal/store.reducer';
+import {StoreInternalService} from 'app/store/internal/store-internal.service';
+import {FetchingRemoteDataError, FetchingRemoteDataSuccess, RemoteData} from '../store.action';
 
 @Injectable()
-class DbService {
+class StoreExternalService {
 
     public getDbData = (entity: string, skip?: number, take?: number): Observable<any> =>
         this.getAllData()
@@ -38,7 +37,7 @@ class DbService {
         });
 
     constructor(private db: AngularFireDatabase,
-                private store: AppStoreService) {
+                private store: StoreInternalService) {
     }
 
     public setDbData(entity: string, value: any): void {
@@ -48,4 +47,4 @@ class DbService {
     }
 }
 
-export {DbService};
+export {StoreExternalService};

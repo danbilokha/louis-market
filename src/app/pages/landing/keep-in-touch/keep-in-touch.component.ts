@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {EmailValidator, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {DbService} from 'store/external/dbService';
+import {DbService} from 'store/external/store-external.service';
 
 @Component({
     selector: 'louis-l-keep-in-touch',

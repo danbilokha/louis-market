@@ -13,7 +13,7 @@
       "@settings/*": ["app/settings/*"],
       "@common/*": ["app/common/*"],
       "@interfaces/*": ["app/interfaces/*"],
-      "@db/*": ["app/db/*"],
+      "@store/*": ["app/store/*"],
       "@ui/*": ["app/ui/*"]
     },
     "sourceMap": true,

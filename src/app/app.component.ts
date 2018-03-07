@@ -6,8 +6,8 @@ import {DOCUMENT} from '@angular/platform-browser';
 import {LocationStrategy, PlatformLocation, Location} from '@angular/common';
 
 import {NavbarComponent} from './common/navbar/navbar.component';
-import {AppStoreService} from './db/store.service';
-import {FetchRemoteData} from './db/internal/store.reducer';
+import {StoreInternalService} from './store/internal/store-internal.service';
+import {FetchRemoteData} from './store/store.reducer';
 
 @Component({
     selector: 'app-root',
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
                 @Inject(DOCUMENT,) private document: any,
                 private element: ElementRef,
                 public location: Location,
-                private store: AppStoreService) {
+                private store: StoreInternalService) {
     }
 
     ngOnInit() {

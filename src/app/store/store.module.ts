@@ -1,11 +1,13 @@
 import {NgModule} from '@angular/core';
-import {AngularFireModule,} from 'angularfire2';
+import {AngularFireModule} from 'angularfire2';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {AngularFireAuthModule} from 'angularfire2/auth';
-import {AngularFireDatabaseModule, AngularFireDatabase} from 'angularfire2/database';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+import {StoreModule} from '@ngrx/store';
 
-import {DbService} from './external/dbService';
+import {StoreExternalService} from './external/store-external.service';
 import {environment} from 'environments/environment';
+import {appReducers} from './store.dictionary';
 
 @NgModule({
     imports: [
@@ -13,13 +15,13 @@ import {environment} from 'environments/environment';
         AngularFirestoreModule,
         AngularFireAuthModule,
         AngularFireDatabaseModule,
+        StoreModule.forRoot(appReducers)
     ],
     providers: [
-        DbService
+        StoreExternalService
     ]
 })
-class DbModule {
-
+class AppStoreModule {
 }
 
-export {DbModule};
+export {AppStoreModule};

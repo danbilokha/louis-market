@@ -3,7 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {Action} from '@ngrx/store';
 import {Actions, Effect} from '@ngrx/effects';
 
-import {FETCH_REMOTE_DATA, FetchingRemoteData} from './internal/store.reducer';
+import {FETCH_REMOTE_DATA, FetchingRemoteData} from './store.reducer';
 
 @Injectable()
 class RemoteEffect {

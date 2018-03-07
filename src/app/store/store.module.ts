@@ -10,6 +10,7 @@ import {environment} from 'environments/environment';
 import {appReducers} from './store.dictionary';
 import {StoreInternalService} from './internal/store-internal.service';
 import {StoreEffect} from './store.effect';
+import {StoreService} from './store.service';
 
 @NgModule({
     imports: [
@@ -22,6 +23,7 @@ import {StoreEffect} from './store.effect';
     providers: [
         StoreExternalService,
         StoreInternalService,
+        StoreService,
         StoreEffect
     ]
 })

@@ -1,23 +1,22 @@
 import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
-import {Subscription} from 'rxjs/Subscription';
 
 import {SCHEMA} from 'app/store/schema';
 import * as mapping from 'app/store/store.calculation';
 import {toArray} from 'app/common/helpers/array';
 import {StoreInternalService} from 'app/store/internal/store-internal.service';
-import {FetchingRemoteDataError, FetchingRemoteDataSuccess, RemoteData} from '../store.action';
+import {FetchingRemoteDataSuccess} from '../store.action';
 
 @Injectable()
 class StoreExternalService {
 
-    public getDbData = (entity: string, skip?: number, take?: number): Observable<any> =>
-        this.getAllData()
-            .map(data => data[entity])
-            .map(toArray)
-            .map(mapping.skip(skip))
-            .map(mapping.take(take));
+    // public getDbData = (entity: string, skip?: number, take?: number): Observable<any> =>
+    //     this.getAllData()
+    //         .map(data => data[entity])
+    //         .map(toArray)
+    //         .map(mapping.skip(skip))
+    //         .map(mapping.take(take));
 
     private getAllData = (): Observable<any> =>
         this.db
@@ -25,22 +24,25 @@ class StoreExternalService {
             .valueChanges()
             .share();
 
-    private setDataToStore: Subscription = this.getAllData() // tslint:disable-line
-        .subscribe(data => {
-            if (data) {
-                console.log(data);
-                this.store.dispatch(new RemoteData(data));
-                this.store.dispatch(new FetchingRemoteDataSuccess());
-            } else {
-                this.store.dispatch(new FetchingRemoteDataError());
-            }
+    private fetchingRemoteDataSuccess$: Observable<FetchingRemoteDataSuccess> = this.getAllData() // tslint:disable-line
+        .map(data => {
+            console.log(data);
+            return new FetchingRemoteDataSuccess(data);
         });
+        // .subscribe(data => {
+        //     if (data) {
+        //         console.log(data);
+        //         this.store.dispatch(new RemoteData(data));
+        //         this.store.dispatch(new FetchingRemoteDataSuccess());
+        //     } else {
+        //         this.store.dispatch(new FetchingRemoteDataError());
+        //     }
+        // });
 
-    constructor(private db: AngularFireDatabase,
-                private store: StoreInternalService) {
+    constructor(private db: AngularFireDatabase) {
     }
 
-    public setDbData(entity: string, value: any): void {
+    public pushData(entity: string, value: any): void {
         this.db
             .list(`${SCHEMA.DATA}/${entity}`)
             .push(value);

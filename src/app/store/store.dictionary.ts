@@ -1,14 +1,21 @@
-import {storeReducer} from './store.reducer';
+import {Action} from '@ngrx/store';
 
-interface AppState {
-    data: any;
-}
+import {storeReducer} from './store.reducer';
 
 const appReducers = {
     data: storeReducer
 };
 
+interface AppState {
+    data: any;
+}
+
+interface ExtendedAction extends Action {
+    payload: any;
+}
+
 export {
+    appReducers,
     AppState,
-    appReducers
+    ExtendedAction
 };

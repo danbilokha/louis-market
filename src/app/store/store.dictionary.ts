@@ -1,9 +1,9 @@
 import {Action} from '@ngrx/store';
 
-import {storeReducer} from './store.reducer';
+import {remoteReducer} from './store.reducer';
 
 const appReducers = {
-    data: storeReducer
+    remote: remoteReducer
 };
 
 interface AppState {

@@ -8,8 +8,7 @@ interface StoreState {
     data: any;
 }
 
-function storeReducer(state = initState, action): StoreState {
-    console.log(action);
+function remoteReducer(state = initState, action): StoreState {
     switch (action.type) {
         case FETCH_REMOTE_DATA:
             return {
@@ -27,4 +26,4 @@ function storeReducer(state = initState, action): StoreState {
     }
 }
 
-export {storeReducer};
+export {remoteReducer};

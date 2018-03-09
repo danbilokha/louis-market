@@ -29,6 +29,9 @@ class WatchListComponent implements OnInit {
         //     .refCount();
         this.store
             .get(SCHEMA.WATCH)
+            .map(state => {
+                return state.remote.WATCH;
+            })
             .publishReplay(1)
             .refCount();
 

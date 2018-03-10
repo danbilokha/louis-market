@@ -1,22 +1,18 @@
 import {FETCH_REMOTE_DATA, REMOTE_DATA} from './store.action';
+import {RemoteState} from './store.dictionary';
 
-const initState = {
+const initRemoteState: RemoteState = {
     data: null,
 };
 
-interface StoreState {
-    data: any;
-}
-
-function remoteReducer(state = initState, action): StoreState {
+function remoteReducer(state = initRemoteState, action): RemoteState {
     switch (action.type) {
         case FETCH_REMOTE_DATA:
             return {
                 ...state,
-                ...initState
+                ...initRemoteState
             };
         case REMOTE_DATA:
-            console.log(action.payload);
             return {
                 ...state,
                 data: action.payload

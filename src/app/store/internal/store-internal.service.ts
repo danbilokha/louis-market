@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Action, Store} from '@ngrx/store';
 
-import {AppState} from '../store.dictionary';
+import {StoreState} from '../store.dictionary';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 class StoreInternalService {
 
-    constructor(private store: Store<AppState>) {
+    constructor(private store: Store<StoreState>) {
     }
 
     public dispatch(action: Action) {

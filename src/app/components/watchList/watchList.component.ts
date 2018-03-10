@@ -7,6 +7,7 @@ import {SCHEMA} from '@store/schema';
 import {takeWatches, skipWatches} from './watchList.dictionary';
 import {Watch} from '@common/dictionaries/watch.dictionary';
 import {StoreService} from '@store/store.service';
+import {StoreState} from '@store/store.dictionary';
 
 @Component({
     selector: 'louis-c-watch-watch-list',
@@ -29,7 +30,7 @@ class WatchListComponent implements OnInit {
         //     .refCount();
         this.store
             .get(SCHEMA.WATCH)
-            .map(state => {
+            .map((state: StoreState) => {
                 return state.remote.WATCH;
             })
             .publishReplay(1)

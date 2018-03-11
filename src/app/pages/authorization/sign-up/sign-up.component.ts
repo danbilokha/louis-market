@@ -1,21 +1,19 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, Validators} from '@angular/forms';
 
 import {Authorization} from '../Authorization';
-import {User} from '@common/dictionaries/user';
-import {StoreService} from '@store/store.service';
-import {Router} from '@angular/router';
+import {User} from '../authorization.dictionary';
+import {AuthorizationService} from '../authorization.service';
 
 @Component({
-    selector: 'louis-sign-up',
+    selector: 'louis-p-sign-up',
     templateUrl: './sign-up.template.html',
     styleUrls: ['./sign-up.style.scss']
 })
 class SignUpComponent extends Authorization implements OnInit {
 
     constructor(protected fb: FormBuilder,
-                private store: StoreService,
-                private router: Router) {
+                private authService: AuthorizationService) {
         super(fb);
     }
 
@@ -46,9 +44,7 @@ class SignUpComponent extends Authorization implements OnInit {
         user.login = form.login;
         user.password = form.password;
 
-        this.store.set('USER', user);
-
-        this.router.navigate(['/home']);
+        this.authService.signUp(user);
     }
 }
 

@@ -36,6 +36,7 @@ import {AddSpacePipe} from '@pipes/addSpace/addSpace';
 // Services
 import {CurrencyResolverService} from './services/price/currency-resolver.service';
 import {WatchService} from '@services/watch/watch.service';
+import {AuthorizationService} from '@pages/authorization/authorization.service';
 
 // Modules
 import {AppRoutingModule} from '@settings/app.routing';
@@ -91,7 +92,8 @@ import {EffectModule} from './effects/effect.module';
         CalculatePricePipe,
         AddSpacePipe,
         CurrencyResolverService,
-        WatchService
+        WatchService,
+        AuthorizationService
     ],
     bootstrap: [AppComponent]
 })

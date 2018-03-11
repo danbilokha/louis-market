@@ -5,9 +5,9 @@ import {Observable} from 'rxjs/Observable';
 import {SCHEMA} from 'app/store/schema';
 import {StoreInternalService} from 'app/store/internal/store-internal.service';
 import {FetchingRemoteDataSuccess} from '../store.action';
-import {Subscription} from 'rxjs/Subscription';
 import {StoreLocalStorageService} from '../localStorage/store-localStorage';
 import {LocalStorageNamespace} from '../store.dictionary';
+import {toArray} from '@common/helpers/array';
 
 @Injectable()
 class StoreExternalService {
@@ -22,11 +22,21 @@ class StoreExternalService {
                 private localStorage: StoreLocalStorageService) {
     }
 
+    public usersRemoteData$: Observable<any> = this.getAllData() // tslint:disable-line
+        .map(data => data.USER)
+        .map(toArray);
+
     public fetchRemoteData(): void {
         this.getAllData()
             .subscribe(data => {
-                this.internalStore.dispatch(new FetchingRemoteDataSuccess(data));
-                this.setToLocalStorage(data);
+                const _data = JSON.parse(JSON.stringify(data));
+
+                if (_data.USER) {
+                    delete _data.USER;
+                }
+
+                this.internalStore.dispatch(new FetchingRemoteDataSuccess(_data));
+                this.setToLocalStorage(_data);
             });
     }
 

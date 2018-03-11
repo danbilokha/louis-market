@@ -7,7 +7,8 @@ import {
     FETCH_REMOTE_DATA,
     FetchingRemoteData,
     RemoteData,
-    PUSH_REMOTE_DATA
+    PUSH_REMOTE_DATA,
+    PushingRemoteData
 } from './store.action';
 import {StoreExternalService} from './external/store-external.service';
 import {ExtendedAction} from './store.dictionary';
@@ -31,11 +32,11 @@ class StoreEffect {
         });
 
     @Effect()
-    public pushData$: Observable<void> = this.actions$
+    public pushData$: Observable<PushingRemoteData> = this.actions$
         .ofType(PUSH_REMOTE_DATA)
         .map(({payload: {entity, value}}: ExtendedAction) => {
-            console.log(entity, value);
-            this.storeExternalService.pushData(entity, value)
+            this.storeExternalService.pushData(entity, value);
+            return new PushingRemoteData();
         });
 
     constructor(private actions$: Actions,

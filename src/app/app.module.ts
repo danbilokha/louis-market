@@ -8,7 +8,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // Components
 import {AppComponent} from './app.component';
 import {HomeComponent} from '@pages/home/home.component';
-import {SignUpComponent} from '@pages/sign-up/sign-up.component';
+import {SignUpComponent} from '@pages/authorization/sign-up/sign-up.component';
 import {LandingComponent} from '@pages/landing/landing.component';
 import {ProfileComponent} from '@pages/profile/profile.component';
 import {NavbarComponent} from './common/navbar/navbar.component';
@@ -22,6 +22,9 @@ import {CatalogComponent} from '@pages/catalog/catalog.component.ts';
 import {WatchPageComponent} from '@pages/watch/watch.component';
 import {WatchCommentsComponent} from '@pages/watch/comments/watch-comments.component';
 import {OrderPageComponent} from '@pages/order/order.component';
+import {SignInComponent} from '@pages/authorization/sign-in/sign-in.component';
+import {AuthorizationFooterComponent} from '@pages/authorization/footer/footer.component';
+import {AuthorizationSocialComponent} from '@pages/authorization/social/social.component';
 
 // Pipes
 import {DiscountPipe} from '@pipes/discount/discount';
@@ -48,6 +51,7 @@ import {EffectModule} from './effects/effect.module';
         AppComponent,
         HomeComponent,
         SignUpComponent,
+        SignInComponent,
         LandingComponent,
         ProfileComponent,
         NavbarComponent,
@@ -61,7 +65,9 @@ import {EffectModule} from './effects/effect.module';
         BaseWatchPageComponent,
         WatchPageComponent,
         WatchCommentsComponent,
-        OrderPageComponent
+        OrderPageComponent,
+        AuthorizationFooterComponent,
+        AuthorizationSocialComponent
     ],
     imports: [
         BrowserModule,

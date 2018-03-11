@@ -6,6 +6,7 @@ const FETCHING_REMOTE_DATA_SUCCESS = 'FETCHING_REMOTE_DATA_SUCCESS';
 const FETCHING_REMOTE_DATA_ERROR = 'FETCHING_REMOTE_DATA_ERROR';
 const REMOTE_DATA = 'REMOTE_DATA';
 const PUSH_REMOTE_DATA = 'PUSH_REMOTE_DATA';
+const PUSHING_REMOTE_DATA = 'PUSHING_REMOTE_DATA';
 
 class FetchRemoteData implements Action {
 
@@ -45,12 +46,17 @@ class PushRemoteData implements Action {
     }
 }
 
+class PushingRemoteData implements Action {
+    public type: string = PUSHING_REMOTE_DATA;
+}
+
 const type = FetchRemoteData ||
     FetchingRemoteData ||
     FetchingRemoteDataError ||
     FetchingRemoteDataSuccess ||
     RemoteData ||
-    PushRemoteData;
+    PushRemoteData ||
+    PushingRemoteData;
 
 export {
     FETCH_REMOTE_DATA,
@@ -59,11 +65,13 @@ export {
     FETCHING_REMOTE_DATA_ERROR,
     REMOTE_DATA,
     PUSH_REMOTE_DATA,
+    PUSHING_REMOTE_DATA,
     FetchRemoteData,
     FetchingRemoteData,
     FetchingRemoteDataError,
     FetchingRemoteDataSuccess,
     RemoteData,
     PushRemoteData,
+    PushingRemoteData,
     type
 };

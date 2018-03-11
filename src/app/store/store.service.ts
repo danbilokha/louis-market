@@ -11,7 +11,6 @@ class StoreService {
     }
 
     public set(entity: string, value: any): void {
-        console.log(entity, value);
         const action = new PushRemoteData({entity, value});
         this.internalStore.dispatch(action);
     }

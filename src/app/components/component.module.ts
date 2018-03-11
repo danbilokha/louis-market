@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
+import {CommonModule} from '@angular/common';
 // TODO: Need investigation, seems unneeded
 // import 'hammerjs';
 // import 'mousetrap';
@@ -46,6 +47,7 @@ import {DelimiterComponent} from './delimiter/delimiter.component';
     ],
     imports: [
         BrowserModule,
+        CommonModule,
         RouterModule,
         ModalGalleryModule.forRoot()
     ],

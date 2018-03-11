@@ -5,10 +5,14 @@ import {usdTOuahCoef, eurTOuahCoef} from './currency-resolver.dictionary';
 @Injectable()
 class CurrencyResolverService {
 
-    private _currentCurrency: string = 'USD';
+    private _currentCurrency: string = 'USD'; // tslint:disable-line
 
     public get getCurrentCurrency(): string {
         return this._currentCurrency;
+    }
+
+    public calculatePrice(value: number, currencyTo: string): number {
+        return value * this.getCurrencyCoef(this._currentCurrency, currencyTo);
     }
 
     private getCurrencyCoef(currency: string, currencyTo: string): number {
@@ -16,26 +20,22 @@ class CurrencyResolverService {
     }
 
     private resolveCurrencyCoef(currency: string, currencyTo: string): number {
-        if(currency === currencyTo)
+        if (currency === currencyTo)
             return 1;
-        
-        if(currency.toUpperCase() === 'USD') {
-            switch(currencyTo.toUpperCase()) {
+
+        if (currency.toUpperCase() === 'USD') {
+            switch (currencyTo.toUpperCase()) {
                 case 'UAH':
                     return usdTOuahCoef;
             }
         }
 
-        if(currency.toUpperCase() === 'EUR') {
-            switch(currencyTo.toUpperCase()) {
+        if (currency.toUpperCase() === 'EUR') {
+            switch (currencyTo.toUpperCase()) {
                 case 'UAH':
                     return eurTOuahCoef;
             }
         }
-    }
-
-    public calculatePrice(value: number, currencyTo: string): number {
-        return value * this.getCurrencyCoef(this._currentCurrency, currencyTo);
     }
 }
 

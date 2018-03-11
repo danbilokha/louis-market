@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Watch} from '@common/dictionaries/watch.dictionary';
 
-import {WatchService} from '@services/watch/watch';
+import {WatchService} from '@services/watch/watch.service';
 import {Subscription} from 'rxjs/Subscription';
 
 @Component({

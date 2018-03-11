@@ -1,4 +1,4 @@
-import {CurrencyResolverService} from './currency-resolver';
+import {CurrencyResolverService} from './currency-resolver.service';
 import {usdTOuahCoef, eurTOuahCoef} from './currency-resolver.dictionary';
 
 describe('CurrencyResolverService', () => {

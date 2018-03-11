@@ -2,8 +2,9 @@ import {Component} from '@angular/core';
 import {LouisImage} from '@common/dictionaries/Image.dictionary';
 import {Watch} from '@common/dictionaries/watch.dictionary';
 import * as _ from 'lodash';
-import {DbService} from '@db/dbService';
-import {SCHEMA} from '@db/schema';
+
+import {StoreService} from '@store/store.service';
+import {SCHEMA} from '@store/schema';
 
 @Component({
     selector: 'louis-form-base',
@@ -15,14 +16,14 @@ class FormBaseComponent {
     public name: string;
     public images: Array<LouisImage>;
     public price: number;
-    public currency: string = 'usd';
+    public currency: string = 'usd'; // tslint:disable-line
     public description: string;
-    public type: string = 'automatic';
+    public type: string = 'automatic'; // tslint:disable-line
     public isAvailable: boolean = true;
-    public discount?: number = 0;
+    public discount?: number = 0; // tslint:disable-line
 
     // isAvailabe
-    public value: number = 1;
+    public value: number = 1; // tslint:disable-line
 
     public currencies: Array<any> = [
         {
@@ -49,7 +50,7 @@ class FormBaseComponent {
         this.isAvailable = newValue === 1;
     };
 
-    public constructor(private dbService: DbService) {
+    public constructor(private store: StoreService) {
     }
 
     public loadedImages(images: Array<LouisImage>) {
@@ -85,7 +86,7 @@ class FormBaseComponent {
             this.isAvailable,
             this.discount);
 
-        this.dbService.setDbData(SCHEMA.WATCH, watch);
+        this.store.set(SCHEMA.WATCH, watch);
     }
 }
 

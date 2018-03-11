@@ -1,11 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/publishReplay';
 
-import {DbService} from '@db/dbService';
-import {SCHEMA} from '@db/schema';
 import {takeWatches, skipWatches} from './watchList.dictionary';
 import {Watch} from '@common/dictionaries/watch.dictionary';
+import {StoreService} from '@store/store.service';
+import {RemoteState} from '@store/store.dictionary';
+import * as arrHelpers from '@common/helpers/array';
 
 @Component({
     selector: 'louis-c-watch-watch-list',
@@ -14,16 +16,25 @@ import {Watch} from '@common/dictionaries/watch.dictionary';
 })
 class WatchListComponent implements OnInit {
 
+    @Input() showPreloader: boolean = false; // tslint:disable-line
+    @Input() options: any;
     @Input() skip: number = skipWatches;
     @Input() take: number = takeWatches;
 
     public watchList$: Observable<Array<Watch>>;
 
     private getWatchList = (skip: number, take: number): Observable<Array<Watch>> =>
-        this.dbService
-            .getDbData(SCHEMA.WATCH, skip, take);
+        this.store
+            .get('remote')
+            .filter((remote: RemoteState) => !!remote.data)
+            .map(({data: {WATCH}}: RemoteState) => WATCH)
+            .map(arrHelpers.toArray)
+            .map(arrHelpers.skip(skip))
+            .map(arrHelpers.take(take))
+            .publishReplay(1)
+            .refCount();
 
-    constructor(private dbService: DbService) {
+    constructor(private store: StoreService) {
     }
 
     ngOnInit() {

@@ -12,7 +12,8 @@
       "@effects/*": ["app/effects/*"],
       "@settings/*": ["app/settings/*"],
       "@common/*": ["app/common/*"],
-      "@db/*": ["app/db/*"],
+      "@interfaces/*": ["app/interfaces/*"],
+      "@store/*": ["app/store/*"],
       "@ui/*": ["app/ui/*"]
     },
     "sourceMap": true,

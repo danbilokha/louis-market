@@ -1,11 +1,11 @@
-import {Pipe} from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 
-import {CurrencyResolverService} from '@services/price/currency-resolver';
+import {CurrencyResolverService} from '@services/price/currency-resolver.service';
 
 @Pipe({
     name: 'currencyPrice'
 })
-class CalculatePricePipe {
+class CalculatePricePipe implements PipeTransform {
 
     constructor(private currencyResolverService: CurrencyResolverService) {
 

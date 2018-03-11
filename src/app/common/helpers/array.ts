@@ -19,4 +19,7 @@ const toArray = (elem: any): Array<any> => {
     }
 };
 
-export {toArray};
+const skip = (count: number) => (data: Array<any>): any => count ? data.slice(count) : data;
+const take = (count: number) => (data: Array<any>): any => count ? data.slice(0, count) : data;
+
+export {toArray, skip, take};

@@ -1,5 +1,5 @@
 import {CalculatePricePipe} from './calculatePrice';
-import {CurrencyResolverService} from '@services/price/currency-resolver';
+import {CurrencyResolverService} from '@services/price/currency-resolver.service';
 
 describe('CalculatePricePipe', () => {
 
@@ -9,8 +9,8 @@ describe('CalculatePricePipe', () => {
     beforeEach(() => {
         currencyResolverServiceMock = new CurrencyResolverService();
         sut = new CalculatePricePipe(currencyResolverServiceMock);
-    })
-    
+    });
+
     describe('transform', () => {
         it('should call currency resolve service', () => {
             spyOn(currencyResolverServiceMock, 'calculatePrice');
@@ -18,7 +18,7 @@ describe('CalculatePricePipe', () => {
 
             expect(currencyResolverServiceMock.calculatePrice)
                 .toHaveBeenCalled();
-        })
+        });
 
         it('should return calculated value right', () => {
             spyOn(currencyResolverServiceMock, 'calculatePrice')
@@ -28,4 +28,4 @@ describe('CalculatePricePipe', () => {
                 .toBe(4);
         })
     })
-})
+});

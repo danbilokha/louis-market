@@ -11,6 +11,7 @@ import {appReducers} from './store.dictionary';
 import {StoreInternalService} from './internal/store-internal.service';
 import {StoreEffect} from './store.effect';
 import {StoreService} from './store.service';
+import {StoreLocalStorage} from './localStorage/store-localStorage';
 
 @NgModule({
     imports: [
@@ -23,6 +24,7 @@ import {StoreService} from './store.service';
     providers: [
         StoreExternalService,
         StoreInternalService,
+        StoreLocalStorage,
         StoreService,
         StoreEffect
     ]

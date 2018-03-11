@@ -3,11 +3,11 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/publishReplay';
 
-import {SCHEMA} from '@store/schema';
 import {takeWatches, skipWatches} from './watchList.dictionary';
 import {Watch} from '@common/dictionaries/watch.dictionary';
 import {StoreService} from '@store/store.service';
-import {StoreState} from '@store/store.dictionary';
+import {RemoteState} from '@store/store.dictionary';
+import * as arrHelpers from '@common/helpers/array';
 
 @Component({
     selector: 'louis-c-watch-watch-list',
@@ -24,15 +24,13 @@ class WatchListComponent implements OnInit {
     public watchList$: Observable<Array<Watch>>;
 
     private getWatchList = (skip: number, take: number): Observable<Array<Watch>> =>
-        // this.dbService
-        //     .getDbData(SCHEMA.WATCH, skip, take)
-        //     .publishReplay(1)
-        //     .refCount();
         this.store
-            .get(SCHEMA.WATCH)
-            .map((state: StoreState) => {
-                return state.remote.WATCH;
-            })
+            .get('remote')
+            .filter((remote: RemoteState) => !!remote.data)
+            .map(({data: {WATCH}}: RemoteState) => WATCH)
+            .map(arrHelpers.toArray)
+            .map(arrHelpers.skip(skip))
+            .map(arrHelpers.take(take))
             .publishReplay(1)
             .refCount();
 

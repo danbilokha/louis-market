@@ -15,10 +15,6 @@ class StoreInternalService {
     }
 
     public select<T>(entity: any): Observable<T> {
-        console.log(entity);
-        this.store.subscribe(state => {
-            console.log(state);
-        });
         return this.store.select(entity);
     }
 }

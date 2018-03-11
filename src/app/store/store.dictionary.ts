@@ -11,7 +11,13 @@ interface StoreState {
 }
 
 interface RemoteState {
-    data: any;
+    data: IRemote;
+}
+
+interface IRemote {
+    PREORDER: any;
+    USER_MESSAGE_FORM: any;
+    WATCH: any;
 }
 
 const appReducers: StoreState = {
@@ -22,5 +28,6 @@ export {
     StoreState,
     ExtendedAction,
     RemoteState,
+    IRemote,
     appReducers,
 };

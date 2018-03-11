@@ -37,6 +37,9 @@ import {AddSpacePipe} from '@pipes/addSpace/addSpace';
 import {CurrencyResolverService} from './services/price/currency-resolver.service';
 import {WatchService} from '@services/watch/watch.service';
 import {AuthorizationService} from '@pages/authorization/authorization.service';
+import {SessionService} from '@settings/session.service';
+import {NonSignInGuard} from '@settings/NonSignInGuard';
+import {SignInGuard} from '@settings/SignInGuard';
 
 // Modules
 import {AppRoutingModule} from '@settings/app.routing';
@@ -93,7 +96,10 @@ import {EffectModule} from './effects/effect.module';
         AddSpacePipe,
         CurrencyResolverService,
         WatchService,
-        AuthorizationService
+        AuthorizationService,
+        SessionService,
+        SignInGuard,
+        NonSignInGuard
     ],
     bootstrap: [AppComponent]
 })

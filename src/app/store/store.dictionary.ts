@@ -20,6 +20,12 @@ interface IRemote {
     WATCH: any;
 }
 
+enum LocalStorageNamespace {
+    Remote = 1,
+    Watch = 2,
+    User = 3
+}
+
 const appReducers: StoreState = {
     remote: remoteReducer
 };
@@ -29,5 +35,6 @@ export {
     ExtendedAction,
     RemoteState,
     IRemote,
+    LocalStorageNamespace,
     appReducers,
 };

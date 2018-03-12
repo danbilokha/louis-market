@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
+import {AdminAuthGuard} from './AdminAuthGuard';
+
 import {AdminComponent} from '../admin.component';
 import {AdminIndexComponent} from '../pages/index/index.component';
 import {AdminStuffComponent} from '../pages/stuff/stuff.component';
@@ -11,8 +13,12 @@ import {AdminStuffUpdateComponent} from '../pages/stuff/update/update.component'
 const routes: Routes = [
     {
         path: '', component: AdminComponent,
+        canActivate: [AdminAuthGuard],
+        canActivateChild: [AdminAuthGuard],
         children: [
-            {path: 'main', component: AdminIndexComponent},
+            {
+                path: 'main', component: AdminIndexComponent
+            },
             {
                 path: 'stuff', component: AdminStuffComponent,
                 children: [
@@ -31,7 +37,9 @@ const routes: Routes = [
     imports: [
         RouterModule.forChild(routes)
     ],
-    exports: [],
+    providers: [
+        AdminAuthGuard
+    ]
 })
 class AdminRoutingModule {
 }

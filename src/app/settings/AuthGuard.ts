@@ -11,6 +11,10 @@ abstract class AuthGuard implements CanActivate {
     canActivate(): boolean {
         return this.session.isSignedUser();
     }
+
+    public redirectTo(url: string = '/home'): void {
+        this.router.navigate([url]);
+    }
 }
 
 export {AuthGuard};

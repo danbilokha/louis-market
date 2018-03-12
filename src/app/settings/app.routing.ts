@@ -15,7 +15,9 @@ import {SignInGuard} from './SignInGuard';
 import {NonSignInGuard} from './NonSignInGuard';
 
 const routes: Routes = [
-    {path: 'home', component: HomeComponent},
+    {
+        path: 'home', component: HomeComponent
+    },
     {
         path: 'sign-up', component: SignUpComponent, canActivate: [NonSignInGuard]
     },

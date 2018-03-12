@@ -15,7 +15,7 @@ import {cloneObject} from '@common/helpers/object';
 @Injectable()
 class AuthorizationService {
 
-    private usersRemoteData$: Observable<any> = this.storeExternalService
+    private usersRemoteData$: Observable<Array<User>> = this.storeExternalService
         .usersRemoteData$;
     private fetchLoginedUserSink$: BehaviorSubject<User | undefined> = new BehaviorSubject<User | undefined>(undefined);
 
@@ -26,7 +26,7 @@ class AuthorizationService {
             for (let i = 0, len = usersRemoteData.length; i < len; i += 1) {
                 if (usersRemoteData[i].login === userData.login
                     && usersRemoteData[i].password === userData.password) {
-                    return userData;
+                    return usersRemoteData[i];
                 }
             }
 

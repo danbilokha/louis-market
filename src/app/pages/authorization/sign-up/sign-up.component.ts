@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, Validators} from '@angular/forms';
 
 import {Authorization} from '../Authorization';
-import {User} from '../authorization.dictionary';
+import {User, UserRole} from '../authorization.dictionary';
 import {AuthorizationService} from '../authorization.service';
 
 @Component({
@@ -43,6 +43,7 @@ class SignUpComponent extends Authorization implements OnInit {
         const user: User = new User();
         user.login = form.login;
         user.password = form.password;
+        user.role = UserRole.user;
 
         this.authService.signUp(user);
     }

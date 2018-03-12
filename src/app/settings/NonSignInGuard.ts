@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {CanActivate, Router} from '@angular/router';
+import {Router} from '@angular/router';
 
 import {AuthGuard} from './AuthGuard';
 
@@ -15,9 +15,11 @@ class NonSignInGuard extends AuthGuard {
 
     canActivate(): boolean {
         const canActivate: boolean = !super.canActivate();
-        if(!canActivate) {
-            this.router.navigate(['/home']);
+
+        if (!canActivate) {
+            super.redirectTo('/home');
         }
+
         return canActivate;
     }
 }

@@ -6,7 +6,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 
 import {ResoveRouteParam} from '@services/resolve-route-param';
 import {ResoveWatchByName} from '@services/resolve-watch-by-name';
-import {WatchService} from '@services/watch/watch.service';
+import {WatchService} from '../watch/watch.service';
 import {Watch} from '@common/dictionaries/watch.dictionary';
 import {StoreService} from '@store/store.service';
 import {PreOrder} from './order.dictionary';

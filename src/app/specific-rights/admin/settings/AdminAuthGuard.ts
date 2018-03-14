@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {CanActivateChild, Router} from '@angular/router';
 import {AuthGuard} from '@settings/AuthGuard';
 import {SessionService} from '@settings/session.service';
-import {User, UserRole} from '@pages/authorization/authorization.dictionary';
+import {User, UserRole} from '@pages/authentication/authentication.dictionary';
 
 @Injectable()
 class AdminAuthGuard extends AuthGuard implements CanActivateChild {

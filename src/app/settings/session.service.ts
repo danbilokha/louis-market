@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 
 import {StoreLocalStorageService} from '@store/localStorage/store-localStorage';
 import {LocalStorageNamespace} from '@store/store.dictionary';
-import {User} from '@pages/authorization/authorization.dictionary';
+import {User} from '@pages/authentication/authentication.dictionary';
 
 @Injectable()
 class SessionService {

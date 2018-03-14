@@ -1,16 +1,16 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import {AuthorizationService} from '../authorization.service';
-import {User} from '../authorization.dictionary';
-import {Authorization} from '../Authorization';
-import {FormBuilder, FormControl, Validators} from '@angular/forms';
+import {AuthorizationService} from '../authentication.service';
+import {User} from '../authentication.dictionary';
+import {Authentication} from '../Authentication';
+import {FormBuilder} from '@angular/forms';
 
 @Component({
     selector: 'louis-p-sign-in',
     templateUrl: './sign-in.template.html',
     styleUrls: ['./sign-in.style.scss']
 })
-class SignInComponent extends Authorization implements OnInit {
+class SignInComponent extends Authentication implements OnInit {
 
     constructor(protected fb: FormBuilder,
                 private authService: AuthorizationService) {

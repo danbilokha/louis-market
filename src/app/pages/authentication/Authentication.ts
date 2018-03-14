@@ -3,7 +3,7 @@ import {FormBase} from '@common/helpers/form';
 
 const MIN_PASSWORD_LENGTH = 5;
 
-abstract class Authorization extends FormBase {
+abstract class Authentication extends FormBase {
 
     public form: FormGroup;
 
@@ -28,4 +28,4 @@ abstract class Authorization extends FormBase {
     }
 }
 
-export {MIN_PASSWORD_LENGTH, Authorization};
+export {MIN_PASSWORD_LENGTH, Authentication};

@@ -1,16 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, Validators} from '@angular/forms';
 
-import {Authorization} from '../Authorization';
-import {User, UserRole} from '../authorization.dictionary';
-import {AuthorizationService} from '../authorization.service';
+import {Authentication} from '../Authentication';
+import {User, UserRole} from '../authentication.dictionary';
+import {AuthorizationService} from '../authentication.service';
 
 @Component({
     selector: 'louis-p-sign-up',
     templateUrl: './sign-up.template.html',
     styleUrls: ['./sign-up.style.scss']
 })
-class SignUpComponent extends Authorization implements OnInit {
+class SignUpComponent extends Authentication implements OnInit {
 
     constructor(protected fb: FormBuilder,
                 private authService: AuthorizationService) {

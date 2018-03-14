@@ -6,7 +6,7 @@ import 'rxjs/add/operator/combineLatest';
 import {Router} from '@angular/router';
 
 import {StoreService} from '@store/store.service';
-import {User} from './authorization.dictionary';
+import {User} from './authentication.dictionary';
 import {StoreExternalService} from '@store/external/store-external.service';
 import {StoreLocalStorageService} from '@store/localStorage/store-localStorage';
 import {LocalStorageNamespace} from '@store/store.dictionary';

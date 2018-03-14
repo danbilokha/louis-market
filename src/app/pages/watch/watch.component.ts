@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+
 import {Watch} from '@common/dictionaries/watch.dictionary';
 import {LouisImage} from '@common/dictionaries/Image.dictionary';
 
@@ -10,13 +12,17 @@ import {LouisImage} from '@common/dictionaries/Image.dictionary';
 
 class WatchPageComponent implements OnInit {
 
-    @Input()
     public watch: Watch;
 
     public mainImage: LouisImage;
     public priceMap: object;
 
+    constructor(private route: ActivatedRoute) {
+    }
+
     ngOnInit() {
+        console.log(this.route.snapshot.data.watch);
+        this.watch = this.route.snapshot.data.watch;
         this.mainImage = this.getMainImage(this.watch.images);
 
         this.priceMap = {

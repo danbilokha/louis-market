@@ -16,7 +16,7 @@ import {NonSignInGuard} from './NonSignInGuard';
 
 const routes: Routes = [
     {
-        path: 'home', component: HomeComponent
+        path: '', component: HomeComponent
     },
     {
         path: 'sign-up', component: SignUpComponent, canActivate: [NonSignInGuard]
@@ -40,7 +40,10 @@ const routes: Routes = [
         path: 'order/:name', component: OrderPageComponent
     },
     {
-        path: '', redirectTo: 'home', pathMatch: 'full'
+        path: 'home', redirectTo: '', pathMatch: 'full'
+    },
+    {
+        path: 'index', redirectTo: '', pathMatch: 'full'
     },
     {
         path: '**', component: NotFoundComponent

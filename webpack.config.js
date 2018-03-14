@@ -368,9 +368,9 @@ module.exports = {
       "name": "scripts",
       "fileName": "[name].bundle.js",
       "filesToConcat": [
-        "C:\\beloha\\work\\startup\\LOUIS_XVI\\project\\Landing\\node_modules\\jquery\\dist\\jquery.slim.min.js",
-        "C:\\beloha\\work\\startup\\LOUIS_XVI\\project\\Landing\\node_modules\\popper.js\\dist\\umd\\popper.js",
-        "C:\\beloha\\work\\startup\\LOUIS_XVI\\project\\Landing\\node_modules\\bootstrap\\dist\\js\\bootstrap.min.js"
+          path.join(process.cwd(), "node_modules\\jquery\\dist\\jquery.slim.min.js"),
+          path.join(process.cwd(), "node_modules\\popper.js\\dist\\umd\\popper.js"),
+          path.join(process.cwd(), "node_modules\\bootstrap\\dist\\js\\bootstrap.min.js")
       ]
     }),
     new InsertConcatAssetsWebpackPlugin([
@@ -378,7 +378,7 @@ module.exports = {
     ]),
     new CopyWebpackPlugin([
       {
-        "context": "C:\\beloha\\work\\startup\\LOUIS_XVI\\project\\Landing\\src/",
+        "context": path.join(process.cwd(), "src/"),
         "to": "",
         "from": {
           "glob": "assets/**/*",
@@ -386,7 +386,7 @@ module.exports = {
         }
       },
       {
-        "context": "C:\\beloha\\work\\startup\\LOUIS_XVI\\project\\Landing\\src/",
+        "context": path.join(process.cwd(), "src/"),
         "to": "",
         "from": {
           "glob": "favicon.ico",

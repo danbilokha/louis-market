@@ -10,6 +10,7 @@ import {WatchService} from '../watch/watch.service';
 import {Watch} from '@common/dictionaries/watch.dictionary';
 import {StoreService} from '@store/store.service';
 import {PreOrder} from './order.dictionary';
+import {findWatchByName} from '@pages/watch/watch.calculation';
 
 const ROUTE_ORDER_IDENTIFICATOR = 'name';
 
@@ -53,7 +54,9 @@ class OrderPageComponent extends ResoveRouteParam implements OnInit, OnDestroy, 
     }
 
     public resovleWatchByName(watchName: string): Observable<Watch> {
-        return this.watchService.getWatchByName(watchName);
+        return this.watchService
+            .getWatches()
+            .map(findWatchByName(watchName));
     }
 
     public onClean(): void {

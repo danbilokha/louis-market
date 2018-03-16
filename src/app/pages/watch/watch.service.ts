@@ -11,16 +11,12 @@ class WatchService {
     constructor(private store: StoreService) {
     }
 
-    public getWatchByName = (name: string): Observable<Watch> =>
+    public getWatches = (): Observable<Array<Watch>> =>
         this.store
             .get('remote')
             .filter((remote: RemoteState) => !!remote.data)
             .map(({data: {WATCH}}: RemoteState) => WATCH)
-            .map(arrHelpers.toArray)
-            .map((watches: Array<Watch>) => {
-                console.log( watches.filter(watch => watch.name === name)[0]);
-                return  watches.filter(watch => watch.name === name)[0];
-            });
+            .map(arrHelpers.toArray);
 }
 
 export {WatchService};

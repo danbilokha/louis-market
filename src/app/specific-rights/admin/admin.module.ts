@@ -15,8 +15,7 @@ import {FormBaseComponent} from './pages/stuff/formBase/formBase.component';
 
 import {UiModule} from '@ui/ui.module';
 import {NgUploaderModule} from 'ngx-uploader';
-
-import {AdminAuthGuard} from './settings/AdminAuthGuard';
+import {ComponentModule} from '@components/component.module';
 
 @NgModule({
     declarations: [
@@ -34,6 +33,7 @@ import {AdminAuthGuard} from './settings/AdminAuthGuard';
         CommonModule,
         AdminRoutingModule,
         NgUploaderModule,
+        ComponentModule,
         UiModule,
     ]
 })

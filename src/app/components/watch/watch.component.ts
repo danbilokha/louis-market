@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 
 import {Watch} from '@common/dictionaries/watch.dictionary';
 import {LouisImage} from '@common/dictionaries/Image.dictionary';
@@ -20,6 +20,9 @@ class WatchComponent implements OnInit, OnChanges {
     public mainImage: string = data.image;
     public priceMap: object;
 
+    @Output()
+    public watchTaped: EventEmitter<Watch>;
+
     ngOnInit() {
         this.priceMap = {
             currencyTo: 'UAH',
@@ -33,6 +36,10 @@ class WatchComponent implements OnInit, OnChanges {
         if (watch && watch.images.length) {
             this.mainImage = this.getMainImage(watch.images)
         }
+    }
+
+    public onWatchTap(watch: Watch): void {
+        this.watchTaped.emit(watch);
     }
 
     private getMainImage(images: Array<LouisImage>): string {

@@ -3,6 +3,7 @@
         class="watch-list">
     <ng-template ngFor let-watch [ngForOf]="watchList$ | async">
         <louis-watch
+                (watchTaped)="onWatchTap($event)"
                 [watch]="watch"
                 [extraClasses]="options?.extraClasses"></louis-watch>
     </ng-template>

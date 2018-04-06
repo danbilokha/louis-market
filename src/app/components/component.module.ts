@@ -46,7 +46,6 @@ import {DelimiterComponent} from './delimiter/delimiter.component';
         DelimiterComponent
     ],
     imports: [
-        BrowserModule,
         CommonModule,
         RouterModule,
         ModalGalleryModule.forRoot()

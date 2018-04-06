@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/publishReplay';
@@ -21,6 +21,9 @@ class WatchListComponent implements OnInit {
     @Input() skip: number = skipWatches;
     @Input() take: number = takeWatches;
 
+    @Output()
+    public watchTaped: EventEmitter<Watch>;
+
     public watchList$: Observable<Array<Watch>>;
 
     private getWatchList = (skip: number, take: number): Observable<Array<Watch>> =>
@@ -35,6 +38,11 @@ class WatchListComponent implements OnInit {
             .refCount();
 
     constructor(private store: StoreService) {
+    }
+
+    public onWatchTap(watch: Watch): void {
+        console.log(watch);
+        this.watchTaped.emit(watch);
     }
 
     ngOnInit() {

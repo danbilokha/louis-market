@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Action, Store} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
 
 import {StoreState} from '../store.dictionary';
-import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 class StoreInternalService {

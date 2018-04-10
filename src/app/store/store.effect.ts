@@ -11,7 +11,8 @@ import {
     PushingRemoteData
 } from './store.action';
 import {StoreExternalService} from './external/store-external.service';
-import {ExtendedAction} from './store.dictionary';
+import {ExtendedAction, LocalStorageNamespace} from './store.dictionary';
+import {StoreLocalStorageService} from '@store/localStorage/store-localStorage';
 
 @Injectable()
 class StoreEffect {
@@ -31,6 +32,29 @@ class StoreEffect {
             return new RemoteData(payload)
         });
 
+    @Effect({dispatch: false})
+    public setRemoteDataToLocalStorage$ = this.actions$
+        .ofType(FETCHING_REMOTE_DATA_SUCCESS)
+        .do((data) => {
+            const _data = JSON.parse(JSON.stringify(data));
+
+            if (_data.WATCH) {
+                for (const key in _data.WATCH) {
+                    delete _data.WATCH[key].images;
+                }
+
+                this.storeLocalStorageService.set(LocalStorageNamespace.Watch.toString(), _data.WATCH);
+            }
+
+            if (_data.USER) {
+                for (const key in _data.USER) {
+                    delete _data.USER[key].password;
+                }
+
+                this.storeLocalStorageService.set(LocalStorageNamespace.User.toString(), _data.USER);
+            }
+        });
+
     @Effect()
     public pushData$: Observable<PushingRemoteData> = this.actions$
         .ofType(PUSH_REMOTE_DATA)
@@ -40,7 +64,8 @@ class StoreEffect {
         });
 
     constructor(private actions$: Actions,
-                private storeExternalService: StoreExternalService) {
+                private storeExternalService: StoreExternalService,
+                private storeLocalStorageService: StoreLocalStorageService) {
     }
 
 }

@@ -7,24 +7,20 @@ interface ExtendedAction extends Action {
 }
 
 interface StoreState {
-    [key: string]: any;
+    remote: any;
 }
 
-interface RemoteState {
-    data: IRemote;
-}
-
-interface IRemote {
+interface IRemoteState {
     PREORDER: any;
     USER_MESSAGE_FORM: any;
     WATCH: any;
 }
 
-enum LocalStorageNamespace {
-    remote = 1,
-    watch = 2,
-    user = 3
-}
+const LOCAL_STORAGE_NAMESPACE: Array<string> = [
+    'remote',
+    'watch',
+    'user'
+];
 
 const appReducers: StoreState = {
     remote: remoteReducer
@@ -33,8 +29,7 @@ const appReducers: StoreState = {
 export {
     StoreState,
     ExtendedAction,
-    RemoteState,
-    IRemote,
-    LocalStorageNamespace,
+    IRemoteState,
+    LOCAL_STORAGE_NAMESPACE,
     appReducers,
 };

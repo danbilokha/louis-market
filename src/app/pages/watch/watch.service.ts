@@ -14,6 +14,7 @@ class WatchService {
     public getWatches = (): Observable<Array<Watch>> =>
         this.store
             .get('remote')
+            .do(v => console.log(v))
             .filter((remote: RemoteState) => !!remote.data)
             .map(({data: {WATCH}}: RemoteState) => WATCH)
             .map(arrHelpers.toArray);

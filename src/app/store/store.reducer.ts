@@ -1,11 +1,13 @@
 import {FETCH_REMOTE_DATA, REMOTE_DATA} from './store.action';
-import {RemoteState} from './store.dictionary';
+import {IRemoteState} from './store.dictionary';
 
-const initRemoteState: RemoteState = {
-    data: null,
+const initRemoteState: IRemoteState = {
+    PREORDER: null,
+    USER_MESSAGE_FORM: null,
+    WATCH: null
 };
 
-function remoteReducer(state = initRemoteState, action): RemoteState {
+function remoteReducer(state = initRemoteState, action): IRemoteState {
     switch (action.type) {
         case FETCH_REMOTE_DATA:
             return {
@@ -15,7 +17,7 @@ function remoteReducer(state = initRemoteState, action): RemoteState {
         case REMOTE_DATA:
             return {
                 ...state,
-                data: action.payload
+                ...action.payload
             };
         default:
             return state;

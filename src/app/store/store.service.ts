@@ -19,22 +19,22 @@ class StoreService {
         this.internalStore.dispatch(action);
     }
 
-    public get<T>(entity: any): any {
+    public get<T>(entity: any): Observable<T> {
         console.log(entity);
         return this.getInternalStoreData(entity)
             .withLatestFrom(
                 this.getLocalStorageData(entity),
-                (internalData, localStorageData): Observable<any> => {
+                (internalData, localStorageData) => {
                     console.log(internalData);
                     console.log(localStorageData);
 
                     switch (true) {
                         case !internalData:
-                            return of(internalData);
+                            return internalData;
                         case !localStorageData:
-                            return of(localStorageData);
+                            return localStorageData;
                         default:
-                            return of(undefined);
+                            return undefined;
                     }
                 })
     }

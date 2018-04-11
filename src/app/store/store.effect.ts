@@ -11,7 +11,7 @@ import {
     PushingRemoteData
 } from './store.action';
 import {StoreExternalService} from './external/store-external.service';
-import {ExtendedAction, LocalStorageNamespace} from './store.dictionary';
+import {ExtendedAction, LOCAL_STORAGE_NAMESPACE} from './store.dictionary';
 import {StoreLocalStorageService} from '@store/localStorage/store-localStorage';
 
 @Injectable()
@@ -43,7 +43,7 @@ class StoreEffect {
                     delete _data.WATCH[key].images;
                 }
 
-                this.storeLocalStorageService.set(LocalStorageNamespace.watch.toString(), _data.WATCH);
+                this.storeLocalStorageService.set(LOCAL_STORAGE_NAMESPACE.watch.toString(), _data.WATCH);
             }
 
             if (_data.USER) {

@@ -11,11 +11,11 @@ class SessionService {
     }
 
     public isSignedUser(): boolean {
-        return !!this.storeLocalStorageService.get(LocalStorageNamespace.User.toString());
+        return !!this.storeLocalStorageService.get(LocalStorageNamespace.user.toString());
     }
 
     public getSignInUser(): User {
-        return this.storeLocalStorageService.get(LocalStorageNamespace.User.toString()) as User;
+        return this.storeLocalStorageService.get(LocalStorageNamespace.user.toString()) as User;
     }
 }
 

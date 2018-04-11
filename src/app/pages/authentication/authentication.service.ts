@@ -40,8 +40,8 @@ class AuthorizationService {
 
             delete _user.password;
 
-            this.storeLocalStorageService.removeItem(LocalStorageNamespace.User.toString());
-            this.storeLocalStorageService.set(LocalStorageNamespace.User.toString(), _user);
+            this.storeLocalStorageService.removeItem(LocalStorageNamespace.user.toString());
+            this.storeLocalStorageService.set(LocalStorageNamespace.user.toString(), _user);
 
             this.navigateAfterSignIn();
         });

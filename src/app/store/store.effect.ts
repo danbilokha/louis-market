@@ -43,7 +43,7 @@ class StoreEffect {
                     delete _data.WATCH[key].images;
                 }
 
-                this.storeLocalStorageService.set(LocalStorageNamespace.Watch.toString(), _data.WATCH);
+                this.storeLocalStorageService.set(LocalStorageNamespace.watch.toString(), _data.WATCH);
             }
 
             if (_data.USER) {
@@ -51,7 +51,7 @@ class StoreEffect {
                     delete _data.USER[key].password;
                 }
 
-                this.storeLocalStorageService.set(LocalStorageNamespace.User.toString(), _data.USER);
+                this.storeLocalStorageService.set(LocalStorageNamespace.user.toString(), _data.USER);
             }
         });
 

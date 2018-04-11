@@ -7,7 +7,7 @@ interface ExtendedAction extends Action {
 }
 
 interface StoreState {
-    remote: any;
+    [key: string]: any;
 }
 
 interface RemoteState {
@@ -21,9 +21,9 @@ interface IRemote {
 }
 
 enum LocalStorageNamespace {
-    Remote = 1,
-    Watch = 2,
-    User = 3
+    remote = 1,
+    watch = 2,
+    user = 3
 }
 
 const appReducers: StoreState = {

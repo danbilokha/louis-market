@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {from} from 'rxjs/observable/from'
-import {withLatestFrom} from 'rxjs/operator/withLatestFrom';
+import {of} from 'rxjs/observable/of'
 
 import {StoreInternalService} from './internal/store-internal.service';
 import {PushRemoteData} from './store.action';
@@ -19,26 +19,27 @@ class StoreService {
         this.internalStore.dispatch(action);
     }
 
-    public get<T>(entity: any): Observable<T> {
-        return withLatestFrom(
-            null,
-            this.getLocalStorageData(entity),
-            (internalData, localStorageData) => {
-                console.log(internalData);
-                console.log(localStorageData);
+    public get<T>(entity: any): any {
+        console.log(entity);
+        return this.getInternalStoreData(entity)
+            .withLatestFrom(
+                this.getLocalStorageData(entity),
+                (internalData, localStorageData): Observable<any> => {
+                    console.log(internalData);
+                    console.log(localStorageData);
 
-                switch (true) {
-                    case !internalData:
-                        return Observable.of(internalData);
-                    case !localStorageData:
-                        return Observable.of(localStorageData);
-                    default:
-                        return Observable.of(undefined);
-                }
-            })
+                    switch (true) {
+                        case !internalData:
+                            return of(internalData);
+                        case !localStorageData:
+                            return of(localStorageData);
+                        default:
+                            return of(undefined);
+                    }
+                })
     }
 
-    private getInternalStoreData<T>(entity: any): Observable<T> {
+    private getInternalStoreData<T>(entity: any): Observable<any> {
         return this.internalStore.select(entity);
     }
 

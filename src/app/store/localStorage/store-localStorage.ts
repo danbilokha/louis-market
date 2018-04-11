@@ -24,6 +24,7 @@ class StoreLocalStorageService {
     }
 
     private _get(key: string): object {
+        console.log(JSON.parse(localStorage.getItem(key)));
         return JSON.parse(localStorage.getItem(key));
     }
 

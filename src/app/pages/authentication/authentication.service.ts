@@ -9,8 +9,8 @@ import {StoreService} from '@store/store.service';
 import {User} from './authentication.dictionary';
 import {StoreExternalService} from '@store/external/store-external.service';
 import {StoreLocalStorageService} from '@store/localStorage/store-localStorage';
-import {LocalStorageNamespace} from '@store/store.dictionary';
 import {cloneObject} from '@common/helpers/object';
+import {USER} from '@settings/constants';
 
 @Injectable()
 class AuthorizationService {
@@ -36,13 +36,14 @@ class AuthorizationService {
 
     private setSignInUserToLocalStore$: Subscription = this.successfullyLoginedUser$ // tslint:disable-line
         .subscribe((user: User) => {
-            const _user: User = cloneObject(user);
+            if (this.storeLocalStorageService.isLocaStoragelKey(USER)) {
+                const _user: User = cloneObject(user);
 
-            delete _user.password;
+                delete _user.password;
 
-            this.storeLocalStorageService.removeItem(LocalStorageNamespace.user.toString());
-            this.storeLocalStorageService.set(LocalStorageNamespace.user.toString(), _user);
-
+                this.storeLocalStorageService.removeItem(USER);
+                this.storeLocalStorageService.set(USER, _user);
+            }
             this.navigateAfterSignIn();
         });
 

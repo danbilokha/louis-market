@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {from} from 'rxjs/observable/from'
-import {of} from 'rxjs/observable/of'
 
 import {StoreInternalService} from './internal/store-internal.service';
 import {PushRemoteData} from './store.action';
@@ -20,18 +19,18 @@ class StoreService {
     }
 
     public get<T>(entity: any): Observable<T> {
-        console.log(entity);
-        return this.getInternalStoreData(entity)
+        const _entity: any = entity.toString().toUpperCase();
+        return this.getInternalStoreData(_entity)
             .withLatestFrom(
-                this.getLocalStorageData(entity),
+                this.getLocalStorageData(_entity),
                 (internalData, localStorageData) => {
-                    console.log(internalData);
-                    console.log(localStorageData);
 
                     switch (true) {
-                        case !internalData:
+                        case !!internalData:
+                            console.log('internal');
                             return internalData;
-                        case !localStorageData:
+                        case !!localStorageData:
+                            console.log('local');
                             return localStorageData;
                         default:
                             return undefined;

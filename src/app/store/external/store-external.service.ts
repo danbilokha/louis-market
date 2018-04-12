@@ -5,7 +5,6 @@ import {Observable} from 'rxjs/Observable';
 import {SCHEMA} from 'app/store/schema';
 import {StoreInternalService} from 'app/store/internal/store-internal.service';
 import {FetchingRemoteDataSuccess} from '../store.action';
-import {LocalStorageNamespace} from '../store.dictionary';
 import {toArray} from '@common/helpers/array';
 
 @Injectable()

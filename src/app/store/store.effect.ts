@@ -11,8 +11,9 @@ import {
     PushingRemoteData
 } from './store.action';
 import {StoreExternalService} from './external/store-external.service';
-import {ExtendedAction, LOCAL_STORAGE_NAMESPACE} from './store.dictionary';
+import {ExtendedAction, STORAGE_NAMESPACE} from './store.dictionary';
 import {StoreLocalStorageService} from '@store/localStorage/store-localStorage';
+import {USER, WATCH} from '@settings/constants';
 
 @Injectable()
 class StoreEffect {
@@ -35,23 +36,23 @@ class StoreEffect {
     @Effect({dispatch: false})
     public setRemoteDataToLocalStorage$ = this.actions$
         .ofType(FETCHING_REMOTE_DATA_SUCCESS)
-        .do((data) => {
-            const _data = JSON.parse(JSON.stringify(data));
+        .do(({payload}: ExtendedAction) => {
+            const _data = JSON.parse(JSON.stringify(payload));
 
-            if (_data.WATCH) {
+            if (_data.WATCH && this.storeLocalStorageService.isLocaStoragelKey(WATCH)) {
                 for (const key in _data.WATCH) {
                     delete _data.WATCH[key].images;
                 }
 
-                this.storeLocalStorageService.set(LOCAL_STORAGE_NAMESPACE.watch.toString(), _data.WATCH);
+                this.storeLocalStorageService.set(WATCH, _data.WATCH);
             }
 
-            if (_data.USER) {
+            if (_data.USER && this.storeLocalStorageService.isLocaStoragelKey(USER)) {
                 for (const key in _data.USER) {
                     delete _data.USER[key].password;
                 }
 
-                this.storeLocalStorageService.set(LocalStorageNamespace.user.toString(), _data.USER);
+                this.storeLocalStorageService.set(USER, _data.USER);
             }
         });
 

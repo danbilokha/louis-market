@@ -1,6 +1,7 @@
 import {Action} from '@ngrx/store';
 
 import {remoteReducer} from './store.reducer';
+import {USER, WATCH} from '@settings/constants';
 
 interface ExtendedAction extends Action {
     payload: any;
@@ -16,11 +17,10 @@ interface IRemoteState {
     WATCH: any;
 }
 
-const LOCAL_STORAGE_NAMESPACE: Array<string> = [
-    'remote',
-    'watch',
-    'user'
-];
+const STORAGE_NAMESPACE: Map<string, string> = new Map([
+    [WATCH, 'remote'],
+    [USER, 'remote']
+]);
 
 const appReducers: StoreState = {
     remote: remoteReducer
@@ -30,6 +30,6 @@ export {
     StoreState,
     ExtendedAction,
     IRemoteState,
-    LOCAL_STORAGE_NAMESPACE,
+    STORAGE_NAMESPACE,
     appReducers,
 };

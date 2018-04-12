@@ -12,7 +12,7 @@ import {data} from './Mock/data';
 class WatchComponent implements OnInit, OnChanges {
 
     @Input()
-    public watch: Watch;
+    public watch: any;
 
     @Input()
     public extraClasses: string;
@@ -24,6 +24,7 @@ class WatchComponent implements OnInit, OnChanges {
     public watchTaped: EventEmitter<Watch>;
 
     ngOnInit() {
+        console.log(this.watch);
         this.priceMap = {
             currencyTo: 'UAH',
             discount: this.watch.discount,

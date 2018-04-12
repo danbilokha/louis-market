@@ -32,8 +32,6 @@ class StoreService {
                         case !!localStorageData:
                             console.log('local');
                             return localStorageData;
-                        default:
-                            return undefined;
                     }
                 })
     }

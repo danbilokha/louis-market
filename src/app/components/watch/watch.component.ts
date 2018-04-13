@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 
 import {Watch} from '@common/dictionaries/watch.dictionary';
 import {LouisImage} from '@common/dictionaries/Image.dictionary';
-import {data} from './Mock/data';
+import {DEFAULT_CARD_IMAGE} from '@settings/constants';
 
 @Component({
     selector: 'louis-watch',
@@ -17,14 +17,13 @@ class WatchComponent implements OnInit, OnChanges {
     @Input()
     public extraClasses: string;
 
-    public mainImage: string = data.image;
+    public mainImage: string = DEFAULT_CARD_IMAGE;
     public priceMap: object;
 
     @Output()
-    public watchTaped: EventEmitter<Watch>;
+    public watchTaped: EventEmitter<Watch> = new EventEmitter<Watch>();
 
     ngOnInit() {
-        console.log(this.watch);
         this.priceMap = {
             currencyTo: 'UAH',
             discount: this.watch.discount,
@@ -34,7 +33,7 @@ class WatchComponent implements OnInit, OnChanges {
 
     ngOnChanges(changes: SimpleChanges): void {
         const watch = changes.watch.currentValue;
-        if (watch && watch.images.length) {
+        if (watch && watch.images && watch.images.length) {
             this.mainImage = this.getMainImage(watch.images)
         }
     }

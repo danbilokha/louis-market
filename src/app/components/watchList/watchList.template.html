@@ -2,7 +2,6 @@
 
         class="watch-list">
     <div *ngFor="let watch of (watchList$ | async)">
-        ASDASdSAd
         <louis-watch
                 (watchTaped)="onWatchTap($event)"
                 [watch]="watch"

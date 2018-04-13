@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {LOGO_TEXT_LARGE_DARK} from '@settings/constants';
 
 @Component({
     selector: 'louis-l-index-view',
@@ -6,6 +7,7 @@ import {Component} from '@angular/core';
     styleUrls: ['./index-view.style.scss']
 })
 class IndexViewComponent {
+    public LOGO: string = LOGO_TEXT_LARGE_DARK;
 }
 
 export {IndexViewComponent};

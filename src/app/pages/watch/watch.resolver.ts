@@ -15,7 +15,8 @@ class WatchResolver implements Resolve<Watch> {
     resolve(route: ActivatedRouteSnapshot): Observable<Watch> {
         return this.watchService
             .getWatches()
-            .map(findWatchByName(route.params.name));
+            .map(findWatchByName(route.params.name))
+            .switchMap(v => Observable.of(v[0]));
     }
 }
 

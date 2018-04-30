@@ -31,7 +31,7 @@ class WatchListComponent {
         .refCount();
 
     @Output()
-    public watchTaped: EventEmitter<Watch>;
+    public watchTaped: EventEmitter<Watch> = new EventEmitter<Watch>();
 
     constructor(private store: StoreService) {
     }

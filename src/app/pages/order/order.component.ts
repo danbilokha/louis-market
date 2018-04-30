@@ -11,6 +11,7 @@ import {Watch} from '@common/dictionaries/watch.dictionary';
 import {StoreService} from '@store/store.service';
 import {PreOrder} from './order.dictionary';
 import {findWatchByName} from '@pages/watch/watch.calculation';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 const ROUTE_ORDER_IDENTIFICATOR = 'name';
 
@@ -22,15 +23,19 @@ const ROUTE_ORDER_IDENTIFICATOR = 'name';
 class OrderPageComponent extends ResoveRouteParam implements OnInit, OnDestroy, ResoveWatchByName {
 
     public watchSubscription: Subscription;
-    public watch: Watch;
-
     public priceMap: object;
-
     public orderForm = new FormGroup({
         name: new FormControl(),
         email: new FormControl(),
         phone: new FormControl()
     });
+
+    private watchSink: BehaviorSubject<Watch> = new BehaviorSubject<Watch>(undefined);
+    public watch: Observable<Watch> = this.watchSink
+        .asObservable()
+        .filter(v => !!v)
+        .publishReplay(1)
+        .refCount();
 
     constructor(protected route: ActivatedRoute,
                 public watchService: WatchService,
@@ -50,7 +55,7 @@ class OrderPageComponent extends ResoveRouteParam implements OnInit, OnDestroy, 
 
     public catchRouteParam(watchName: string): void {
         this.watchSubscription = this.resovleWatchByName(watchName)
-            .subscribe(watch => this.watchInit(watch));
+            .subscribe(watch => this.watchInit(watch[0]));
     }
 
     public resovleWatchByName(watchName: string): Observable<Watch> {
@@ -64,21 +69,29 @@ class OrderPageComponent extends ResoveRouteParam implements OnInit, OnDestroy, 
     }
 
     public onSubmit(): void {
+        console.log('submit');
         const orderForm = this.orderForm;
-        this.store.set('PREORDER',
-            new PreOrder(
-                orderForm.get('name').value,
-                orderForm.get('phone').value,
-                orderForm.get('email').value,
-                this.watch
-            ))
+        this.watch
+            .take(1)
+            .map(watch => {
+                console.log('Order 1', watch);
+                this.store.set('PREORDER',
+                    new PreOrder(
+                        orderForm.get('name').value,
+                        orderForm.get('phone').value,
+                        orderForm.get('email').value,
+                        watch
+                    ))
+            });
     }
 
     private watchInit(watch: Watch): void {
-        this.watch = watch;
+        this.watchSink.next(watch);
+
+        // TODO: Remove all price map - what hell is that?
         this.priceMap = {
             currencyTo: 'UAH',
-            discount: this.watch.discount,
+            discount: watch.discount,
             toFixed: 2
         };
     }

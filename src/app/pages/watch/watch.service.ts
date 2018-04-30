@@ -3,19 +3,20 @@ import {Watch} from 'app/common/dictionaries/watch.dictionary';
 import {StoreService} from 'app/store/store.service';
 import {Observable} from 'rxjs/Observable';
 import * as arrHelpers from '@common/helpers/array';
+import {WATCH} from '@settings/constants';
 
 @Injectable()
 class WatchService {
 
-    constructor(private store: StoreService) {
-    }
-
     public getWatches = (): Observable<Array<Watch>> =>
         this.store
-            .get('watch')
-            .do(v => console.log(v))
+            .get(WATCH)
             .filter(watches => !!watches)
-            .map(arrHelpers.toArray);
+            .map(arrHelpers.toArray)
+            .share();
+
+    constructor(private store: StoreService) {
+    }
 }
 
 export {WatchService};

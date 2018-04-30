@@ -27,10 +27,10 @@ class StoreService {
 
                     switch (true) {
                         case !!internalData:
-                            console.log('internal');
+                            console.info('internal');
                             return internalData;
                         case !!localStorageData:
-                            console.log('local');
+                            console.info('local');
                             return localStorageData;
                     }
                 })

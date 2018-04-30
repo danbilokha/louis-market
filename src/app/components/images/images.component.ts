@@ -12,12 +12,12 @@ class ImagesComponent {
 
     public images: Array<Image>;
 
-    // @Input()
-    // public stylesOption: object;
-
     @Input()
     public set imagesArray(images: Array<LouisImage>) {
-        this.images = louisImageMapToModalGalleryImage(images)
+        if (images === undefined) {
+            return;
+        }
+        this.images = louisImageMapToModalGalleryImage(images);
     };
 }
 

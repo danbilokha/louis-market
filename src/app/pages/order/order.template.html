@@ -1,5 +1,5 @@
 <div
-        *ngIf="watch; else watchLoader"
+        *ngIf="watch | async; else watchLoader"
         class="l-wrapper order-wrapper">
 
     <louis-c-header></louis-c-header>
@@ -12,28 +12,28 @@
             <div class="col-md-5 l-padding-l">
                 <div class="l-section d-inline-block l-card l-card-hoverable l-margin-m">
                     <h4>Описание</h4>
-                    <p>{{watch.description}}</p>
+                    <p>{{(watch | async).description}}</p>
                 </div>
                 <div class="l-section d-inline-block l-card l-card-hoverable l-margin-m">
                     <h4>Цена</h4>
-                    <div *ngIf="!(watch.discount && watch.discount !== 0); else newPrice">
+                    <div *ngIf="!((watch | async).discount && (watch | async).discount !== 0); else newPrice">
                         <div class="d-inline-block">
-                            {{watch.price | priceShow:priceMap}}
+                            {{(watch | async).price | priceShow:priceMap}}
                         </div>
                     </div>
                     <ng-template #newPrice>
                         <div class="d-inline-block l-price-old">
-                            {{watch.price | currencyPrice:'UAH' | toFixed: 2}}
+                            {{(watch | async).price | currencyPrice:'UAH' | toFixed: 2}}
                         </div>
                         <div class="d-inline-block">
-                            {{watch.price | priceShow:priceMap }}
+                            {{(watch | async).price | priceShow:priceMap }}
                         </div>
                     </ng-template>
                 </div>
 
                 <div class="l-section l-card l-margin-m">
                     <h4>Фото</h4>
-                    <louis-c-images [imagesArray]="watch.images"></louis-c-images>
+                    <louis-c-images [imagesArray]="(watch | async).images"></louis-c-images>
                 </div>
             </div>
             <div class="col-md-7 l-padding-l">

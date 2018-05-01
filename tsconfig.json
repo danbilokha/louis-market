@@ -14,7 +14,8 @@
       "@common/*": ["app/common/*"],
       "@interfaces/*": ["app/interfaces/*"],
       "@store/*": ["app/store/*"],
-      "@ui/*": ["app/ui/*"]
+      "@ui/*": ["app/ui/*"],
+      "@api/*": ["app/api/*"]
     },
     "sourceMap": true,
     "declaration": false,

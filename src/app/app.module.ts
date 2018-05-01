@@ -41,6 +41,7 @@ import {SessionService} from '@settings/session.service';
 import {NonSignInGuard} from '@settings/NonSignInGuard';
 import {SignInGuard} from '@settings/SignInGuard';
 import {WatchResolver} from '@pages/watch/watch.resolver';
+import {CurrencyService} from '@settings/currency/currency.service';
 
 // Modules
 import {AppRoutingModule} from '@settings/app.routing';
@@ -49,6 +50,7 @@ import {AdminModule} from './specific-rights/admin/admin.module';
 import {ComponentModule} from '@components/component.module';
 import {UiModule} from '@ui/ui.module';
 import {EffectModule} from './effects/effect.module';
+import {ApiModule} from './api/api.module';
 
 @NgModule({
     declarations: [
@@ -86,6 +88,7 @@ import {EffectModule} from './effects/effect.module';
         ComponentModule,
         AppStoreModule,
         AdminModule,
+        ApiModule
     ],
     providers: [
         DiscountPipe,
@@ -99,7 +102,8 @@ import {EffectModule} from './effects/effect.module';
         SessionService,
         SignInGuard,
         NonSignInGuard,
-        WatchResolver
+        WatchResolver,
+        CurrencyService
     ],
     bootstrap: [AppComponent]
 })

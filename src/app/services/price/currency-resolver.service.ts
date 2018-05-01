@@ -20,8 +20,9 @@ class CurrencyResolverService {
     }
 
     private resolveCurrencyCoef(currency: string, currencyTo: string): number {
-        if (currency === currencyTo)
+        if (currency === currencyTo) {
             return 1;
+        }
 
         if (currency.toUpperCase() === 'USD') {
             switch (currencyTo.toUpperCase()) {

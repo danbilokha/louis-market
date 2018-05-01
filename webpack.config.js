@@ -29,13 +29,13 @@ const postcssPlugins = function() {
         autoprefixer: false,
         safe: true,
         mergeLonghand: false,
-        discardComments: {remove: (comment) = > !importantCommentRe.test(comment)
+        discardComments: {remove: (comment) => !importantCommentRe.test(comment)
     }
 }
     ;
     return [
         postcssUrl({
-            url: (URL) = > {
+            url: (URL) => {
             // Only convert root relative URLs, which CSS-Loader won't process into require().
             if(!URL.startsWith('/') || URL.startsWith('//')
 )
@@ -447,7 +447,7 @@ module.exports = {
             "name": [
                 "vendor"
             ],
-            "minChunks": (module) = > {
+            "minChunks": (module) => {
             return module.resource
             && (module.resource.startsWith(nodeModules)
                 || module.resource.startsWith(genDirNodeModules)

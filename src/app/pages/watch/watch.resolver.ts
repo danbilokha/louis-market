@@ -7,7 +7,7 @@ import {WatchService} from './watch.service';
 import {findWatchByName} from './watch.calculation';
 
 @Injectable()
-class WatchResolver implements Resolve<Watch> {
+class WatchResolver implements Resolve<Observable<Watch>> {
 
     constructor(private watchService: WatchService) {
     }
@@ -16,7 +16,8 @@ class WatchResolver implements Resolve<Watch> {
         return this.watchService
             .getWatches()
             .map(findWatchByName(route.params.name))
-            .switchMap(v => Observable.of(v[0]));
+            .switchMap(v => Observable.of(v[0]))
+            .take(1);
     }
 }
 

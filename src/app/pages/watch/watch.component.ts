@@ -3,16 +3,16 @@ import {ActivatedRoute} from '@angular/router';
 
 import {Watch} from '@common/dictionaries/watch.dictionary';
 import {LouisImage} from '@common/dictionaries/Image.dictionary';
+import {DEFAULT_WATCH_IMAGE} from '@settings/constants';
 
 @Component({
     selector: 'louis-watch-page',
     templateUrl: './watch.template.html',
     styleUrls: ['./watch.style.scss']
 })
-
 class WatchPageComponent implements OnInit {
 
-    public watch: Watch;
+    public watch: Watch = {} as any;
 
     public mainImage: LouisImage;
     public priceMap: object;
@@ -21,9 +21,16 @@ class WatchPageComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.route.snapshot.data.watch);
         this.watch = this.route.snapshot.data.watch;
-        this.mainImage = this.getMainImage(this.watch.images);
+        this.mainImage = this.watch.images
+            ? this.getMainImage(this.watch.images)
+            : new LouisImage(
+                'Default watch image',
+                0,
+                'default image',
+                `${DEFAULT_WATCH_IMAGE}`,
+                true
+            );
 
         this.priceMap = {
             currencyTo: 'UAH',

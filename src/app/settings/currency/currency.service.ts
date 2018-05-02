@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ExchangeService} from 'app/api/exchange/exchange.service';
-import {Currency, ConvertCurrency, TIME_TO_FETCH_CURRENCIES} from './currency.dictionary';
+import {Currency, ConvertCurrency} from './currency.dictionary';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Observable} from 'rxjs/Observable';
 
@@ -16,7 +16,8 @@ class CurrencyService {
     private exchangeRateSink: BehaviorSubject<any> = new BehaviorSubject<any>(undefined);
     private exchangeRate$: Observable<any> = this.exchangeRateSink
         .asObservable()
-        .filter(v => !!v);
+        .filter(v => !!v)
+        .do(v => console.log(v));
 
     constructor(private exchangeService: ExchangeService) {
         this.fetchCurrencies();
@@ -41,18 +42,16 @@ class CurrencyService {
             )
     }
 
-    private fetchCurrencies() {
-        this.exchangeRate$ = this.exchangeService.getExchangeRate();
-        setInterval(
-            () => this.exchangeService
-                .getExchangeRate()
-                .subscribe(rate => {
-                    console.log(rate);
-                    this.exchangeRateSink.next(rate);
-                })
-            ,
-            TIME_TO_FETCH_CURRENCIES
-        );
+    private fetchCurrencies(): void {
+        this.exchangeService
+            .getExchangeRate()
+            .subscribe(rate => {
+                console.log(rate);
+                this.exchangeRateSink.next(rate);
+            });
+
+        // upd currencies rate
+        setTimeout(this.fetchCurrencies, TIME_TO_FETCH_CURRENCIES);
     }
 }
 

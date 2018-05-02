@@ -9,6 +9,4 @@ class ConvertCurrency {
     }
 }
 
-const TIME_TO_FETCH_CURRENCIES = 600000;
-
 export {Currency, ConvertCurrency, TIME_TO_FETCH_CURRENCIES};

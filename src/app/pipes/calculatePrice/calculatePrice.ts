@@ -3,7 +3,6 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {CurrencyResolverService} from '@services/price/currency-resolver.service';
 import {CurrencyService} from '@settings/currency/currency.service';
 import {Currency} from '@settings/currency/currency.dictionary';
-import {Observable} from 'rxjs/Observable';
 
 @Pipe({
     name: 'currencyPrice'
@@ -15,9 +14,11 @@ class CalculatePricePipe implements PipeTransform {
         this.currencyService.setCurrency(Currency.UAH);
     }
 
-    transform(value: number, from: Currency): Observable<number> {
-        return this.currencyService
+    transform(value: number, from: Currency): number {
+        const ret = this.currencyService
             .convertFromTo(value, from);
+
+        return value * 100;
     }
 }
 

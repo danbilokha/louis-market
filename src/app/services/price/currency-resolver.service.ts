@@ -2,6 +2,10 @@ import {Injectable} from '@angular/core';
 
 import {usdTOuahCoef, eurTOuahCoef} from './currency-resolver.dictionary';
 
+/*
+    @deprecated
+    Use the pipes to calculate
+ */
 @Injectable()
 class CurrencyResolverService {
 

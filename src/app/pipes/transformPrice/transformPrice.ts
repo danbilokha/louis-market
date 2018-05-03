@@ -6,7 +6,6 @@ import {CurrencySignPipe} from '../currencySign/currencySign';
 import {AddSpacePipe} from '../addSpace/addSpace';
 import {PriceWithDiscountComponent} from '@components/price/withDiscount/priceWithDiscount.component';
 import {PriceWithoutDiscountComponent} from '@components/price/withoutDiscount/priceWithoutDiscount.component';
-import {ViewContainerRef} from '@angular/core/src/linker/view_container_ref';
 import {PriceBase} from '@components/price/priceBase';
 
 @Pipe({
@@ -14,8 +13,7 @@ import {PriceBase} from '@components/price/priceBase';
 })
 class PriceShowPipe implements PipeTransform {
 
-    constructor(private containerRef: ViewContainerRef,
-                private render: Renderer2,
+    constructor(private render: Renderer2,
                 private componentFactoryResolver: ComponentFactoryResolver,
                 private currencySignPipe: CurrencySignPipe,
                 private addSpacePipe: AddSpacePipe,
@@ -26,10 +24,13 @@ class PriceShowPipe implements PipeTransform {
 
     transform(value: number, {currencyTo, discount = 0, toFixed = 2}): ComponentRef<PriceBase> {
 
+        debugger;
+
         const componentToCreate = !!discount ? PriceWithDiscountComponent : PriceWithoutDiscountComponent;
         const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentToCreate);
 
         const componentRef = this.containerRef.createComponent(componentFactory);
+
         componentRef.instance.shownPrice = this.currencySignPipe.transform(
             this.addSpacePipe.transform(
                 this.toFixedPipe.transform(
@@ -37,8 +38,7 @@ class PriceShowPipe implements PipeTransform {
                         this.calculatePricePipe.transform(value, currencyTo)
                         , discount)
                     , toFixed),
-            ),
-            currencyTo);
+            ), currencyTo);
 
         return componentRef;
     }

@@ -50,6 +50,10 @@ import {PriceWithoutDiscountComponent} from './price/withoutDiscount/priceWithou
         RouterModule,
         ModalGalleryModule.forRoot()
     ],
+    entryComponents: [
+        PriceWithDiscountComponent,
+        PriceWithoutDiscountComponent
+    ],
     exports: [
         WatchComponent,
         WatchListComponent,
@@ -65,7 +69,9 @@ import {PriceWithoutDiscountComponent} from './price/withoutDiscount/priceWithou
         ModalComponent,
         HeaderComponent,
         ImagesComponent,
-        DelimiterComponent
+        DelimiterComponent,
+        PriceWithDiscountComponent,
+        PriceWithoutDiscountComponent
     ]
 })
 class ComponentModule {

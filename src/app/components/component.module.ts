@@ -1,13 +1,7 @@
 import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
-// TODO: Need investigation, seems unneeded
-// import 'hammerjs';
-// import 'mousetrap';
-
 import {ModalGalleryModule} from 'angular-modal-gallery';
-
 // Pipes
 import {DiscountPipe} from '@pipes/discount/discount';
 import {ToFixedPipe} from '@pipes/toFixed/toFixed';
@@ -15,7 +9,6 @@ import {CurrencySignPipe} from '@pipes/currencySign/currencySign';
 import {CalculatePricePipe} from '@pipes/calculatePrice/calculatePrice';
 import {PriceShowPipe} from '@pipes/transformPrice/transformPrice.ts';
 import {AddSpacePipe} from '@pipes/addSpace/addSpace';
-
 // Components
 import {WatchComponent} from './watch/watch.component';
 import {WatchListComponent} from './watchList/watchList.component';
@@ -26,6 +19,11 @@ import {ModalComponent} from './modal/modal.component';
 import {HeaderComponent} from './header/header.component';
 import {ImagesComponent} from './images/images.component';
 import {DelimiterComponent} from './delimiter/delimiter.component';
+import {PriceWithDiscountComponent} from './price/withDiscount/priceWithDiscount.component';
+import {PriceWithoutDiscountComponent} from './price/withoutDiscount/priceWithoutDiscount.component';
+// TODO: Need investigation, seems unneeded
+// import 'hammerjs';
+// import 'mousetrap';
 
 @NgModule({
     declarations: [
@@ -43,7 +41,9 @@ import {DelimiterComponent} from './delimiter/delimiter.component';
         ModalComponent,
         HeaderComponent,
         ImagesComponent,
-        DelimiterComponent
+        DelimiterComponent,
+        PriceWithDiscountComponent,
+        PriceWithoutDiscountComponent
     ],
     imports: [
         CommonModule,

@@ -1,14 +1,13 @@
 import {Injectable, Input} from '@angular/core';
-import {Currency} from '@settings/currency/currency.dictionary';
 
 @Injectable()
 abstract class PriceBase {
 
     @Input()
-    currency: Currency;
+    price: number;
 
     @Input()
-
+    shownPrice: string;
 }
 
 export {PriceBase};

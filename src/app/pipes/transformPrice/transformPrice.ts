@@ -1,18 +1,22 @@
-import {ComponentFactoryResolver, Pipe, PipeTransform} from '@angular/core';
-
+import {ComponentFactoryResolver, ComponentRef, Pipe, PipeTransform, Renderer2} from '@angular/core';
 import {CalculatePricePipe} from '../calculatePrice/calculatePrice';
 import {DiscountPipe} from '../discount/discount';
 import {ToFixedPipe} from '../toFixed/toFixed';
 import {CurrencySignPipe} from '../currencySign/currencySign';
 import {AddSpacePipe} from '../addSpace/addSpace';
-import {Observable} from 'rxjs/Observable';
+import {PriceWithDiscountComponent} from '@components/price/withDiscount/priceWithDiscount.component';
+import {PriceWithoutDiscountComponent} from '@components/price/withoutDiscount/priceWithoutDiscount.component';
+import {ViewContainerRef} from '@angular/core/src/linker/view_container_ref';
+import {PriceBase} from '@components/price/priceBase';
 
 @Pipe({
     name: 'transformPrice'
 })
 class PriceShowPipe implements PipeTransform {
 
-    constructor(private componentFactoryResolver: ComponentFactoryResolver,
+    constructor(private containerRef: ViewContainerRef,
+                private render: Renderer2,
+                private componentFactoryResolver: ComponentFactoryResolver,
                 private currencySignPipe: CurrencySignPipe,
                 private addSpacePipe: AddSpacePipe,
                 private toFixedPipe: ToFixedPipe,
@@ -20,10 +24,13 @@ class PriceShowPipe implements PipeTransform {
                 private calculatePricePipe: CalculatePricePipe) {
     }
 
-    transform(value: number, {currencyTo, discount = 0, toFixed = 2}:
-        { currencyTo: string, discount: number, toFixed: number }): Observable<string> {
+    transform(value: number, {currencyTo, discount = 0, toFixed = 2}): ComponentRef<PriceBase> {
 
-        return this.currencySignPipe.transform(
+        const componentToCreate = !!discount ? PriceWithDiscountComponent : PriceWithoutDiscountComponent;
+        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentToCreate);
+
+        const componentRef = this.containerRef.createComponent(componentFactory);
+        componentRef.instance.shownPrice = this.currencySignPipe.transform(
             this.addSpacePipe.transform(
                 this.toFixedPipe.transform(
                     this.discountPipe.transform(
@@ -32,6 +39,8 @@ class PriceShowPipe implements PipeTransform {
                     , toFixed),
             ),
             currencyTo);
+
+        return componentRef;
     }
 }
 

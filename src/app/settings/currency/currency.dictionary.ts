@@ -9,4 +9,4 @@ class ConvertCurrency {
     }
 }
 
-export {Currency, ConvertCurrency, TIME_TO_FETCH_CURRENCIES};
+export {Currency, ConvertCurrency};

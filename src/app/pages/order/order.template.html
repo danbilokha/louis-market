@@ -18,7 +18,7 @@
                     <h4>Цена</h4>
                     <div *ngIf="!((watch | async).discount && (watch | async).discount !== 0); else newPrice">
                         <div class="d-inline-block">
-                            {{(watch | async).price | priceShow:priceMap}}
+                            {{(watch | async).price | transformPrice:priceMap}}
                         </div>
                     </div>
                     <ng-template #newPrice>
@@ -26,7 +26,7 @@
                             {{(watch | async).price | currencyPrice:'UAH' | toFixed: 2}}
                         </div>
                         <div class="d-inline-block">
-                            {{(watch | async).price | priceShow:priceMap }}
+                            {{(watch | async).price | transformPrice:priceMap }}
                         </div>
                     </ng-template>
                 </div>

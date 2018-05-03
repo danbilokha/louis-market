@@ -7,22 +7,21 @@ import {TIME_TO_FETCH_EXCHANGE_RATE} from './exchange.dictionary';
 
 @Injectable()
 class ExchangeService {
-
-    private exchangeRateSink: BehaviorSubject<any> = new BehaviorSubject<any>(undefined);
-    public exchageRate$: Observable<any> = this.exchangeRateSink
+    private getExchangeRateSink: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    public exchangeRate$: Observable<any> = this.getExchangeRateSink
         .asObservable()
-        .filter(v => !!v);
+        .filter(v => !!v)
+        .switchMap(() => this.http
+            .get(EXCHANGE_RATE_ENDPOINT));
 
     constructor(private http: HttpClient) {
+        this.getExchangeRate();
+        // upd exchange rate timeout
         setInterval(this.getExchangeRate, TIME_TO_FETCH_EXCHANGE_RATE);
     }
 
     private getExchangeRate(): void {
-        this.http
-            .get(EXCHANGE_RATE_ENDPOINT)
-            .subscribe(rate => {
-
-            });
+        this.getExchangeRateSink.next(true);
     }
 }
 

@@ -13,21 +13,17 @@ class CurrencyService {
         .asObservable()
         .filter(v => !!v);
 
-    private exchangeRateSink: BehaviorSubject<any> = new BehaviorSubject<any>(undefined);
-    private exchangeRate$: Observable<any> = this.exchangeRateSink
-        .asObservable()
-        .filter(v => !!v)
-        .do(v => console.log(v));
+    private exchangeRate$: Observable<any> = this.exchangeService
+        .exchangeRate$;
 
     constructor(private exchangeService: ExchangeService) {
-        this.fetchCurrencies();
     }
 
     public setCurrency(currency: Currency): void {
         this.currentCurrencySink.next(currency);
     }
 
-    public convertFromTo(from: ConvertCurrency, to?: ConvertCurrency): Observable<ConvertCurrency> {
+    public convertFromTo(value: number, from: Currency, to?: Currency): Observable<ConvertCurrency> {
         return this.currentCurrency$
             .withLatestFrom(
                 this.exchangeRate$,
@@ -40,18 +36,6 @@ class CurrencyService {
                     return new ConvertCurrency(123, currency);
                 }
             )
-    }
-
-    private fetchCurrencies(): void {
-        this.exchangeService
-            .getExchangeRate()
-            .subscribe(rate => {
-                console.log(rate);
-                this.exchangeRateSink.next(rate);
-            });
-
-        // upd currencies rate
-        setTimeout(this.fetchCurrencies, TIME_TO_FETCH_CURRENCIES);
     }
 }
 

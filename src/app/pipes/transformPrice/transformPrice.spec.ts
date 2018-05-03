@@ -1,9 +1,4 @@
-import {PriceShowPipe} from './priceShow';
-import {CalculatePricePipe} from '@pipes/calculatePrice/calculatePrice';
-import {DiscountPipe} from '@pipes/discount/discount';
-import {ToFixedPipe} from '@pipes/toFixed/toFixed';
-import {CurrencySignPipe} from '@pipes/currencySign/currencySign';
-import {CurrencyResolverService} from '@services/price/currency-resolver.service';
+import {PriceShowPipe} from './transformPrice';
 
 describe('PriceProcessChangePipe', () => {
 

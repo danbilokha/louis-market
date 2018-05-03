@@ -1,14 +1,12 @@
-import {Pipe} from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
 
 @Pipe({
     name: 'currencySign'
 })
-class CurrencySignPipe {
-
-    // value is string because it's after fixed pype
-    // witch return string
-    transform(value: string, currencySign: string): string {
-        return `${value} ${currencySign.toUpperCase()}`;
+class CurrencySignPipe implements PipeTransform {
+    transform(value: number, currencySign: string): Observable<string> {
+        return Observable.of(`${value} ${currencySign.toUpperCase()}`);
     }
 }
 

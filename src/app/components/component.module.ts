@@ -13,7 +13,7 @@ import {DiscountPipe} from '@pipes/discount/discount';
 import {ToFixedPipe} from '@pipes/toFixed/toFixed';
 import {CurrencySignPipe} from '@pipes/currencySign/currencySign';
 import {CalculatePricePipe} from '@pipes/calculatePrice/calculatePrice';
-import {PriceShowPipe} from '@pipes/priceShow/priceShow.ts';
+import {PriceShowPipe} from '@pipes/transformPrice/transformPrice.ts';
 import {AddSpacePipe} from '@pipes/addSpace/addSpace';
 
 // Components

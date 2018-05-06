@@ -1,4 +1,4 @@
-import {Watch} from '@common/dictionaries/watch.dictionary';
+import {Watch} from 'app/shared/dictionaries/watch.dictionary';
 import {Observable} from 'rxjs/Observable';
 
 abstract class ResoveWatchByName {

@@ -5,7 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {SCHEMA} from 'app/store/schema';
 import {StoreInternalService} from 'app/store/internal/store-internal.service';
 import {FetchingRemoteDataSuccess} from '../store.action';
-import {toArray} from '@common/helpers/array';
+import {toArray} from 'shared/helpers/array';
 
 @Injectable()
 class StoreExternalService {

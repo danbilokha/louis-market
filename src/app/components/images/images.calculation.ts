@@ -1,4 +1,4 @@
-import {LouisImage} from '@common/dictionaries/image.dictionary';
+import {LouisImage} from 'shared/dictionaries/image.dictionary';
 import {Image} from 'angular-modal-gallery';
 
 const louisImageMapToModalGalleryImage = (images: Array<LouisImage>): Array<Image> =>

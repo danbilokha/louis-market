@@ -7,7 +7,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {ResoveRouteParam} from '@services/resolve-route-param';
 import {ResoveWatchByName} from '@services/resolve-watch-by-name';
 import {WatchService} from '../watch/watch.service';
-import {Watch} from '@common/dictionaries/watch.dictionary';
+import {Watch} from 'shared/dictionaries/watch.dictionary';
 import {StoreService} from '@store/store.service';
 import {PreOrder} from './order.dictionary';
 import {findWatchByName} from '@pages/watch/watch.calculation';
@@ -88,7 +88,7 @@ class OrderPageComponent extends ResoveRouteParam implements OnInit, OnDestroy, 
     private watchInit(watch: Watch): void {
         this.watchSink.next(watch);
 
-        // TODO: Remove all price map - what hell is that?
+        // TODO: Remove all currencyResolver map - what hell is that?
         this.priceMap = {
             currencyTo: 'UAH',
             discount: watch.discount,

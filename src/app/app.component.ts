@@ -5,7 +5,7 @@ import 'rxjs/add/operator/filter';
 import {DOCUMENT} from '@angular/platform-browser';
 import {Location} from '@angular/common';
 
-import {NavbarComponent} from './common/navbar/navbar.component';
+import {NavbarComponent} from './shared/navbar/navbar.component';
 import {StoreInternalService} from './store/internal/store-internal.service';
 import {FetchRemoteData} from '@store/store.action';
 

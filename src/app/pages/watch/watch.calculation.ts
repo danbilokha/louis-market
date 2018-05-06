@@ -1,7 +1,7 @@
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/observable/from';
-import {Watch} from 'app/common/dictionaries/watch.dictionary';
+import {Watch} from 'app/shared/dictionaries/watch.dictionary';
 
 const findWatchByName = (watchName: string): any =>
     (watchArr): Observable<Watch> => {

@@ -3,7 +3,7 @@ import {CalculatePriceService} from '@services/calculatePrice/calculatePrice';
 import {DiscountService} from '@services/discount/discount';
 import {ToFixedNumberService} from '@services/toFixed/toFixed';
 import {Observable} from 'rxjs/Observable';
-import {Currency} from '@louis';
+import {Currency} from '@services/currency/currency.dictionary';
 
 @Pipe({
     name: '[transformPrice]'

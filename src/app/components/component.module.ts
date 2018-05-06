@@ -25,18 +25,12 @@ import {PriceWithoutDiscountComponent} from './price/withoutDiscount/priceWithou
 // import 'hammerjs';
 // import 'mousetrap';
 // Directive
-import {PriceDirective} from './directives/price/price.directive';
+import {PriceDirective} from '../shared/directives/price/price.directive';
 
 @NgModule({
     declarations: [
         WatchComponent,
         WatchListComponent,
-        DiscountService,
-        ToFixedNumberService,
-        CurrencySignPipe,
-        CalculatePriceService,
-        PriceShowPipe,
-        AddSpacePipe,
         LoaderComponent,
         CommentComponent,
         CommentListComponent,
@@ -46,7 +40,6 @@ import {PriceDirective} from './directives/price/price.directive';
         DelimiterComponent,
         PriceWithDiscountComponent,
         PriceWithoutDiscountComponent,
-        PriceDirective
     ],
     imports: [
         CommonModule,
@@ -61,12 +54,6 @@ import {PriceDirective} from './directives/price/price.directive';
         WatchComponent,
         WatchListComponent,
         LoaderComponent,
-        DiscountService,
-        ToFixedNumberService,
-        CurrencySignPipe,
-        CalculatePriceService,
-        PriceShowPipe,
-        AddSpacePipe,
         CommentComponent,
         CommentListComponent,
         ModalComponent,

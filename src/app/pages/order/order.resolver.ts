@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Resolve} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 
-import {Watch} from '@common/dictionaries/watch.dictionary';
+import {Watch} from 'shared/dictionaries/watch.dictionary';
 
 @Injectable()
 class OrderResolver implements Resolve<Watch> {

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {LouisImage} from '@common/dictionaries/Image.dictionary';
+import {LouisImage} from 'shared/dictionaries/Image.dictionary';
 
 @Component({
     selector: 'louis-upload-images',

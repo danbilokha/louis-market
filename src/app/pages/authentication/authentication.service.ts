@@ -9,7 +9,7 @@ import {StoreService} from '@store/store.service';
 import {User} from './authentication.dictionary';
 import {StoreExternalService} from '@store/external/store-external.service';
 import {StoreLocalStorageService} from '@store/localStorage/store-localStorage';
-import {cloneObject} from '@common/helpers/object';
+import {cloneObject} from 'shared/helpers/object';
 import {USER} from '@settings/constants';
 
 @Injectable()

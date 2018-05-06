@@ -1,4 +1,4 @@
-import {LouisImage} from 'app/common/dictionaries/Image.dictionary';
+import {LouisImage} from 'app/shared/dictionaries/Image.dictionary';
 
 class Watch {
     constructor(public name: string

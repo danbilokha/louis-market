@@ -4,9 +4,9 @@ import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/publishReplay';
 
 import {skipWatches, takeWatches} from './watchList.dictionary';
-import {Watch} from '@common/dictionaries/watch.dictionary';
+import {Watch} from 'shared/dictionaries/watch.dictionary';
 import {StoreService} from '@store/store.service';
-import * as arrHelpers from '@common/helpers/array';
+import * as arrHelpers from 'shared/helpers/array';
 import {WATCH} from '@settings/constants';
 
 @Component({

@@ -73,12 +73,12 @@ describe('CurrencyResolverService', () => {
     })
 
     describe('calculatePrice', () => {
-        it('should calculate price when USD right', () => {
+        it('should calculate currencyResolver when USD right', () => {
             expect(sut.calculatePrice(2, 'USD'))
                 .toBe(2);
         })
 
-        it('should calculate price when UAH right', () => {
+        it('should calculate currencyResolver when UAH right', () => {
             expect(sut.calculatePrice(2, 'UAH'))
                 .toBe(2 * usdTOuahCoef);
         })

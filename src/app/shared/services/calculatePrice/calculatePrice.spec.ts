@@ -1,5 +1,5 @@
 import {CalculatePriceService} from './calculatePrice';
-import {CurrencyResolverService} from 'app/services/price/currency-resolver.service';
+import {CurrencyResolverService} from 'app/shared/services/currencyResolver/currency-resolver.service';
 
 describe('CalculatePriceService', () => {
 

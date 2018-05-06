@@ -15,6 +15,7 @@
       "@interfaces/*": ["app/interfaces/*"],
       "@store/*": ["app/store/*"],
       "@ui/*": ["app/ui/*"],
+      "@directives/*": ["app/directives/*"],
       "@api/*": ["app/api/*"]
     },
     "sourceMap": true,

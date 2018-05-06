@@ -24,6 +24,8 @@ import {PriceWithoutDiscountComponent} from './price/withoutDiscount/priceWithou
 // TODO: Need investigation, seems unneeded
 // import 'hammerjs';
 // import 'mousetrap';
+// Directive
+import {PriceDirective} from './directives/price/price.directive';
 
 @NgModule({
     declarations: [
@@ -43,7 +45,8 @@ import {PriceWithoutDiscountComponent} from './price/withoutDiscount/priceWithou
         ImagesComponent,
         DelimiterComponent,
         PriceWithDiscountComponent,
-        PriceWithoutDiscountComponent
+        PriceWithoutDiscountComponent,
+        PriceDirective
     ],
     imports: [
         CommonModule,

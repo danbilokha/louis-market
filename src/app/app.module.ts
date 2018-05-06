@@ -72,7 +72,7 @@ import {ApiModule} from './api/api.module';
         WatchCommentsComponent,
         OrderPageComponent,
         AuthorizationFooterComponent,
-        AuthorizationSocialComponent
+        AuthorizationSocialComponent,
     ],
     imports: [
         BrowserModule,

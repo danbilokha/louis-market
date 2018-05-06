@@ -15,8 +15,10 @@ class CalculatePricePipe implements PipeTransform {
     }
 
     transform(value: number, from: Currency): number {
+
         const ret = this.currencyService
             .convertFromTo(value, from);
+
 
         return value * 100;
     }

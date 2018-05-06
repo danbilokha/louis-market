@@ -5,6 +5,10 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
 
+// TODO: Move that coef to a static json file, which created while application loaded and updated every `${TIME}`
+const USD_TO_UAH_DEF_COEF = 28;
+const EUR_TO_UAH_DEF_COEF = 33;
+
 @Injectable()
 class CurrencyService {
 
@@ -27,6 +31,10 @@ class CurrencyService {
     }
 
     public convertFromTo(value: number, from: Currency, to?: Currency): ConvertCurrency {
+
+        console.log(this.rate);
+
+        debugger;
         return new ConvertCurrency(123, Currency.USD);
     }
 }

@@ -21,19 +21,24 @@
             </a>
         </div>
         <div class="card-watch__price">
-            <div *ngIf="!(watch.discount && watch.discount !== 0); else newPrice">
-                <div class="card-watch__price_price d-inline-block">
-                    {{watch.price | transformPrice:priceMap}}
-                </div>
+            <div
+                    louisPrice
+                    [price]="watch.price | transformPrice: priceMap"
+                    [discount]="watch.discount">
             </div>
-            <ng-template #newPrice>
-                <div class="d-inline-block card-watch__price_price-old l-price-old">
-                    {{watch.price | currencyPrice:'UAH' | toFixed: 2}}
-                </div>
-                <div class="card-watch__price_price d-inline-block">
-                    {{watch.price | transformPrice:priceMap }}
-                </div>
-            </ng-template>
+            <!--<div *ngIf="!(watch.discount && watch.discount !== 0); else newPrice">-->
+            <!--<div class="card-watch__price_price d-inline-block">-->
+            <!--{{watch.price | transformPrice:priceMap}}-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<ng-template #newPrice>-->
+            <!--<div class="d-inline-block card-watch__price_price-old l-price-old">-->
+            <!--{{watch.price | currencyPrice:'UAH' | toFixed: 2}}-->
+            <!--</div>-->
+            <!--<div class="card-watch__price_price d-inline-block">-->
+            <!--{{watch.price | transformPrice:priceMap }}-->
+            <!--</div>-->
+            <!--</ng-template>-->
         </div>
     </div>
     <div class="card-watch__footer">

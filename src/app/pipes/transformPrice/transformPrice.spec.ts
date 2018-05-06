@@ -44,12 +44,7 @@ describe('PriceProcessChangePipe', () => {
             transform: jasmine.createSpy('transform')
         };
 
-        sut = new PriceShowPipe(
-            currencyResolverService,
-            currencySignPipe,
-            toFixedPipe,
-            discountPipe,
-            calculatePricePipe);
+        sut = new PriceShowPipe(currencyResolverService, currencySignPipe, toFixedPipe);
     })
 
     describe('transform', () => {

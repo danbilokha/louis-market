@@ -1,14 +1,14 @@
-import {CalculatePricePipe} from './calculatePrice';
-import {CurrencyResolverService} from '@services/price/currency-resolver.service';
+import {CalculatePriceService} from './calculatePrice';
+import {CurrencyResolverService} from 'app/services/price/currency-resolver.service';
 
-describe('CalculatePricePipe', () => {
+describe('CalculatePriceService', () => {
 
-    let sut: CalculatePricePipe;
+    let sut: CalculatePriceService;
     let currencyResolverServiceMock: CurrencyResolverService;
 
     beforeEach(() => {
         currencyResolverServiceMock = new CurrencyResolverService();
-        sut = new CalculatePricePipe(currencyResolverServiceMock);
+        sut = new CalculatePriceService(currencyResolverServiceMock);
     });
 
     describe('transform', () => {

@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {ExchangeService} from 'app/api/exchange/exchange.service';
-import {Currency, ConvertCurrency} from './currency.dictionary';
+import {Currency} from './currency.dictionary';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Observable} from 'rxjs/Observable';
-import {Subscription} from 'rxjs/Subscription';
 
 // TODO: Move that coef to a static json file, which created while application loaded and updated every `${TIME}`
+// TODO: Create Mock default exchange rate file
 const USD_TO_UAH_DEF_COEF = 28;
 const EUR_TO_UAH_DEF_COEF = 33;
 
@@ -14,14 +14,12 @@ class CurrencyService {
 
     // TODO: Remove, when default user preference service will be finished
     private currentCurrencySink: BehaviorSubject<Currency> = new BehaviorSubject<Currency>(Currency.UAH);
-    public currentCurrency$: Observable<Currency> = this.currentCurrencySink
+    private currentCurrency$: Observable<Currency> = this.currentCurrencySink
         .asObservable()
         .filter(v => !!v);
 
-    private rate: any;
-    private exchangeRateSubscription: Subscription = this.exchangeService
-        .exchangeRate$
-        .subscribe(rate => this.rate = rate);
+    private exchangeRate$: Observable<any> = this.exchangeService
+        .exchangeRate$;
 
     constructor(private exchangeService: ExchangeService) {
     }
@@ -30,12 +28,17 @@ class CurrencyService {
         this.currentCurrencySink.next(currency);
     }
 
-    public convertFromTo(value: number, from: Currency, to?: Currency): ConvertCurrency {
+    public getCurrentCurrency(): Observable<Currency> {
+        return this.currentCurrency$;
+    }
 
-        console.log(this.rate);
+    public getAvailableCurrencies(): Observable<any> {
+        return this.exchangeRate$;
+    }
 
-        debugger;
-        return new ConvertCurrency(123, Currency.USD);
+    public getExchangeRate(currency: Currency): Observable<any> {
+        return this.exchangeRate$
+            .filter(v => !!v) // TODO: Implement filter
     }
 }
 

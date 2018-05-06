@@ -2,7 +2,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {addSpace, reverseString} from './addSpace.calculation';
 
 @Pipe({
-    name: 'addSpace'
+    name: '[addSpace]'
 })
 class AddSpacePipe implements PipeTransform {
 

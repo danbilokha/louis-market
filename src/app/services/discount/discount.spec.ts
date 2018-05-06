@@ -1,11 +1,11 @@
-import {DiscountPipe} from './discount';
+import {DiscountService} from './discount';
 
-describe("DiscountPipe", () => {
+describe("DiscountService", () => {
 
-    let sut: DiscountPipe;
+    let sut: DiscountService;
 
     beforeEach(() => {
-        sut = new DiscountPipe();
+        sut = new DiscountService();
     })
 
     describe("transform", () => {

@@ -3,10 +3,10 @@ import {RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {ModalGalleryModule} from 'angular-modal-gallery';
 // Pipes
-import {DiscountPipe} from '@pipes/discount/discount';
-import {ToFixedPipe} from '@pipes/toFixed/toFixed';
+import {DiscountService} from '@pipes/../services/discount/discount';
+import {ToFixedNumberService} from '@pipes/../services/toFixed/toFixed';
 import {CurrencySignPipe} from '@pipes/currencySign/currencySign';
-import {CalculatePricePipe} from '@pipes/calculatePrice/calculatePrice';
+import {CalculatePriceService} from '@pipes/../services/calculatePrice/calculatePrice';
 import {PriceShowPipe} from '@pipes/transformPrice/transformPrice.ts';
 import {AddSpacePipe} from '@pipes/addSpace/addSpace';
 // Components
@@ -31,10 +31,10 @@ import {PriceDirective} from './directives/price/price.directive';
     declarations: [
         WatchComponent,
         WatchListComponent,
-        DiscountPipe,
-        ToFixedPipe,
+        DiscountService,
+        ToFixedNumberService,
         CurrencySignPipe,
-        CalculatePricePipe,
+        CalculatePriceService,
         PriceShowPipe,
         AddSpacePipe,
         LoaderComponent,
@@ -61,10 +61,10 @@ import {PriceDirective} from './directives/price/price.directive';
         WatchComponent,
         WatchListComponent,
         LoaderComponent,
-        DiscountPipe,
-        ToFixedPipe,
+        DiscountService,
+        ToFixedNumberService,
         CurrencySignPipe,
-        CalculatePricePipe,
+        CalculatePriceService,
         PriceShowPipe,
         AddSpacePipe,
         CommentComponent,

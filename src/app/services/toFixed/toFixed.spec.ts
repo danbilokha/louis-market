@@ -1,11 +1,11 @@
-import {ToFixedPipe} from './toFixed';
+import {ToFixedNumberService} from './toFixed';
 
-describe("ToFixedPipe", () => {
+describe("ToFixedNumberService", () => {
 
-    let sut: ToFixedPipe;
+    let sut: ToFixedNumberService;
 
     beforeEach(() => {
-        sut = new ToFixedPipe();
+        sut = new ToFixedNumberService();
     })
 
     describe("transform", () => {

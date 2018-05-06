@@ -27,10 +27,7 @@ import {AuthorizationFooterComponent} from '@pages/authentication/footer/footer.
 import {AuthorizationSocialComponent} from '@pages/authentication/social/social.component';
 
 // Pipes
-import {DiscountPipe} from '@pipes/discount/discount';
-import {ToFixedPipe} from '@pipes/toFixed/toFixed';
 import {CurrencySignPipe} from '@pipes/currencySign/currencySign';
-import {CalculatePricePipe} from '@pipes/calculatePrice/calculatePrice';
 import {AddSpacePipe} from '@pipes/addSpace/addSpace';
 
 // Services
@@ -41,7 +38,10 @@ import {SessionService} from '@settings/session.service';
 import {NonSignInGuard} from '@settings/NonSignInGuard';
 import {SignInGuard} from '@settings/SignInGuard';
 import {WatchResolver} from '@pages/watch/watch.resolver';
-import {CurrencyService} from '@settings/currency/currency.service';
+import {CurrencyService} from '@settings/services/currency/currency.service';
+import {CalculatePriceService} from '@services/calculatePrice/calculatePrice';
+import {DiscountService} from '@services/discount/discount';
+import {ToFixedNumberService} from '@services/toFixed/toFixed';
 
 // Modules
 import {AppRoutingModule} from '@settings/app.routing';
@@ -73,6 +73,8 @@ import {ApiModule} from './api/api.module';
         OrderPageComponent,
         AuthorizationFooterComponent,
         AuthorizationSocialComponent,
+        AddSpacePipe,
+        CurrencySignPipe,
     ],
     imports: [
         BrowserModule,
@@ -91,11 +93,9 @@ import {ApiModule} from './api/api.module';
         ApiModule
     ],
     providers: [
-        DiscountPipe,
-        ToFixedPipe,
-        CurrencySignPipe,
-        CalculatePricePipe,
-        AddSpacePipe,
+        DiscountService,
+        ToFixedNumberService,
+        CalculatePriceService,
         CurrencyResolverService,
         WatchService,
         AuthorizationService,

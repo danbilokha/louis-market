@@ -1,8 +1,8 @@
-import {PriceShowPipe} from './transformPrice';
+import {TransformPricePipe} from './transformPrice.pipe';
 
 describe('PriceProcessChangePipe', () => {
 
-    let sut: PriceShowPipe;
+    let sut: TransformPricePipe;
 
     let currencyResolverService: any;
 
@@ -44,7 +44,7 @@ describe('PriceProcessChangePipe', () => {
             transform: jasmine.createSpy('transform')
         };
 
-        sut = new PriceShowPipe(currencyResolverService, currencySignPipe, toFixedPipe);
+        sut = new TransformPricePipe(currencyResolverService, currencySignPipe, toFixedPipe);
     })
 
     describe('transform', () => {
@@ -105,4 +105,4 @@ describe('PriceProcessChangePipe', () => {
 
         });
     })
-})
+});

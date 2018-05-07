@@ -1,4 +1,4 @@
-import {CurrencySignPipe} from './currencySign';
+import {CurrencySignPipe} from './currencySign.pipe';
 
 describe('CurrencySignPipe', () => {
 
@@ -25,5 +25,4 @@ describe('CurrencySignPipe', () => {
                 .toBe('2 EUR')
         })
     })
-
-})
+});

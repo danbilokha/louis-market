@@ -1,5 +1,5 @@
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {FormBase} from 'shared/helpers/form';
+import {FormBase} from '@helpers/form';
 
 const MIN_PASSWORD_LENGTH = 5;
 

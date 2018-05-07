@@ -1,4 +1,4 @@
-import {Watch} from 'shared/dictionaries/watch.dictionary';
+import {Watch} from '@dictionaries/watch.dictionary';
 
 class PreOrder {
 

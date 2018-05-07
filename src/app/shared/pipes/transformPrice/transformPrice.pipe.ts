@@ -1,14 +1,14 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {CalculatePriceService} from '@services/calculatePrice/calculatePrice';
-import {DiscountService} from '@services/discount/discount';
-import {ToFixedNumberService} from '@services/toFixed/toFixed';
+import {CalculatePriceService} from '@services/calculatePrice/calculatePrice.service';
+import {DiscountService} from '@services/discount/discount.service';
+import {ToFixedNumberService} from '@services/toFixed/toFixed.service';
 import {Observable} from 'rxjs/Observable';
 import {Currency} from '@services/currency/currency.dictionary';
 
 @Pipe({
     name: '[transformPrice]'
 })
-class PriceShowPipe implements PipeTransform {
+class TransformPricePipe implements PipeTransform {
 
     // TODO: Makes all below pipes as a service and leave only that service like pipe.
     constructor(private toFixedNumberService: ToFixedNumberService,
@@ -26,4 +26,4 @@ class PriceShowPipe implements PipeTransform {
     }
 }
 
-export {PriceShowPipe};
+export {TransformPricePipe};

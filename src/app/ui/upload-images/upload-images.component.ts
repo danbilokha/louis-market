@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {LouisImage} from 'shared/dictionaries/Image.dictionary';
+import {LouisImage} from '@dictionaries/image.dictionary'; // TODO: Remove external module dependency
 
 @Component({
     selector: 'louis-upload-images',

@@ -15,6 +15,8 @@
       "@store/*": ["app/store/*"],
       "@ui/*": ["app/ui/*"],
       "@directives/*": ["app/shared/directives/*"],
+      "@dictionaries/*": ["app/shared/dictionaries/*"],
+      "@helpers/*": ["app/shared/helpers/*"],
       "@api/*": ["app/api/*"]
     },
     "sourceMap": true,

@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {LouisImage} from 'shared/dictionaries/image.dictionary';
+import {LouisImage} from '@dictionaries/image.dictionary';
 import {Image} from 'angular-modal-gallery';
 
 import {louisImageMapToModalGalleryImage} from './images.calculation';

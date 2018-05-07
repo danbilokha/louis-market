@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Watch} from 'shared/dictionaries/watch.dictionary';
-import {LouisImage} from 'shared/dictionaries/Image.dictionary';
+import {Watch} from '@dictionaries/watch.dictionary';
+import {LouisImage} from '@dictionaries/image.dictionary';
 import {DEFAULT_WATCH_IMAGE} from '@settings/constants';
 import {WatchService} from './watch.service';
 import {findWatchByName} from './watch.calculation';

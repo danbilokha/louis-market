@@ -1,10 +1,4 @@
-import {
-    ComponentFactoryResolver,
-    ComponentRef,
-    Directive,
-    Input,
-    OnInit, ViewContainerRef
-} from '@angular/core';
+import {ComponentFactoryResolver, Directive, Input, OnInit, ViewContainerRef} from '@angular/core';
 import {PriceWithDiscountComponent} from 'app/components/price/withDiscount/priceWithDiscount.component';
 import {PriceWithoutDiscountComponent} from 'app/components/price/withoutDiscount/priceWithoutDiscount.component';
 

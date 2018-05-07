@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 
-import {Watch} from 'shared/dictionaries/watch.dictionary';
-import {LouisImage} from 'shared/dictionaries/Image.dictionary';
+import {Watch} from '@dictionaries/watch.dictionary';
+import {LouisImage} from '@dictionaries/image.dictionary';
 import {DEFAULT_CARD_IMAGE} from '@settings/constants';
 
 @Component({

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 
-import {usdTOuahCoef, eurTOuahCoef} from './currency-resolver.dictionary';
+import {usdTOuahCoef, eurTOuahCoef} from './currencyResolver.dictionary';
 
 /*
     @deprecated

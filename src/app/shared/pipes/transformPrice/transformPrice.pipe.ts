@@ -6,7 +6,7 @@ import {Observable} from 'rxjs/Observable';
 import {Currency} from '@services/currency/currency.dictionary';
 
 @Pipe({
-    name: '[transformPrice]'
+    name: 'transformPrice'
 })
 class TransformPricePipe implements PipeTransform {
 
@@ -16,7 +16,8 @@ class TransformPricePipe implements PipeTransform {
                 private calculatePriceService: CalculatePriceService) {
     }
 
-    transform(value: number, {currencyTo = Currency.UAH, discount = 0, toFixed = 2}): Observable<string> {
+    transform(value: number, {currencyTo = Currency.UAH, discount = 0, toFixed = 2}): Observable<number> {
+
         return this.toFixedNumberService.toFixedFloatingPoint(
             this.discountService.calculateWithDiscount(
                 this.calculatePriceService.calculate(value, currencyTo)

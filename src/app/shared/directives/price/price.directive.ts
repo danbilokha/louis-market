@@ -1,17 +1,25 @@
-import {ComponentFactoryResolver, Directive, Input, OnInit, ViewContainerRef} from '@angular/core';
+import {ComponentFactoryResolver, ComponentRef, Directive, Input, OnDestroy, OnInit, ViewContainerRef} from '@angular/core';
 import {PriceWithDiscountComponent} from 'app/components/price/withDiscount/priceWithDiscount.component';
 import {PriceWithoutDiscountComponent} from 'app/components/price/withoutDiscount/priceWithoutDiscount.component';
+import {Observable} from 'rxjs/Observable';
+import {Subscription} from 'rxjs/Subscription';
 
 @Directive({
     selector: '[louisPrice]'
 })
-class PriceDirective implements OnInit {
+class PriceDirective implements OnInit, OnDestroy {
 
     @Input()
-    price: string;
+    price: Observable<number>;
 
     @Input()
     discount: boolean;
+
+    componentRef: ComponentRef<PriceWithDiscountComponent | PriceWithoutDiscountComponent>;
+
+    private priceSubscription: Subscription = this.price
+        .filter(v => !!v)
+        .subscribe(price => this.componentRef.instance.price = price);
 
     constructor(private containerRef: ViewContainerRef,
                 private componentFactoryResolver: ComponentFactoryResolver) {
@@ -21,9 +29,11 @@ class PriceDirective implements OnInit {
         const componentToCreate = this.discount ? PriceWithDiscountComponent : PriceWithoutDiscountComponent;
         const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentToCreate);
 
-        const componentRef = this.containerRef.createComponent(componentFactory);
+        this.componentRef = this.containerRef.createComponent(componentFactory);
+    }
 
-        return componentRef;
+    ngOnDestroy() {
+        this.priceSubscription.unsubscribe();
     }
 }
 

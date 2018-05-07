@@ -23,7 +23,7 @@
         <div class="card-watch__price">
             <div
                     louisPrice
-                    [price]="watch.price | transformPrice: priceMap | async"
+                    [price]="watch.price | transformPrice: priceMap"
                     [discount]="watch.discount">
             </div>
             <!--<div *ngIf="!(watch.discount && watch.discount !== 0); else newPrice">-->

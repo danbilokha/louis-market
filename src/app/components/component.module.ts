@@ -17,6 +17,7 @@ import {PriceWithoutDiscountComponent} from './price/withoutDiscount/priceWithou
 // TODO: Need investigation, seems unneeded
 // import 'hammerjs';
 // import 'mousetrap';
+import {SharedModule} from '@shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import {PriceWithoutDiscountComponent} from './price/withoutDiscount/priceWithou
     imports: [
         CommonModule,
         RouterModule,
-        ModalGalleryModule.forRoot()
+        ModalGalleryModule.forRoot(),
+        SharedModule
     ],
     entryComponents: [
         PriceWithDiscountComponent,
@@ -56,7 +58,6 @@ import {PriceWithoutDiscountComponent} from './price/withoutDiscount/priceWithou
     ]
 })
 class ComponentModule {
-
 }
 
 export {ComponentModule};

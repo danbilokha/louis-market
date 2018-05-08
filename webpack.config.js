@@ -386,9 +386,6 @@ module.exports = {
         path.join(process.cwd(), "node_modules\\bootstrap\\dist\\js\\bootstrap.min.js")
       ]
     }),
-    new InsertConcatAssetsWebpackPlugin([
-      "scripts"
-    ]),
     new CopyWebpackPlugin([
       {
         "context": path.join(process.cwd(), "src/"),

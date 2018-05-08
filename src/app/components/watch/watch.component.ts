@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 
 import {Watch} from '@dictionaries/watch.dictionary';
 import {LouisImage} from '@dictionaries/image.dictionary';
@@ -9,7 +9,7 @@ import {DEFAULT_CARD_IMAGE} from '@settings/constants';
     templateUrl: './watch.template.html',
     styleUrls: ['./watch.style.scss']
 })
-class WatchComponent implements OnInit, OnChanges {
+class WatchComponent implements OnChanges {
 
     @Input()
     public watch: any;
@@ -18,18 +18,9 @@ class WatchComponent implements OnInit, OnChanges {
     public extraClasses: string;
 
     public mainImage: string = DEFAULT_CARD_IMAGE;
-    public priceMap: object;
 
     @Output()
     public watchTaped: EventEmitter<Watch> = new EventEmitter<Watch>();
-
-    ngOnInit() {
-        this.priceMap = {
-            currencyTo: 'UAH',
-            discount: this.watch.discount,
-            toFixed: 2
-        };
-    }
 
     ngOnChanges(changes: SimpleChanges): void {
         const watch = changes.watch.currentValue;

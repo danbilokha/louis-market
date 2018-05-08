@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {PriceBase} from '../priceBase';
 
 @Component({
@@ -6,6 +6,8 @@ import {PriceBase} from '../priceBase';
     templateUrl: './priceWithDiscount.template.html',
 })
 class PriceWithDiscountComponent extends PriceBase {
+    @Input()
+    newPrice: number;
 }
 
 export {PriceWithDiscountComponent};

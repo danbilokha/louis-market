@@ -3,6 +3,13 @@ import {PriceWithDiscountComponent} from 'app/components/price/withDiscount/pric
 import {PriceWithoutDiscountComponent} from 'app/components/price/withoutDiscount/priceWithoutDiscount.component';
 import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Currency} from '@services/currency/currency.dictionary';
+import {TransformPriceService} from '@services/transformPrice/transformPrice.service';
+
+const PRICE_WITHOUT_DISCOUNT: number = 0;
+const DEFAULT_FLOAT_NUMBER: number = 2;
+const DEFAULT_CURRENCY: Currency = Currency.UAH;
 
 @Directive({
     selector: '[louisPrice]'
@@ -10,23 +17,46 @@ import {Subscription} from 'rxjs/Subscription';
 class PriceDirective implements OnInit, OnDestroy {
 
     @Input()
-    price: Observable<number>;
+    discount: number;
 
     @Input()
-    discount: boolean;
+    set price(value: number) {
+        this.priceSink.next(value);
+    };
 
-    componentRef: ComponentRef<PriceWithDiscountComponent | PriceWithoutDiscountComponent>;
-
-    private priceSubscription: Subscription = this.price
+    private priceSink: BehaviorSubject<number> = new BehaviorSubject<number>(undefined);
+    private price$: Observable<number> = this.priceSink
+        .asObservable()
         .filter(v => !!v)
-        .subscribe(price => this.componentRef.instance.price = price);
+        .switchMap(price => this.transformPriceService
+            .transform(price, {currencyTo: DEFAULT_CURRENCY, discount: PRICE_WITHOUT_DISCOUNT, toFixed: DEFAULT_FLOAT_NUMBER}));
+    private newPrice$: Observable<number> = this.priceSink
+        .asObservable()
+        .filter(v => !!v)
+        .switchMap(price => this.transformPriceService
+                .transform(price, {currencyTo: DEFAULT_CURRENCY, discount: this.discount, toFixed: DEFAULT_FLOAT_NUMBER}));
+
+
+    private priceSubscription: Subscription = this.price$
+        .combineLatest(this.newPrice$)
+        .subscribe(prices => {
+            this.componentRef.instance.price = prices[0];
+            if (this.componentRef.instance instanceof PriceWithDiscountComponent) {
+                this.componentRef.instance.newPrice = prices[1];
+            }
+        });
+
+    private componentRef: ComponentRef<PriceWithDiscountComponent | PriceWithoutDiscountComponent>;
 
     constructor(private containerRef: ViewContainerRef,
-                private componentFactoryResolver: ComponentFactoryResolver) {
+                private componentFactoryResolver: ComponentFactoryResolver,
+                private transformPriceService: TransformPriceService) {
     }
 
     ngOnInit() {
-        const componentToCreate = this.discount ? PriceWithDiscountComponent : PriceWithoutDiscountComponent;
+        const componentToCreate = this.discount || this.discount > 0
+            ? PriceWithDiscountComponent
+            : PriceWithoutDiscountComponent;
         const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentToCreate);
 
         this.componentRef = this.containerRef.createComponent(componentFactory);

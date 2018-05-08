@@ -1,7 +1,7 @@
 enum Currency {
-    USD = 1,
-    EUR = 2,
-    UAH = 3
+    USD = "USD",
+    EUR = "EUR",
+    UAH = "UAH"
 }
 
 class ConvertCurrency {

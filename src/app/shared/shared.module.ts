@@ -8,6 +8,7 @@ import {AddSpacePipe} from '@pipes/addSpace/addSpace.pipe';
 import {CurrencySignPipe} from '@pipes/currencySign/currencySign.pipe';
 import {TransformPricePipe} from '@pipes/transformPrice/transformPrice.pipe';
 import {PriceDirective} from '@directives/price/price.directive';
+import {TransformPriceService} from '@services/transformPrice/transformPrice.service';
 
 @NgModule({
     imports: [],
@@ -22,7 +23,8 @@ import {PriceDirective} from '@directives/price/price.directive';
         CurrencyService,
         CurrencyResolverService,
         DiscountService,
-        ToFixedNumberService
+        ToFixedNumberService,
+        TransformPriceService
     ],
     exports: [
         AddSpacePipe,

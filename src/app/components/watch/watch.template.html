@@ -23,8 +23,8 @@
         <div class="card-watch__price">
             <div
                     louisPrice
-                    [price]="watch.price | transformPrice: priceMap"
-                    [discount]="watch.discount">
+                    [discount]="watch.discount"
+                    [price]="watch.price">
             </div>
             <!--<div *ngIf="!(watch.discount && watch.discount !== 0); else newPrice">-->
             <!--<div class="card-watch__price_price d-inline-block">-->

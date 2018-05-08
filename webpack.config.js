@@ -10,7 +10,7 @@ const postcssUrl = require('postcss-url');
 const cssnano = require('cssnano');
 
 const {NoEmitOnErrorsPlugin, SourceMapDevToolPlugin, NamedModulesPlugin} = require('webpack');
-const {InsertConcatAssetsWebpackPlugin, NamedLazyChunksWebpackPlugin, BaseHrefWebpackPlugin} = require('@angular/cli/plugins/webpack');
+const {NamedLazyChunksWebpackPlugin, BaseHrefWebpackPlugin} = require('@angular/cli/plugins/webpack');
 const {CommonsChunkPlugin} = require('webpack').optimize;
 const {AotPlugin} = require('@ngtools/webpack');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
@@ -492,44 +492,19 @@ module.exports = {
         "skipCodeGeneration": true
     })
 ],
-"node"
-:
+"node":
 {
-    "fs"
-:
-    "empty",
-        "global"
-:
-    true,
-        "crypto"
-:
-    "empty",
-        "tls"
-:
-    "empty",
-        "net"
-:
-    "empty",
-        "process"
-:
-    true,
-        "module"
-:
-    false,
-        "clearImmediate"
-:
-    false,
-        "setImmediate"
-:
-    false
-}
-,
-"devServer"
-:
-{
-    "historyApiFallback"
-:
-    true,
-}
-}
-;
+    "fs": "empty",
+    "global": true,
+    "crypto": "empty",
+    "tls": "empty",
+    "net": "empty",
+    "process": true,
+    "module": false,
+    "clearImmediate": false,
+    "setImmediate": false
+},
+"devServer": {
+    "historyApiFallback": true,
+    }
+};

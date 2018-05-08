@@ -13,6 +13,7 @@ const {NoEmitOnErrorsPlugin, SourceMapDevToolPlugin, NamedModulesPlugin} = requi
 const {InsertConcatAssetsWebpackPlugin, NamedLazyChunksWebpackPlugin, BaseHrefWebpackPlugin} = require('@angular/cli/plugins/webpack');
 const {CommonsChunkPlugin} = require('webpack').optimize;
 const {AotPlugin} = require('@ngtools/webpack');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const nodeModules = path.join(process.cwd(), 'node_modules');
 const realNodeModules = fs.realpathSync(nodeModules);
@@ -74,7 +75,8 @@ module.exports = {
             "./node_modules",
             "./node_modules"
         ],
-        "symlinks": true
+        "symlinks": true,
+        plugins: [new TsconfigPathsPlugin({ configFile: "./tsconfig.json" })]
     },
     "resolveLoader": {
         "modules": [

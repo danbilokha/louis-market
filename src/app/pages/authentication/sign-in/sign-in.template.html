@@ -1,0 +1,66 @@
+<div class="wrapper">
+    <div class="page-header" style="background-image: url('../assets/img/login-image.jpg');">
+        <div class="filter"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
+                    <div class="card card-register">
+                        <h3 class="title">Здравствуйте!</h3>
+
+                        <louis-p-c-authorization-social></louis-p-c-authorization-social>
+
+                        <form
+                                novalidate
+                                [formGroup]="form"
+                                (ngSubmit)="onSubmit()"
+                                class="register-form">
+
+                            <label>Логин</label>
+                            <input
+                                    formControlName="login"
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Почта\Ник\Номер телефона">
+                            <p
+                                    class="alert alert-danger"
+                                    *ngIf="form.controls.login.touched
+                                    && form.controls.login.hasError('required')">
+                                Введите логин
+                            </p>
+
+                            <label>Пароль</label>
+                            <input
+                                    formControlName="password"
+                                    type="password"
+                                    class="form-control"
+                                    placeholder="Пароль">
+                            <p
+                                    class="alert alert-danger"
+                                    *ngIf="form.controls.password.touched
+                                    && form.controls.password.hasError('required')">
+                                Введите пароль
+                            </p>
+                            <p
+                                    class="alert alert-danger"
+                                    *ngIf="form.controls.password.touched
+                                    && form.controls.password.hasError('minlength')">
+                                Неправильный пароль
+                            </p>
+
+                            <button
+                                    [disabled]="!form.valid"
+                                    type="submit"
+                                    class="btn btn-danger btn-block btn-round">Войти</button>
+                        </form>
+                        <div class="forgot">
+                            <a
+                                    [routerLink]="'/sign-up'"
+                                    class="btn btn-link btn-secondary">Зарегистрироваться</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <louis-p-c-authorization-footer></louis-p-c-authorization-footer>
+        </div>
+    </div>
+</div>

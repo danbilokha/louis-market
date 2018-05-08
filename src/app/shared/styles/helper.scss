@@ -1,0 +1,17 @@
+::ng-deep {
+  .l {
+    &-helper {
+
+      &-clearfix::after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+
+      &-hint {
+        color: gray;
+        font-size: x-small;
+      }
+    }
+  }
+}

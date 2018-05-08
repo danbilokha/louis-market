@@ -1,0 +1,47 @@
+@import 'variable';
+
+::ng-deep {
+
+  .l {
+
+    &-delimiter {
+
+      &-vertical {
+
+        &-s {
+          border-top: $l-size-indents-s solid #8c8b8b;
+          border-bottom: $l-size-indents-s solid #fff;
+        }
+
+      }
+
+    }
+
+    &-border {
+
+      &-top {
+        &-s {
+          border-top: $l-size-indents-s solid $l-color-black;
+        }
+        &-m {
+          border-top: $l-size-indents-m solid $l-color-black;
+        }
+        &-l {
+          border-top: $l-size-indents-l solid $l-color-black;
+        }
+      }
+
+      &-s {
+        border: $l-size-indents-s solid $l-color-black;
+      }
+      &-m {
+        border: $l-size-indents-m solid $l-color-black;
+      }
+      &-l {
+        border: $l-size-indents-l solid $l-color-black;
+      }
+    }
+
+  }
+
+}

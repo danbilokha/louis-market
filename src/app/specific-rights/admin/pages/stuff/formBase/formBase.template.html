@@ -1,0 +1,107 @@
+<form class="form form-base l-card">
+    <div class="row">
+        <div class="col-md-7">
+
+            <div class="form-group form form-admin">
+                <label for="name">Название</label>
+                <input
+                        name="name"
+                        [(ngModel)]="name"
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        placeholder="Введите название товара"
+                        required>
+            </div>
+            <div class="form-group">
+                <label for="description">Описание</label>
+                <textarea
+                        name="description"
+                        [(ngModel)]="description"
+                        type="text"
+                        rows="5"
+                        class="form-control"
+                        id="description"
+                        placeholder="Введите описание товара"
+                        required>
+                </textarea>
+            </div>
+            <div class="form-group">
+                <label for="type">Тип</label>
+                <select
+                        name="type"
+                        [(ngModel)]="type"
+                        class="form-control"
+                        id="type"
+                        required>
+                    <option *ngFor="let type of types" [value]="type.value"
+                            [selected]="type.value === 'automatic'">
+                        {{type.display}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="currency">Валюта</label>
+                <select
+                        name="currency"
+                        [(ngModel)]="currency"
+                        class="form-control"
+                        id="currency"
+                        required>
+                    <option *ngFor="let currency of currencies" [value]="currency.value"
+                            [selected]="currency.value === 'usd'">
+                        {{currency.display}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="price">Цена</label>
+                <input
+                        name="price"
+                        [(ngModel)]="price"
+                        type="number"
+                        class="form-control"
+                        id="price"
+                        value="100"
+                        min="0"
+                        step="25"
+                        required>
+            </div>
+            <div class="form-group">
+                <label for="discount">Скидка</label>
+                <input
+                        name="discount"
+                        [(ngModel)]="discount"
+                        type="number"
+                        min="0"
+                        max="100"
+                        step="5"
+                        class="form-control"
+                        id="discount">
+            </div>
+            <div class="form__controls">
+                <button
+                        (click)="onReset()"
+                        type="reset"
+                        mat-button color="warn">Очистить
+                </button>
+
+                <button
+                        (click)="onSubmit()"
+                        type="submit"
+                        mat-raised-button color="primary">Создать
+                </button>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+                <label>Фото</label>
+                <louis-upload-images (loadedImages)="loadedImages($event)"></louis-upload-images>
+            </div>
+            <div class="form-group">
+                <label>Доступно?</label>
+                <louis-slider [value]="value" (valueChanged)="valueChanged($event)"></louis-slider>
+            </div>
+        </div>
+    </div>
+</form>

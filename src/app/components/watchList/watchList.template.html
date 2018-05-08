@@ -1,5 +1,17 @@
-<div class="watch-list">
-    <ng-template ngFor let-watch [ngForOf]="watchList$ | async">
-        <louis-watch [watch]="watch"></louis-watch>
-    </ng-template>
+<div
+
+        class="watch-list">
+    <div *ngFor="let watch of (watchList$ | async)">
+        <louis-watch
+                (watchTaped)="onWatchTap($event)"
+                [watch]="watch"
+                [extraClasses]="options?.extraClasses"></louis-watch>
+    </div>
 </div>
+
+
+<ng-template #watchLoader>
+    <louis-loader></louis-loader>
+</ng-template>
+
+

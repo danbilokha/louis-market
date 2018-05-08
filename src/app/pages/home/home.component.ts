@@ -6,13 +6,7 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./home.style.scss']
 })
 
-export class HomeComponent implements OnInit {
-    model = {
-        left: true,
-        middle: false,
-        right: false
-    };
-    constructor() { }
-
-    ngOnInit() {}
+class HomeComponent {
 }
+
+export {HomeComponent};

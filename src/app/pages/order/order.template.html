@@ -1,0 +1,92 @@
+<div
+        *ngIf="watch | async; else watchLoader"
+        class="l-wrapper order-wrapper">
+
+    <louis-c-header></louis-c-header>
+
+    <div class="spec-order-content">
+
+        <h3>Оформьте предзаказ - получите скидку до 40%!</h3>
+
+        <div class="row">
+            <div class="col-md-5 l-padding-l">
+                <div class="l-section d-inline-block l-card l-card-hoverable l-margin-m">
+                    <h4>Описание</h4>
+                    <p>{{(watch | async).description}}</p>
+                </div>
+                <div class="l-section d-inline-block l-card l-card-hoverable l-margin-m">
+                    <h4>Цена</h4>
+                    <!-- TODO: PRICEPIPE: Replace new logic -->
+                    <!--<div *ngIf="!((watch | async).discount && (watch | async).discount !== 0); else newPrice">-->
+                        <!--<div class="d-inline-block">-->
+                            <!--{{(watch | async).price | transformPrice:priceMap}}-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<ng-template #newPrice>-->
+                        <!--<div class="d-inline-block l-price-old">-->
+                            <!--{{(watch | async).price | currencyPrice:'UAH' | toFixed: 2}}-->
+                        <!--</div>-->
+                        <!--<div class="d-inline-block">-->
+                            <!--{{(watch | async).price | transformPrice:priceMap }}-->
+                        <!--</div>-->
+                    <!--</ng-template>-->
+                </div>
+
+                <div class="l-section l-card l-margin-m">
+                    <h4>Фото</h4>
+                    <louis-c-images [imagesArray]="(watch | async).images"></louis-c-images>
+                </div>
+            </div>
+            <div class="col-md-7 l-padding-l">
+                <div class="l-card l-margin-m">
+                    <h4>Заявка на предзаказ</h4>
+                </div>
+                <form novalidate
+                      [formGroup]="orderForm"
+                      class="l-form l-card l-margin-m spec-order-form">
+
+                    <div class="l-form__group">
+                        <mat-form-field>
+                            <input matInput
+                                   placeholder="Имя"
+                                   class="l-form__control" formControlName="name">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="l-form__group">
+                        <mat-form-field>
+                            <input matInput
+                                   placeholder="Почта"
+                                   class="l-form__control" formControlName="email">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="l-form__group">
+                        <mat-form-field>
+                            <input matInput
+                                   placeholder="Телефон"
+                                   class="l-form__control" formControlName="phone">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="l-form__controls l-helper-clearfix">
+                        <button
+                                (click)="onSubmit()"
+                                class="btn btn-success l-position-right l-margin-m-left">
+                            Оставить заявку
+                        </button>
+                        <button
+                            (click)="onClean()"
+                            class="btn btn-secondary l-position-right">
+                            Очистить
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #watchLoader>
+    <louis-loader></louis-loader>
+</ng-template>

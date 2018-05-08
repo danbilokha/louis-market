@@ -2,7 +2,10 @@
     <div class="row">
         <div class="col-md-8 mr-auto ml-auto">
             <h2 class="text-center">Мы Вам ответим!</h2>
-            <form class="contact-form">
+            <form
+                    [formGroup]="keepInTouchForm"
+                    class="contact-form"
+                    (ngSubmit)="onSubmit()">
                 <div class="row">
                     <div class="col-md-6">
                         <label>Имя</label>
@@ -10,7 +13,11 @@
                             <span class="input-group-addon">
                                 <i class="nc-icon nc-single-02"></i>
                             </span>
-                            <input type="text" class="form-control" placeholder="Имя">
+                            <input
+                                    formControlName="name"
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Имя">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -19,7 +26,11 @@
                             <span class="input-group-addon">
                                 <i class="nc-icon nc-email-85"></i>
                             </span>
-                            <input type="text" class="form-control" placeholder="Почта">
+                            <input
+                                    formControlName="mail"
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Почта">
                         </div>
                     </div>
                 </div>
@@ -30,15 +41,35 @@
                             <span class="input-group-addon">
                                 <i class="nc-icon nc-mobile"></i>
                             </span>
-                            <input type="text" class="form-control" placeholder="Телефон">
+                            <input
+                                    formControlName="phone"
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Телефон">
                         </div>
                     </div>
                 </div>
-                <label>Сообщение</label>
-                <textarea class="form-control" rows="4" placeholder="Поможем определиться и подберём лучшие часы, оформим и доставим быстро!"></textarea>
                 <div class="row">
-                    <div class="col-md-4 mr-auto ml-auto">
-                        <button class="btn btn-danger btn-lg btn-fill">Отправить</button>
+                    <label>Сообщение</label>
+                    <textarea
+                            formControlName="message"
+                            class="form-control"
+                            rows="4"
+                            placeholder="Поможем определиться и подберём лучшие часы, оформим и доставим быстро!">
+                    </textarea>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 mr-auto ml-auto">
+                        <button
+                                (click)="onClean()"
+                                class="btn btn-secondary btn-lg btn-fill">Очистить
+                        </button>
+                    </div>
+                    <div class="col-xs-6 mr-auto ml-auto">
+                        <button
+                                type="submit"
+                                class="btn btn-danger btn-lg btn-fill">Отправить
+                        </button>
                     </div>
                 </div>
             </form>

@@ -1,23 +1,8 @@
-.card-watch {
-    display: inline-block;
-    
-    max-width: 300px;
-    padding: 5px;
-    margin: 5px;
+@import '../../shared/styles/variable';
 
-    &__image {
-        &_img {
-            max-width: 250px;
-            max-height: 250px;
-        }
-    }
+.l-card-watch__image {
 
-    &__price {
-        &_price {
-            &-old {
-                text-decoration: line-through;
-                color: gray;
-            }
-        }
-    }
+  &_img {
+    border-radius: $l-size-border-radius-l;
+  }
 }

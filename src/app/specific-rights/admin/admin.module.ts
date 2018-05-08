@@ -1,5 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {FormsModule} from '@angular/forms';
+import {CommonModule} from '@angular/common';
 
 import {AdminRoutingModule} from './settings/admin.routing';
 
@@ -9,6 +11,11 @@ import {AdminStuffComponent} from './pages/stuff/stuff.component';
 import {AdminStuffCreateComponent} from './pages/stuff/create/create.component';
 import {AdminStuffDeleteComponent} from './pages/stuff/delete/delete.component';
 import {AdminStuffUpdateComponent} from './pages/stuff/update/update.component';
+import {FormBaseComponent} from './pages/stuff/formBase/formBase.component';
+
+import {UiModule} from '@ui/ui.module';
+import {NgUploaderModule} from 'ngx-uploader';
+import {ComponentModule} from '@components/component.module';
 
 @NgModule({
     declarations: [
@@ -17,11 +24,17 @@ import {AdminStuffUpdateComponent} from './pages/stuff/update/update.component';
         AdminStuffComponent,
         AdminStuffCreateComponent,
         AdminStuffDeleteComponent,
-        AdminStuffUpdateComponent
+        AdminStuffUpdateComponent,
+        FormBaseComponent,
     ],
     imports: [
         RouterModule,
-        AdminRoutingModule
+        FormsModule,
+        CommonModule,
+        AdminRoutingModule,
+        NgUploaderModule,
+        ComponentModule,
+        UiModule,
     ]
 })
 class AdminModule {

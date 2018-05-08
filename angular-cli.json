@@ -18,11 +18,10 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
-      "prefix": "app",
+      "prefix": "louis",
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "assets/sass/paper-kit.scss",
-        "assets/css/demo.css",
         "assets/css/nucleo-icons.css"
       ],
       "scripts": [

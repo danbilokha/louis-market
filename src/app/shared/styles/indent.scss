@@ -1,0 +1,112 @@
+@import 'variable';
+
+::ng-deep {
+
+  .l {
+    &-margin {
+      &-s {
+        margin: $l-size-indents-s;
+
+        &-left {
+          margin-left: $l-size-indents-s;
+        }
+        &-top {
+          margin-top: $l-size-indents-s;
+        }
+        &-right {
+          margin-right: $l-size-indents-s;
+        }
+        &-bottom {
+          margin-bottom: $l-size-indents-s;
+        }
+      }
+
+      &-m {
+        margin: $l-size-indents-m;
+
+        &-left {
+          margin-left: $l-size-indents-m;
+        }
+        &-top {
+          margin-top: $l-size-indents-m;
+        }
+        &-right {
+          margin-right: $l-size-indents-m;
+        }
+        &-bottom {
+          margin-bottom: $l-size-indents-m;
+        }
+      }
+
+      &-l {
+        margin: $l-size-indents-l;
+
+        &-left {
+          margin-left: $l-size-indents-l;
+        }
+        &-top {
+          margin-top: $l-size-indents-l;
+        }
+        &-right {
+          margin-right: $l-size-indents-l;
+        }
+        &-bottom {
+          margin-bottom: $l-size-indents-l;
+        }
+      }
+    }
+
+    &-padding {
+      &-s {
+        padding: $l-size-indents-s;
+
+        &-left {
+          padding-left: $l-size-indents-s;
+        }
+        &-top {
+          padding-top: $l-size-indents-s;
+        }
+        &-right {
+          padding-right: $l-size-indents-s;
+        }
+        &-bottom {
+          padding-bottom: $l-size-indents-s;
+        }
+      }
+
+      &-m {
+        padding: $l-size-indents-m;
+
+        &-left {
+          padding-left: $l-size-indents-m;
+        }
+        &-top {
+          padding-top: $l-size-indents-m;
+        }
+        &-right {
+          padding-right: $l-size-indents-m;
+        }
+        &-bottom {
+          padding-bottom: $l-size-indents-m;
+        }
+      }
+
+      &-l {
+        padding: $l-size-indents-l;
+
+        &-left {
+          padding-left: $l-size-indents-l;
+        }
+        &-top {
+          padding-top: $l-size-indents-l;
+        }
+        &-right {
+          padding-right: $l-size-indents-l;
+        }
+        &-bottom {
+          padding-bottom: $l-size-indents-l;
+        }
+      }
+    }
+  }
+}

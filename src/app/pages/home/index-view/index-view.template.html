@@ -4,7 +4,7 @@
         <div class="container">
             <div class="title-brand">
                 <div class="angular-logo">
-                    <img src="assets/img/angular2-logo.png" alt="">
+                    <img src={{LOGO}} alt="">
                 </div>
                 <h1 class="presentation-title">Louis XVI</h1>
                 <div class="fog-low">
@@ -24,7 +24,7 @@
     <div class="moving-clouds" style="background-image: url('assets/img/clouds.png'); "></div>
 
     <div class="text-center category-absolute goto-catalog__main">
-        <a href="#" class="btn btn-outline-neutral btn-round">
+        <a [routerLink]="'/catalog'" class="btn btn-outline-neutral btn-round">
             Перейти к каталогу <i class="nc-icon nc-bag-16"></i>
         </a>
     </div>

@@ -1,26 +1,46 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 
-import {Watch} from './watch.dictionary';
-import {data} from './Mock/data';
+import {Watch} from '@dictionaries/watch.dictionary';
+import {LouisImage} from '@dictionaries/image.dictionary';
+import {DEFAULT_CARD_IMAGE} from '@settings/constants';
 
 @Component({
     selector: 'louis-watch',
     templateUrl: './watch.template.html',
     styleUrls: ['./watch.style.scss']
 })
-class WatchComponent implements OnInit {
+class WatchComponent implements OnChanges {
+
     @Input()
-    public watch: Watch;
+    public watch: any;
 
-    public priceMap:object;
-    public watchMock: any = data;
+    @Input()
+    public extraClasses: string;
 
-    ngOnInit() {
-        this.priceMap = {
-            currencyTo: 'UAH',
-            discount: this.watch.discount,
-            toFixed: 2
-        };
+    public mainImage: string = DEFAULT_CARD_IMAGE;
+
+    @Output()
+    public watchTaped: EventEmitter<Watch> = new EventEmitter<Watch>();
+
+    ngOnChanges(changes: SimpleChanges): void {
+        const watch = changes.watch.currentValue;
+        if (watch && watch.images && watch.images.length) {
+            this.mainImage = this.getMainImage(watch.images)
+        }
+    }
+
+    public onWatchTap(watch: Watch): void {
+        this.watchTaped.emit(watch);
+    }
+
+    private getMainImage(images: Array<LouisImage>): string {
+        for (let i = 0, len = images.length; i < len; i += 1) {
+            if (images[i].isMain) {
+                return images[i].binary;
+            }
+        }
+
+        return images[0].binary;
     }
 }
 

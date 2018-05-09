@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {Currency} from '@services/currency/currency.dictionary';
 import {TransformPriceService} from '@services/transformPrice/transformPrice.service';
 

@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/take';
-import 'rxjs/add/operator/publishReplay';
+import {Observable} from 'rxjs';
+
+
 
 import {skipWatches, takeWatches} from './watchList.dictionary';
 import {Watch} from '@dictionaries/watch.dictionary';

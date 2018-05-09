@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
-import {Observable} from 'rxjs/Observable';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import 'rxjs/add/operator/combineLatest';
+import {Subscription, Observable, BehaviorSubject} from 'rxjs';
+
 import {Router} from '@angular/router';
 
 import {StoreService} from '@store/store.service';

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 
 import {SCHEMA} from 'app/store/schema';
 import {StoreInternalService} from 'app/store/internal/store-internal.service';

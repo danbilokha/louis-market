@@ -1,3 +1,5 @@
+
+import {throwError as observableThrowError, Observable, Subscription} from 'rxjs';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Watch} from '@dictionaries/watch.dictionary';
@@ -5,10 +7,8 @@ import {LouisImage} from '@dictionaries/image.dictionary';
 import {DEFAULT_WATCH_IMAGE} from '@settings/constants';
 import {WatchService} from './watch.service';
 import {findWatchByName} from './watch.calculation';
-import {Observable} from 'rxjs/Observable';
-import {Subscription} from 'rxjs/Subscription';
-import 'rxjs/add/operator/skip';
-import 'rxjs/add/operator/catch';
+
+
 
 @Component({
     selector: 'louis-watch-page',
@@ -29,7 +29,7 @@ class WatchPageComponent implements OnInit, OnDestroy {
                     const watchName = param.get('name');
                     return findWatchByName(watchName)(watches);
                 } else {
-                    Observable.throw('Not such watch');
+                    observableThrowError('Not such watch');
                 }
             })
         .catch(error => {

@@ -1,7 +1,7 @@
 import {CalculatePriceService} from '@services/calculatePrice/calculatePrice.service';
 import {DiscountService} from '@services/discount/discount.service';
 import {ToFixedNumberService} from '@services/toFixed/toFixed.service';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {Currency} from '@services/currency/currency.dictionary';
 import {Injectable} from '@angular/core';
 

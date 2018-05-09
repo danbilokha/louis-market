@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {from} from 'rxjs/observable/from'
+import {Observable, from} from 'rxjs';
 
 import {StoreInternalService} from './internal/store-internal.service';
 import {PushRemoteData} from './store.action';

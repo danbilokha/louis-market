@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
-import {Subscription} from 'rxjs/Subscription';
+import {Observable, Subscription, BehaviorSubject} from 'rxjs';
 import {FormControl, FormGroup} from '@angular/forms';
 
 import {ResoveRouteParam} from '@services/resolve-route-param';
@@ -11,7 +10,6 @@ import {Watch} from '@dictionaries/watch.dictionary';
 import {StoreService} from '@store/store.service';
 import {PreOrder} from './order.dictionary';
 import {findWatchByName} from '@pages/watch/watch.calculation';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 const ROUTE_ORDER_IDENTIFICATOR = 'name';
 

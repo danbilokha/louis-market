@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Watch} from '@dictionaries/watch.dictionary';
 import {StoreService} from 'app/store/store.service';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import * as arrHelpers from '@helpers/array';
 import {WATCH} from '@settings/constants';
 

@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ExchangeService} from 'app/api/exchange/exchange.service';
 import {Currency} from './currency.dictionary';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {Observable} from 'rxjs/Observable';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 // TODO: Move that coef to a static json file, which created while application loaded and updated every `${TIME}`
 // TODO: Create Mock default exchange rate file

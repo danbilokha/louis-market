@@ -1,9 +1,7 @@
 import {ComponentFactoryResolver, ComponentRef, Directive, Input, OnDestroy, OnInit, ViewContainerRef} from '@angular/core';
 import {PriceWithDiscountComponent} from 'app/components/price/withDiscount/priceWithDiscount.component';
 import {PriceWithoutDiscountComponent} from 'app/components/price/withoutDiscount/priceWithoutDiscount.component';
-import {Observable} from 'rxjs/Observable';
-import {Subscription} from 'rxjs/Subscription';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Observable, Subscription, BehaviorSubject} from 'rxjs';
 import {Currency} from '@services/currency/currency.dictionary';
 import {TransformPriceService} from '@services/transformPrice/transformPrice.service';
 

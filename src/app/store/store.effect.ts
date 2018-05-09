@@ -1,17 +1,17 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {Actions, Effect} from '@ngrx/effects';
 
 import {
-    FETCHING_REMOTE_DATA_SUCCESS,
     FETCH_REMOTE_DATA,
+    FETCHING_REMOTE_DATA_SUCCESS,
     FetchingRemoteData,
-    RemoteData,
     PUSH_REMOTE_DATA,
-    PushingRemoteData
+    PushingRemoteData,
+    RemoteData
 } from './store.action';
 import {StoreExternalService} from './external/store-external.service';
-import {ExtendedAction, STORAGE_NAMESPACE} from './store.dictionary';
+import {ExtendedAction} from './store.dictionary';
 import {StoreLocalStorageService} from '@store/localStorage/store-localStorage';
 import {USER, WATCH} from '@settings/constants';
 

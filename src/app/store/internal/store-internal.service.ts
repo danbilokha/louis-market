@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Action, Store} from '@ngrx/store';
-import {Observable} from 'rxjs/Observable';
-import {of} from 'rxjs/observable/of'
+import {Observable, of} from 'rxjs';
 
 import {STORAGE_NAMESPACE, StoreState} from '../store.dictionary';
 

@@ -2,6 +2,7 @@ import {ComponentFactoryResolver, ComponentRef, Directive, Input, OnDestroy, OnI
 import {PriceWithDiscountComponent} from '@louis/components/price/withDiscount/priceWithDiscount.component';
 import {PriceWithoutDiscountComponent} from '@louis/components/price/withoutDiscount/priceWithoutDiscount.component';
 import {Observable, Subscription, BehaviorSubject} from 'rxjs';
+import {combineLatest} from 'rxjs';
 import {Currency} from '@services/currency/currency.dictionary';
 import {TransformPriceService} from '@services/transformPrice/transformPrice.service';
 
@@ -16,12 +17,6 @@ class PriceDirective implements OnInit, OnDestroy {
 
     @Input()
     discount: number;
-
-    @Input()
-    set price(value: number) {
-        this.priceSink.next(value);
-    };
-
     private priceSink: BehaviorSubject<number> = new BehaviorSubject<number>(undefined);
     private price$: Observable<number> = this.priceSink
         .asObservable()
@@ -32,11 +27,9 @@ class PriceDirective implements OnInit, OnDestroy {
         .asObservable()
         .filter(v => !!v)
         .switchMap(price => this.transformPriceService
-                .transform(price, {currencyTo: DEFAULT_CURRENCY, discount: this.discount, toFixed: DEFAULT_FLOAT_NUMBER}));
-
-
-    private priceSubscription: Subscription = this.price$
-        .combineLatest(this.newPrice$)
+            .transform(price, {currencyTo: DEFAULT_CURRENCY, discount: this.discount, toFixed: DEFAULT_FLOAT_NUMBER}));
+    private componentRef: ComponentRef<PriceWithDiscountComponent | PriceWithoutDiscountComponent>;
+    private priceSubscription: Subscription = combineLatest(this.price$, this.newPrice$)
         .subscribe(prices => {
             this.componentRef.instance.price = prices[0];
             if (this.componentRef.instance instanceof PriceWithDiscountComponent) {
@@ -44,12 +37,15 @@ class PriceDirective implements OnInit, OnDestroy {
             }
         });
 
-    private componentRef: ComponentRef<PriceWithDiscountComponent | PriceWithoutDiscountComponent>;
-
     constructor(private containerRef: ViewContainerRef,
                 private componentFactoryResolver: ComponentFactoryResolver,
                 private transformPriceService: TransformPriceService) {
     }
+
+    @Input()
+    set price(value: number) {
+        this.priceSink.next(value);
+    };
 
     ngOnInit() {
         const componentToCreate = this.discount || this.discount > 0

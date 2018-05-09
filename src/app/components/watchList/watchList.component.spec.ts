@@ -12,26 +12,17 @@ describe('WatchListComponent', () => {
         };
 
         sut = new WatchListComponent(dbService);
-    })
+    });
 
     it('should set default take value', () => {
         expect(sut.take)
             .toBe(takeWatches)
-    })
+    });
 
     it('should set deafult skip value', () => {
         expect(sut.skip)
             .toBe(skipWatches)
-    })
-
-    describe('ngOnInit', () => {
-        it('should call getWatchList', () => {
-            sut.ngOnInit();
-
-            expect(sut.skip)
-            .toBe(skipWatches)
-        })
-    })
+    });
 
     describe('getWatchList', () => {
         it('should call getDbData', () => {
@@ -40,5 +31,5 @@ describe('WatchListComponent', () => {
             expect(dbService.getDbData)
                 .toHaveBeenCalledWith(SCHEMA.WATCH);
         })
-    })
-})
+    });
+});

@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {Watch} from '@dictionaries/watch.dictionary';
 import {WatchService} from './watch.service';
 import {findWatchByName} from './watch.calculation';
+import {map, switchMap, take} from 'rxjs/internal/operators';
 
 @Injectable()
 class WatchResolver implements Resolve<Observable<Watch>> {
@@ -15,9 +16,11 @@ class WatchResolver implements Resolve<Observable<Watch>> {
     resolve(route: ActivatedRouteSnapshot): Observable<Watch> {
         return this.watchService
             .getWatches()
-            .map(findWatchByName(route.params.name))
-            .switchMap(v => Observable.of(v[0]))
-            .take(1);
+            .pipe(
+                map(findWatchByName(route.params.name)),
+                switchMap(v => Observable.of(v[0])),
+                take(1)
+            );
     }
 }
 

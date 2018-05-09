@@ -14,6 +14,7 @@ import {StoreExternalService} from './external/store-external.service';
 import {ExtendedAction} from './store.dictionary';
 import {StoreLocalStorageService} from '@store/localStorage/store-localStorage';
 import {USER, WATCH} from '@settings/constants';
+import {tap} from 'rxjs/internal/operators';
 
 @Injectable()
 class StoreEffect {
@@ -36,25 +37,27 @@ class StoreEffect {
     @Effect({dispatch: false})
     public setRemoteDataToLocalStorage$ = this.actions$
         .ofType(FETCHING_REMOTE_DATA_SUCCESS)
-        .do(({payload}: ExtendedAction) => {
-            const _data = JSON.parse(JSON.stringify(payload));
+        .pipe(
+            tap(({payload}: ExtendedAction) => {
+                const _data = JSON.parse(JSON.stringify(payload));
 
-            if (_data.WATCH && this.storeLocalStorageService.isLocaStoragelKey(WATCH)) {
-                for (const key in _data.WATCH) {
-                    delete _data.WATCH[key].images;
+                if (_data.WATCH && this.storeLocalStorageService.isLocaStoragelKey(WATCH)) {
+                    for (const key in _data.WATCH) {
+                        delete _data.WATCH[key].images;
+                    }
+
+                    this.storeLocalStorageService.set(WATCH, _data.WATCH);
                 }
 
-                this.storeLocalStorageService.set(WATCH, _data.WATCH);
-            }
+                if (_data.USER && this.storeLocalStorageService.isLocaStoragelKey(USER)) {
+                    for (const key in _data.USER) {
+                        delete _data.USER[key].password;
+                    }
 
-            if (_data.USER && this.storeLocalStorageService.isLocaStoragelKey(USER)) {
-                for (const key in _data.USER) {
-                    delete _data.USER[key].password;
+                    this.storeLocalStorageService.set(USER, _data.USER);
                 }
-
-                this.storeLocalStorageService.set(USER, _data.USER);
-            }
-        });
+            })
+        );
 
     @Effect()
     public pushData$: Observable<PushingRemoteData> = this.actions$

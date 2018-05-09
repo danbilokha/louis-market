@@ -1,4 +1,3 @@
-
 import {throwError as observableThrowError, Observable, Subscription} from 'rxjs';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
@@ -7,7 +6,7 @@ import {LouisImage} from '@dictionaries/image.dictionary';
 import {DEFAULT_WATCH_IMAGE} from '@settings/constants';
 import {WatchService} from './watch.service';
 import {findWatchByName} from './watch.calculation';
-
+import {catchError, skip, switchMap, withLatestFrom} from 'rxjs/internal/operators';
 
 
 @Component({
@@ -19,28 +18,30 @@ class WatchPageComponent implements OnInit, OnDestroy {
 
     public watch: Watch;
     public mainImage: LouisImage;
-    public priceMap: object;
     private watchSubscription: Subscription = this.watchService
         .getWatches()
-        .skip(1)
-        .withLatestFrom(this.route.paramMap,
-            (watches, param) => {
-                if(param.has('name')) {
-                    const watchName = param.get('name');
-                    return findWatchByName(watchName)(watches);
-                } else {
-                    observableThrowError('Not such watch');
-                }
-            })
-        .catch(error => {
-            console.error(`Not found watch. Error: ${error.message}`);
-            return Observable.of(undefined);
-        })
-        .switchMap(v => Observable.of(v[0]))
+        .pipe(
+            skip(1),
+            withLatestFrom(this.route.paramMap,
+                (watches, param) => {
+                    if (param.has('name')) {
+                        const watchName = param.get('name');
+                        return findWatchByName(watchName)(watches);
+                    } else {
+                        observableThrowError('Not such watch');
+                    }
+                }),
+            catchError(error => {
+                console.error(`Not found watch. Error: ${error.message}`);
+                return Observable.of(undefined);
+            }),
+            switchMap(v => Observable.of(v[0]))
+        )
         .subscribe(watch => {
             this.mainImage = this.getMainImage(watch.images);
             this.watch = watch;
         });
+    public priceMap: object;
 
     constructor(private route: ActivatedRoute,
                 private watchService: WatchService) {

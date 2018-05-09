@@ -10,6 +10,7 @@ import {Watch} from '@dictionaries/watch.dictionary';
 import {StoreService} from '@store/store.service';
 import {PreOrder} from './order.dictionary';
 import {findWatchByName} from '@pages/watch/watch.calculation';
+import {filter, map, publishReplay, refCount, take} from 'rxjs/internal/operators';
 
 const ROUTE_ORDER_IDENTIFICATOR = 'name';
 
@@ -31,9 +32,11 @@ class OrderPageComponent extends ResoveRouteParam implements OnInit, OnDestroy, 
     private watchSink: BehaviorSubject<Watch> = new BehaviorSubject<Watch>(undefined);
     public watch: Observable<Watch> = this.watchSink
         .asObservable()
-        .filter(v => !!v)
-        .publishReplay(1)
-        .refCount();
+        .pipe(
+            filter(v => !!v),
+            publishReplay(1),
+            refCount()
+        );
 
     constructor(protected route: ActivatedRoute,
                 public watchService: WatchService,
@@ -70,17 +73,19 @@ class OrderPageComponent extends ResoveRouteParam implements OnInit, OnDestroy, 
         console.log('submit');
         const orderForm = this.orderForm;
         this.watch
-            .take(1)
-            .map(watch => {
-                console.log('Order 1', watch);
-                this.store.set('PREORDER',
-                    new PreOrder(
-                        orderForm.get('name').value,
-                        orderForm.get('phone').value,
-                        orderForm.get('email').value,
-                        watch
-                    ))
-            });
+            .pipe(
+                take(1),
+                map(watch => {
+                    console.log('Order 1', watch);
+                    this.store.set('PREORDER',
+                        new PreOrder(
+                            orderForm.get('name').value,
+                            orderForm.get('phone').value,
+                            orderForm.get('email').value,
+                            watch
+                        ))
+                })
+            );
     }
 
     private watchInit(watch: Watch): void {

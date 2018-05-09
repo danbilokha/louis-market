@@ -1,7 +1,7 @@
 import {Observable} from 'rxjs';
 
 
-import {Watch} from 'app/shared/dictionaries/watch.dictionary';
+import {Watch} from '@louis/shared/dictionaries/watch.dictionary';
 
 const findWatchByName = (watchName: string): any =>
     (watchArr): Observable<Watch> => {

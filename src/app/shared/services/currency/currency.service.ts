@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ExchangeService} from 'app/api/exchange/exchange.service';
+import {ExchangeService} from '@louis/api/exchange/exchange.service';
 import {Currency} from './currency.dictionary';
 import {BehaviorSubject, Observable} from 'rxjs';
 

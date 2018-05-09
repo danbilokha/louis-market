@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {Observable} from 'rxjs';
 
-import {SCHEMA} from 'app/store/schema';
-import {StoreInternalService} from 'app/store/internal/store-internal.service';
+import {SCHEMA} from '@louis/store/schema';
+import {StoreInternalService} from '@louis/store/internal/store-internal.service';
 import {FetchingRemoteDataSuccess} from '../store.action';
 import {toArray} from '@helpers/array';
 

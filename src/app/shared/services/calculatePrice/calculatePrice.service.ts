@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {CurrencyService} from 'app/shared/services/currency/currency.service';
-import {Currency} from 'app/shared/services/currency/currency.dictionary';
+import {CurrencyService} from '@louis/shared/services/currency/currency.service';
+import {Currency} from '@louis/shared/services/currency/currency.dictionary';
 import {Observable} from 'rxjs';
 
 @Injectable()

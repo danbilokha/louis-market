@@ -23,7 +23,6 @@ class StoreService {
             .withLatestFrom(
                 this.getLocalStorageData(_entity),
                 (internalData, localStorageData) => {
-
                     switch (true) {
                         case !!internalData:
                             console.info('internal');

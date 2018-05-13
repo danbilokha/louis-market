@@ -40,6 +40,8 @@ import {ComponentModule} from '@components/component.module';
 import {UiModule} from '@ui/ui.module';
 import {ApiModule} from './api/api.module';
 import {SharedModule} from '@shared/shared.module';
+import {StoreEffect} from '@store/store.effect';
+import {EffectsModule} from '@ngrx/effects';
 
 @NgModule({
     declarations: [
@@ -72,6 +74,9 @@ import {SharedModule} from '@shared/shared.module';
         ReactiveFormsModule,
         FormsModule,
         RouterModule,
+        EffectsModule.forRoot([
+            StoreEffect
+        ]),
         UiModule,
         AppRoutingModule,
         AppStoreModule,

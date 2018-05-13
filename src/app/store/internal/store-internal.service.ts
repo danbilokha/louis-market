@@ -15,7 +15,8 @@ class StoreInternalService {
     }
 
     public select<T>(entity: any): Observable<T> {
-        return this.store.select(this.getStorageReducer(entity))
+        return this.store
+            .select(this.getStorageReducer(entity))
             .switchMap(v => {
                 return of(v[entity]);
             });

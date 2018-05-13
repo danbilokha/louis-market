@@ -108,6 +108,8 @@ module.exports = {
                 "test": /\.js$/,
                 "loader": "source-map-loader",
                 "exclude": [
+                    /\.ngfactory\.js$/,
+                    /\.ngstyle\.js$/,
                     /(\\|\/)node_modules(\\|\/)/
                 ]
             },

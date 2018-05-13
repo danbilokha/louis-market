@@ -1,13 +1,13 @@
 <div
-        *ngIf="!(showPreloader && !(watchList$ | async)?.length); else watchLoader"
+
         class="watch-list">
-    <ng-template ngFor let-watch [ngForOf]="watchList$ | async">
-        <louis-watch
+    <ng-template ngFor let-watch [ngForOf]="(watchList$ | async)">
+        <louis-component-watch
+                (watchTaped)="onWatchTap($event)"
                 [watch]="watch"
-                [extraClasses]="options?.extraClasses"></louis-watch>
+                [extraClasses]="options?.extraClasses"></louis-component-watch>
     </ng-template>
 </div>
-
 
 <ng-template #watchLoader>
     <louis-loader></louis-loader>

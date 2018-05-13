@@ -12,7 +12,6 @@
                 </div>
                 <div class="name">
                     <h4 class="title">{{watch.name}}<br/></h4>
-                    <!--<h6 class="description">Music Producer</h6>-->
                 </div>
             </div>
 
@@ -27,24 +26,20 @@
                     </div>
                     <div class="l-section watch-page__section">
                         <h4>Цена</h4>
-                        <div *ngIf="!(watch.discount && watch.discount !== 0); else newPrice">
-                            <div class="card-watch__price_price d-inline-block">
-                                {{watch.price | priceShow:priceMap}}
-                            </div>
+                        <div
+                                louisPrice
+                                [discount]="watch.discount"
+                                [price]="watch.price">
                         </div>
-                        <ng-template #newPrice>
-                            <div class="d-inline-block card-watch__price_price-old l-price-old">
-                                {{watch.price | currencyPrice:'UAH' | toFixed: 2}}
-                            </div>
-                            <div class="card-watch__price_price d-inline-block">
-                                {{watch.price | priceShow:priceMap }}
-                            </div>
-                        </ng-template>
                     </div>
+
                     <br/>
+
                     <button
-                            [routerLink]="['/order', watch.name]"
-                            class="btn btn-outline-default btn-round">
+                            [className]="!!wantToBuy
+                                ? 'btn btn-outline-default btn-round wantToBuy'
+                                : 'btn btn-outline-default btn-round'"
+                            (click)="buyButton()">
                         <i class="fa fa-shopping-bag"></i>
                         Купить
                     </button>
@@ -53,7 +48,22 @@
 
             <br/>
 
-            <louis-watch-comments></louis-watch-comments>
+            <louis-component-order
+                    [watch]="watch"
+                    [wantToBuy]="wantToBuy"
+                    (orderWatch)="orderWatch($event)"
+                    (orderCancle)="buyButton()"></louis-component-order>
+
+            <div *ngIf="showSuccessBuyModal">
+                <louis-component-modal
+                        [headerText]="'Предзаказ'"
+                        [content]="'Ваш предзаказ сохранен!'"
+                        [submitButtonText]="'Ок'"
+                        (modalClose)="showSuccessBuyModal = false"
+                        (modalSubmit)="showSuccessBuyModal = false"></louis-component-modal>
+            </div>
+
+            <louis-component-comments></louis-component-comments>
         </div>
     </div>
 </div>

@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
 
 @Component({
-    selector: 'louis-c-comment',
-    templateUrl: './comment.template.html',
-    styleUrls: ['./comment.style.scss']
+    selector: 'louis-component-comments',
+    templateUrl: './comment.template.html'
 })
 class CommentComponent {}
 

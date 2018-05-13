@@ -1,13 +1,11 @@
 import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 
-import {SCHEMA} from 'app/store/schema';
-import {StoreInternalService} from 'app/store/internal/store-internal.service';
+import {SCHEMA} from '@louis/store/schema';
+import {StoreInternalService} from '@louis/store/internal/store-internal.service';
 import {FetchingRemoteDataSuccess} from '../store.action';
-import {StoreLocalStorageService} from '../localStorage/store-localStorage';
-import {LocalStorageNamespace} from '../store.dictionary';
-import {toArray} from '@common/helpers/array';
+import {toArray} from '@helpers/array';
 
 @Injectable()
 class StoreExternalService {
@@ -18,8 +16,7 @@ class StoreExternalService {
         .share();
 
     constructor(private db: AngularFireDatabase,
-                private internalStore: StoreInternalService,
-                private localStorage: StoreLocalStorageService) {
+                private internalStore: StoreInternalService) {
     }
 
     public usersRemoteData$: Observable<any> = this.getAllData() // tslint:disable-line
@@ -36,7 +33,6 @@ class StoreExternalService {
                 }
 
                 this.internalStore.dispatch(new FetchingRemoteDataSuccess(_data));
-                this.setToLocalStorage(_data);
             });
     }
 
@@ -44,26 +40,6 @@ class StoreExternalService {
         this.db
             .list(`${SCHEMA.DATA}/${entity}`)
             .push(value);
-    }
-
-    private setToLocalStorage(data: any): void {
-        const _data = JSON.parse(JSON.stringify(data));
-
-        if (_data.WATCH) {
-            for (const key in _data.WATCH) {
-                delete _data.WATCH[key].images;
-            }
-
-            this.localStorage.set(LocalStorageNamespace.Watch.toString(), _data.WATCH);
-        }
-
-        // if (_data.USER) {
-        //     for (const key in _data.USER) {
-        //         delete _data.USER[key].password;
-        //     }
-        //
-        //     this.localStorage.set(LocalStorageNamespace.User.toString(), _data.USER);
-        // }
     }
 }
 

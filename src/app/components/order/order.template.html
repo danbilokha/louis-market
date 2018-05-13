@@ -1,0 +1,57 @@
+<div class="row spec-order-content"
+     *ngIf="wantToBuy">
+    <div class="col-md-9">
+        <div class="l-card l-margin-m">
+            <h4>Заявка на предзаказ</h4>
+        </div>
+        <form novalidate
+              [formGroup]="orderForm"
+              class="l-form l-card l-margin-m spec-order-form">
+
+            <div class="l-form__group">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Имя"
+                           class="l-form__control" formControlName="name">
+                </mat-form-field>
+            </div>
+
+            <div class="l-form__group">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Почта"
+                           class="l-form__control" formControlName="email">
+                </mat-form-field>
+            </div>
+
+            <div class="l-form__group">
+                <mat-form-field>
+                    <input matInput
+                           placeholder="Телефон"
+                           class="l-form__control" formControlName="phone">
+                </mat-form-field>
+            </div>
+
+            <div class="l-form__controls l-helper-clearfix">
+                <button
+                        (click)="onSubmit()"
+                        class="btn btn-success l-position-right l-margin-m-left">
+                    Оставить заявку
+                </button>
+                <button
+                        (click)="onClean()"
+                        class="btn btn-secondary l-position-right">
+                    Очистить
+                </button>
+                <button
+                        (click)="onCancle()"
+                        class="btn btn-danger l-position-left">
+                    Отменить
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-3">
+        Безопастная сделка
+    </div>
+</div>

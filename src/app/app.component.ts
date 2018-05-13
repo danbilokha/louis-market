@@ -1,11 +1,11 @@
 import {Component, OnInit, Inject, Renderer, ElementRef, ViewChild} from '@angular/core';
 import {Router, NavigationEnd} from '@angular/router';
-import {Subscription} from 'rxjs/Subscription';
-import 'rxjs/add/operator/filter';
+import {Subscription} from 'rxjs';
+
 import {DOCUMENT} from '@angular/platform-browser';
 import {Location} from '@angular/common';
 
-import {NavbarComponent} from './common/navbar/navbar.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
 import {StoreInternalService} from './store/internal/store-internal.service';
 import {FetchRemoteData} from '@store/store.action';
 

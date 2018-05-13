@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 
 import {StoreLocalStorageService} from '@store/localStorage/store-localStorage';
-import {LocalStorageNamespace} from '@store/store.dictionary';
-import {User} from '@pages/authorization/authorization.dictionary';
-import {Observable} from 'rxjs/Observable';
+import {User} from '@pages/authentication/authentication.dictionary';
+import {USER} from '@settings/constants';
 
 @Injectable()
 class SessionService {
@@ -12,11 +11,19 @@ class SessionService {
     }
 
     public isSignedUser(): boolean {
-        return !!this.storeLocalStorageService.get(LocalStorageNamespace.User.toString());
+        if (this.storeLocalStorageService.isLocaStoragelKey(USER)) {
+            return !!this.storeLocalStorageService.get(USER);
+        } else {
+            throw Error('No such field in local storage, or do not be their.');
+        }
     }
 
     public getSignInUser(): User {
-        return this.storeLocalStorageService.get(LocalStorageNamespace.User.toString()) as User;
+        if (this.storeLocalStorageService.isLocaStoragelKey(USER)) {
+            return this.storeLocalStorageService.get(USER) as User;
+        } else {
+            throw Error('No such field in local storage, or do not be their.');
+        }
     }
 }
 

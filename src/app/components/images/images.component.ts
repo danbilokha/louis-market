@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {LouisImage} from '@common/dictionaries/image.dictionary';
+import {LouisImage} from '@dictionaries/image.dictionary';
 import {Image} from 'angular-modal-gallery';
 
 import {louisImageMapToModalGalleryImage} from './images.calculation';
@@ -12,12 +12,12 @@ class ImagesComponent {
 
     public images: Array<Image>;
 
-    // @Input()
-    // public stylesOption: object;
-
     @Input()
     public set imagesArray(images: Array<LouisImage>) {
-        this.images = louisImageMapToModalGalleryImage(images)
+        if (images === undefined) {
+            return;
+        }
+        this.images = louisImageMapToModalGalleryImage(images);
     };
 }
 

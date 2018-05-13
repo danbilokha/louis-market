@@ -15,6 +15,7 @@ import {FormBaseComponent} from './pages/stuff/formBase/formBase.component';
 
 import {UiModule} from '@ui/ui.module';
 import {NgUploaderModule} from 'ngx-uploader';
+import {ComponentModule} from '@components/component.module';
 
 @NgModule({
     declarations: [
@@ -32,6 +33,7 @@ import {NgUploaderModule} from 'ngx-uploader';
         CommonModule,
         AdminRoutingModule,
         NgUploaderModule,
+        ComponentModule,
         UiModule,
     ]
 })

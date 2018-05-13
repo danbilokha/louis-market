@@ -1,20 +1,24 @@
-@import 'common/styles/variable';
-@import './common/styles/card';
-@import './common/styles/reusable';
-@import './common/styles/line';
-@import './common/styles/kill-library';
-@import './common/styles/indent';
-@import './common/styles/helper';
-@import './common/styles/image';
-@import './common/styles/positon';
+@import 'shared/styles/variable';
+@import 'shared/styles/card';
+@import 'shared/styles/reusable';
+@import 'shared/styles/line';
+@import 'shared/styles/kill-library';
+@import 'shared/styles/indent';
+@import 'shared/styles/helper';
+@import 'shared/styles/image';
+@import 'shared/styles/positon';
 
 ::ng-deep {
   .l {
 
     &-price {
+      margin-top: 10px;
+      font-size: large;
+
       &-old {
         text-decoration: line-through;
         color: gray;
+        padding-right: 5px;
       }
     }
 

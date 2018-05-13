@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {LouisImage} from '@common/dictionaries/Image.dictionary';
+import {LouisImage} from '@dictionaries/image.dictionary'; // TODO: Remove external module dependency
 
 @Component({
     selector: 'louis-upload-images',
@@ -8,7 +8,7 @@ import {LouisImage} from '@common/dictionaries/Image.dictionary';
 })
 class UploadImagesComponent {
 
-    @Input() public imageLoaFieldText: string = 'Кликните чтобы загрузить фотографии';
+    @Input() public imageLoadFieldText: string = 'Кликните чтобы загрузить фотографии';
     @Input() public imageLoadBtnText: string = 'Загрузить фотографии';
 
     @Output() public loadedImages: EventEmitter<Array<LouisImage>> = new EventEmitter<Array<LouisImage>>();
@@ -23,7 +23,7 @@ class UploadImagesComponent {
         const imageName = target.name;
         const imageArr = [...this.images];
 
-        for(let i = 0, len = imageArr.length; i < len; i += 1) {
+        for (let i = 0, len = imageArr.length; i < len; i += 1) {
             imageArr[i].isMain = imageArr[i].name === imageName;
         }
 
@@ -43,11 +43,16 @@ class UploadImagesComponent {
         let isAlreadyUploaded = false;
 
         name = this.getImageName(name);
-        this.images.map(image => {
-            if (image.name === name) {
+
+        let i: number = 0;
+        const len: number = this.images.length;
+        while (i < len) {
+            if (this.images[i].name === name) {
                 isAlreadyUploaded = true;
+                i = len;
             }
-        });
+            i += 1;
+        }
 
         return isAlreadyUploaded;
     }

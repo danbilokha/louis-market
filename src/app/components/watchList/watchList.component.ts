@@ -1,46 +1,44 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/take';
-import 'rxjs/add/operator/publishReplay';
-
-import {takeWatches, skipWatches} from './watchList.dictionary';
-import {Watch} from '@common/dictionaries/watch.dictionary';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Observable} from 'rxjs';
+import {skipWatches, takeWatches} from './watchList.dictionary';
+import {Watch} from '@dictionaries/watch.dictionary';
 import {StoreService} from '@store/store.service';
-import {RemoteState} from '@store/store.dictionary';
-import * as arrHelpers from '@common/helpers/array';
+import * as arrHelpers from '@helpers/array';
+import {WATCH} from '@settings/constants';
+import {filter, map, publishReplay, refCount} from 'rxjs/internal/operators';
 
 @Component({
-    selector: 'louis-c-watch-watch-list',
+    selector: 'louis-component-watch-watch-list',
     templateUrl: './watchList.template.html',
     styleUrls: ['./watchList.style.scss']
 })
-class WatchListComponent implements OnInit {
+class WatchListComponent {
 
     @Input() showPreloader: boolean = false; // tslint:disable-line
     @Input() options: any;
     @Input() skip: number = skipWatches;
     @Input() take: number = takeWatches;
 
-    public watchList$: Observable<Array<Watch>>;
+    public watchList$: Observable<Array<Watch>> = this.store
+        .get(WATCH)
+        .pipe(
+            filter(watch => !!watch),
+            map(arrHelpers.toArray),
+            map(arrHelpers.skip(this.skip)),
+            map(arrHelpers.take(this.take)),
+            publishReplay(1),
+            refCount()
+        );
 
-    private getWatchList = (skip: number, take: number): Observable<Array<Watch>> =>
-        this.store
-            .get('remote')
-            .filter((remote: RemoteState) => !!remote.data)
-            .map(({data: {WATCH}}: RemoteState) => WATCH)
-            .map(arrHelpers.toArray)
-            .map(arrHelpers.skip(skip))
-            .map(arrHelpers.take(take))
-            .publishReplay(1)
-            .refCount();
+    @Output()
+    public watchTaped: EventEmitter<Watch> = new EventEmitter<Watch>();
 
     constructor(private store: StoreService) {
     }
 
-    ngOnInit() {
-        this.watchList$ = this.getWatchList(this.skip, this.take);
+    public onWatchTap(watch: Watch): void {
+        this.watchTaped.emit(watch);
     }
-
 }
 
 export {WatchListComponent};

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {LouisImage} from '@common/dictionaries/Image.dictionary';
-import {Watch} from '@common/dictionaries/watch.dictionary';
+import {LouisImage} from '@dictionaries/image.dictionary';
+import {Watch} from '@dictionaries/watch.dictionary';
 import * as _ from 'lodash';
 
 import {StoreService} from '@store/store.service';

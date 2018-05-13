@@ -16,7 +16,7 @@ class SignInGuard extends AuthGuard {
     canActivate(): boolean {
         const canActivate: boolean = super.canActivate();
         if(!canActivate) {
-            this.router.navigate(['/home']);
+            super.redirectTo('/home');
         }
         return canActivate;
     }

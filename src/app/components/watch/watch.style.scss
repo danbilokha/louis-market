@@ -1,0 +1,8 @@
+@import '../../shared/styles/variable';
+
+.l-card-watch__image {
+
+  &_img {
+    border-radius: $l-size-border-radius-l;
+  }
+}

@@ -2,16 +2,16 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {addSpace, reverseString} from './addSpace.calculation';
 
 @Pipe({
-    name: '[addSpace]'
+    name: 'addSpace'
 })
 class AddSpacePipe implements PipeTransform {
 
-    transform(value: string): string {
-        if (value.length < 5) {
-            return value;
+    transform(value: number | string): string {
+        if (value.toString().length < 5) {
+            return value.toString();
         }
 
-        return reverseString(addSpace(reverseString(value)));
+        return reverseString(addSpace(reverseString(value.toString())));
     }
 }
 

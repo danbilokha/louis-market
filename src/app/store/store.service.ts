@@ -25,10 +25,10 @@ class StoreService {
                 (internalData, localStorageData) => {
                     switch (true) {
                         case !!internalData:
-                            console.info('internal');
+                            console.info('Fetch data from internal store.');
                             return internalData;
                         case !!localStorageData:
-                            console.info('local');
+                            console.info('Fetch data from local store.');
                             return localStorageData;
                     }
                 })

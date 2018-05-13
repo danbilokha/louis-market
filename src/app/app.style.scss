@@ -12,9 +12,13 @@
   .l {
 
     &-price {
+      margin-top: 10px;
+      font-size: large;
+
       &-old {
         text-decoration: line-through;
         color: gray;
+        padding-right: 5px;
       }
     }
 

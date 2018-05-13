@@ -16,20 +16,11 @@
                 </div>
                 <div class="l-section d-inline-block l-card l-card-hoverable l-margin-m">
                     <h4>Цена</h4>
-                    <!-- TODO: PRICEPIPE: Replace new logic -->
-                    <!--<div *ngIf="!((watch | async).discount && (watch | async).discount !== 0); else newPrice">-->
-                        <!--<div class="d-inline-block">-->
-                            <!--{{(watch | async).price | transformPrice:priceMap}}-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<ng-template #newPrice>-->
-                        <!--<div class="d-inline-block l-price-old">-->
-                            <!--{{(watch | async).price | currencyPrice:'UAH' | toFixed: 2}}-->
-                        <!--</div>-->
-                        <!--<div class="d-inline-block">-->
-                            <!--{{(watch | async).price | transformPrice:priceMap }}-->
-                        <!--</div>-->
-                    <!--</ng-template>-->
+                    <div
+                            louisPrice
+                            [discount]="(watch | async).discount"
+                            [price]="(watch | async).price">
+                    </div>
                 </div>
 
                 <div class="l-section l-card l-margin-m">

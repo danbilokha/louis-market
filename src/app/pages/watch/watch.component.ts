@@ -41,7 +41,6 @@ class WatchPageComponent implements OnInit, OnDestroy {
             this.mainImage = this.getMainImage(watch.images);
             this.watch = watch;
         });
-    public priceMap: object;
 
     constructor(private route: ActivatedRoute,
                 private watchService: WatchService) {
@@ -58,12 +57,6 @@ class WatchPageComponent implements OnInit, OnDestroy {
                 `${DEFAULT_WATCH_IMAGE}`,
                 true
             );
-
-        this.priceMap = {
-            currencyTo: 'UAH',
-            discount: this.watch.discount,
-            toFixed: 2
-        };
     }
 
     ngOnDestroy() {

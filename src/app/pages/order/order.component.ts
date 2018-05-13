@@ -1,16 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Observable, Subscription, BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 import {FormControl, FormGroup} from '@angular/forms';
-
-import {ResoveRouteParam} from '@services/resolve-route-param';
-import {ResoveWatchByName} from '@services/resolve-watch-by-name';
 import {WatchService} from '../watch/watch.service';
 import {Watch} from '@dictionaries/watch.dictionary';
 import {StoreService} from '@store/store.service';
 import {PreOrder} from './order.dictionary';
-import {findWatchByName} from '@pages/watch/watch.calculation';
-import {filter, map, publishReplay, refCount, take} from 'rxjs/internal/operators';
+import {filter, map, publishReplay, refCount, take, tap} from 'rxjs/internal/operators';
 
 const ROUTE_ORDER_IDENTIFICATOR = 'name';
 
@@ -19,10 +15,9 @@ const ROUTE_ORDER_IDENTIFICATOR = 'name';
     templateUrl: './order.template.html',
     styleUrls: ['./order.style.scss']
 })
-class OrderPageComponent extends ResoveRouteParam implements OnInit, OnDestroy, ResoveWatchByName {
+class OrderPageComponent  implements OnInit, OnDestroy {
 
     public watchSubscription: Subscription;
-    public priceMap: object;
     public orderForm = new FormGroup({
         name: new FormControl(),
         email: new FormControl(),
@@ -33,6 +28,7 @@ class OrderPageComponent extends ResoveRouteParam implements OnInit, OnDestroy, 
     public watch: Observable<Watch> = this.watchSink
         .asObservable()
         .pipe(
+            tap(v => console.log(v)),
             filter(v => !!v),
             publishReplay(1),
             refCount()
@@ -41,28 +37,13 @@ class OrderPageComponent extends ResoveRouteParam implements OnInit, OnDestroy, 
     constructor(protected route: ActivatedRoute,
                 public watchService: WatchService,
                 private store: StoreService) {
-        super(route, ROUTE_ORDER_IDENTIFICATOR);
     }
 
     ngOnInit() {
-        super.ngOnInit();
     }
 
     ngOnDestroy() {
-        super.ngOnDestroy();
-
         this.watchSubscription.unsubscribe();
-    }
-
-    public catchRouteParam(watchName: string): void {
-        this.watchSubscription = this.resovleWatchByName(watchName)
-            .subscribe(watch => this.watchInit(watch[0]));
-    }
-
-    public resovleWatchByName(watchName: string): Observable<Watch> {
-        return this.watchService
-            .getWatches()
-            .map(findWatchByName(watchName));
     }
 
     public onClean(): void {
@@ -70,13 +51,11 @@ class OrderPageComponent extends ResoveRouteParam implements OnInit, OnDestroy, 
     }
 
     public onSubmit(): void {
-        console.log('submit');
         const orderForm = this.orderForm;
         this.watch
             .pipe(
                 take(1),
                 map(watch => {
-                    console.log('Order 1', watch);
                     this.store.set('PREORDER',
                         new PreOrder(
                             orderForm.get('name').value,
@@ -90,13 +69,6 @@ class OrderPageComponent extends ResoveRouteParam implements OnInit, OnDestroy, 
 
     private watchInit(watch: Watch): void {
         this.watchSink.next(watch);
-
-        // TODO: Remove all currencyResolver map - what hell is that?
-        this.priceMap = {
-            currencyTo: 'UAH',
-            discount: watch.discount,
-            toFixed: 2
-        };
     }
 
 }

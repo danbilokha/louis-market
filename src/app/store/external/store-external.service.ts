@@ -32,8 +32,6 @@ class StoreExternalService {
                     delete _data.USER;
                 }
 
-                console.log(_data);
-
                 this.internalStore.dispatch(new FetchingRemoteDataSuccess(_data));
             });
     }

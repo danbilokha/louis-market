@@ -30,8 +30,10 @@ const routes: Routes = [
     {
         path: 'catalog', component: CatalogComponent
     },
-    { // TODO: Load lazy module only admins
-        path: 'admin', loadChildren: '../specific-rights/admin/admin.module#AdminModule'
+    {
+        // TODO: Load lazy module only admins
+        path: 'admin',
+        loadChildren: '../specific-rights/admin/admin.module#AdminModule'
     },
     {
         path: 'watch/:name',
@@ -41,7 +43,11 @@ const routes: Routes = [
         }
     },
     {
-        path: 'order/:name', component: OrderPageComponent
+        path: 'order/:name',
+        component: OrderPageComponent,
+        resolve: {
+            watch: WatchResolver
+        }
     },
     {
         path: 'home', redirectTo: '', pathMatch: 'full'

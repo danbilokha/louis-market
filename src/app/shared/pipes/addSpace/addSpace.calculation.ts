@@ -5,7 +5,7 @@ const reverseString = (str: string): string => {
     }
 
     return newStr;
-}
+};
 
 const addSpace = (str: string): string => {
     let newStr = '';
@@ -14,6 +14,6 @@ const addSpace = (str: string): string => {
     }
 
     return str;
-}
+};
 
 export {reverseString, addSpace};

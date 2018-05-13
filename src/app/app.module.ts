@@ -38,7 +38,7 @@ import {AppStoreModule} from '@store/store.module';
 import {AdminModule} from './specific-rights/admin/admin.module';
 import {ComponentModule} from '@components/component.module';
 import {UiModule} from '@ui/ui.module';
-import {ApiModule} from './api/api.module';
+import {ApiModule} from '@api/api.module';
 import {SharedModule} from '@shared/shared.module';
 import {StoreEffect} from '@store/store.effect';
 import {EffectsModule} from '@ngrx/effects';

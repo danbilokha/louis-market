@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {Currency} from '@services/currency/currency.dictionary';
 
 @Pipe({
-    name: '[currencySign]'
+    name: 'currencySign'
 })
 class CurrencySignPipe implements PipeTransform {
 

@@ -5,7 +5,7 @@ import {LouisImage} from '@dictionaries/image.dictionary';
 import {DEFAULT_CARD_IMAGE} from '@settings/constants';
 
 @Component({
-    selector: 'louis-watch',
+    selector: 'louis-component-watch',
     templateUrl: './watch.template.html',
     styleUrls: ['./watch.style.scss']
 })

@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
-    selector: 'louis-c-modal-component',
-    templateUrl: './modal.component.html'
+    selector: 'louis-component-modal',
+    templateUrl: './modal.template.html',
+    styleUrls: ['./modal.styles.scss']
 })
 class ModalComponent {
 
@@ -10,10 +11,10 @@ class ModalComponent {
     @Input() public submitButtonText = 'Готово';
 
     @Input()
-    public content: any;
+    public content: any = false;
 
     @Input()
-    public footer: any;
+    public footer: any = false;
 
     @Output()
     public modalClose = new EventEmitter<any>();

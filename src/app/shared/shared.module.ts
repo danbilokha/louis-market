@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CalculatePriceService} from '@louis/shared/services/calculatePrice/calculatePrice.service';
 import {CurrencyService} from '@louis/shared/services/currency/currency.service';
-import {CurrencyResolverService} from '@louis/shared/services/currencyResolver/currencyResolver.service';
 import {DiscountService} from '@louis/shared/services/discount/discount.service';
 import {ToFixedNumberService} from '@louis/shared/services/toFixed/toFixed.service';
 import {AddSpacePipe} from '@pipes/addSpace/addSpace.pipe';
@@ -11,7 +10,8 @@ import {PriceDirective} from '@directives/price/price.directive';
 import {TransformPriceService} from '@services/transformPrice/transformPrice.service';
 
 @NgModule({
-    imports: [],
+    imports: [
+    ],
     declarations: [
         AddSpacePipe,
         CurrencySignPipe,
@@ -21,7 +21,6 @@ import {TransformPriceService} from '@services/transformPrice/transformPrice.ser
     providers: [
         CalculatePriceService,
         CurrencyService,
-        CurrencyResolverService,
         DiscountService,
         ToFixedNumberService,
         TransformPriceService

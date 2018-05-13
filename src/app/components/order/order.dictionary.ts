@@ -1,6 +1,6 @@
-import {Watch} from '@dictionaries/watch.dictionary';
+import {Watch} from 'shared/dictionaries/watch.dictionary';
 
-class PreOrder {
+class Order {
 
     constructor(public name: string,
                 public phone: string,
@@ -10,4 +10,4 @@ class PreOrder {
 
 }
 
-export {PreOrder};
+export {Order};

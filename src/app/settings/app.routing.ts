@@ -8,7 +8,6 @@ import {SignUpComponent} from '@pages/authentication/sign-up/sign-up.component';
 import {LandingComponent} from '@pages/landing/landing.component';
 import {NotFoundComponent} from '@pages/notFound/not-found.component';
 import {CatalogComponent} from '@pages/catalog/catalog.component';
-import {OrderPageComponent} from '@pages/order/order.component';
 import {SignInComponent} from '@pages/authentication/sign-in/sign-in.component';
 import {NonSignInGuard} from './NonSignInGuard';
 import {WatchResolver} from '@pages/watch/watch.resolver';
@@ -43,8 +42,8 @@ const routes: Routes = [
         }
     },
     {
-        path: 'order/:name',
-        component: OrderPageComponent,
+        path: 'watch/:name/:order',
+        component: WatchPageComponent,
         resolve: {
             watch: WatchResolver
         }
@@ -65,8 +64,7 @@ const routes: Routes = [
         CommonModule,
         BrowserModule,
         RouterModule.forRoot(routes)
-    ],
-    exports: [],
+    ]
 })
 export class AppRoutingModule {
 }

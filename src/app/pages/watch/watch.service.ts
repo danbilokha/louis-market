@@ -4,6 +4,7 @@ import {StoreService} from '@louis/store/store.service';
 import {Observable} from 'rxjs';
 import * as arrHelpers from '@helpers/array';
 import {WATCH} from '@settings/constants';
+import {Order} from '@components/order/order.dictionary';
 
 @Injectable()
 class WatchService {
@@ -16,6 +17,10 @@ class WatchService {
             .share();
 
     constructor(private store: StoreService) {
+    }
+
+    public makeOrder(order: Order): void {
+        this.store.set('PREORDER', order);
     }
 }
 

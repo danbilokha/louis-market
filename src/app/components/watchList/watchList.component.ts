@@ -8,7 +8,7 @@ import {WATCH} from '@settings/constants';
 import {filter, map, publishReplay, refCount} from 'rxjs/internal/operators';
 
 @Component({
-    selector: 'louis-c-watch-watch-list',
+    selector: 'louis-component-watch-watch-list',
     templateUrl: './watchList.template.html',
     styleUrls: ['./watchList.style.scss']
 })

@@ -1,4 +1,4 @@
-import {LouisImage} from './Image.dictionary';
+import {LouisImage} from './image.dictionary';
 
 class Watch {
     constructor(public name: string

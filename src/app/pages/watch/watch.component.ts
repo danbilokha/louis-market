@@ -1,4 +1,4 @@
-import {throwError as observableThrowError, Observable, Subscription} from 'rxjs';
+import {Observable, Subscription, throwError as observableThrowError} from 'rxjs';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Watch} from '@dictionaries/watch.dictionary';
@@ -7,15 +7,17 @@ import {DEFAULT_WATCH_IMAGE} from '@settings/constants';
 import {WatchService} from './watch.service';
 import {findWatchByName} from './watch.calculation';
 import {catchError, skip, switchMap, withLatestFrom} from 'rxjs/internal/operators';
-
+import {Order} from '@components/order/order.dictionary';
 
 @Component({
-    selector: 'louis-watch-page',
+    selector: 'louis-page-watch',
     templateUrl: './watch.template.html',
     styleUrls: ['./watch.style.scss']
 })
 class WatchPageComponent implements OnInit, OnDestroy {
 
+    public wantToBuy: boolean = false;
+    public showSuccessBuyModal: boolean = false;
     public watch: Watch;
     public mainImage: LouisImage;
     private watchSubscription: Subscription = this.watchService
@@ -29,6 +31,11 @@ class WatchPageComponent implements OnInit, OnDestroy {
                         return findWatchByName(watchName)(watches);
                     } else {
                         observableThrowError('Not such watch');
+                    }
+
+                    // TODO: UNWORKED. NEED TO FIXED
+                    if (param.has('order')) {
+                        this.buyButton();
                     }
                 }),
             catchError(error => {
@@ -63,14 +70,21 @@ class WatchPageComponent implements OnInit, OnDestroy {
         this.watchSubscription.unsubscribe();
     }
 
-    private getMainImage(images: Array<LouisImage>): LouisImage {
+    public buyButton() {
+        this.wantToBuy = !this.wantToBuy;
+    }
 
+    public orderWatch(order: Order) {
+        this.watchService.makeOrder(order);
+        this.showSuccessBuyModal = true;
+    }
+
+    private getMainImage(images: Array<LouisImage>): LouisImage {
         for (let i = 0, len = images.length; i < len; i += 1) {
             if (images[i].isMain) {
                 return images[i];
             }
         }
-
         return images[0];
     }
 }

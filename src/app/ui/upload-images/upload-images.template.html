@@ -4,7 +4,7 @@
             <label
                     for="images"
                     class="image-load__field_text">
-                {{ imageLoaFieldText }}
+                {{ imageLoadFieldText }}
             </label>
         </div>
         <div class="image-load__btn">
@@ -15,7 +15,6 @@
                     id="images"
                     class="image-load__btn_hide"
                     type="file"
-                    [(ngModel)]="images"
                     (change)="onLoadImages($event)"
                     name="images"
                     accept="image/*"

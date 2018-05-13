@@ -8,7 +8,7 @@ import {Component, Input} from '@angular/core';
 class HeaderComponent {
 
     @Input()
-    public backgroundImage: string = '../assets/img/fabio-mangione.jpg';
+    public backgroundImage: string = 'assets/img/fabio-mangione.jpg';
 
 }
 

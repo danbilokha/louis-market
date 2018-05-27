@@ -57,13 +57,4 @@ export class NavbarComponent implements OnInit {
             return false;
         }
     }
-    isDocumentation() {
-        var titlee = this.location.prepareExternalUrl(this.location.path());
-        if( titlee === '/documentation' ) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
 }

@@ -11,8 +11,8 @@ class TransformPricePipe implements PipeTransform {
     constructor(private transformPriceService: TransformPriceService) {
     }
 
-    transform(value: number, {currencyTo = Currency.UAH, discount = 0, toFixed = 2}): Observable<number> {
-        return this.transformPriceService.transform(value, {currencyTo, discount, toFixed});
+    transform(value: number, currencyFrom: Currency, {currencyTo = Currency.UAH, discount = 0, toFixed = 2}): Observable<number> {
+        return this.transformPriceService.transform(value, currencyFrom, {currencyTo, discount, toFixed});
     }
 }
 

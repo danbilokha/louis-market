@@ -1,12 +1,10 @@
 import {Injectable} from '@angular/core';
 import {ExchangeService} from '@louis/api/exchange/exchange.service';
-import {Currency} from './currency.dictionary';
+import {Currency, IBankGovUaCurrencyModel} from './currency.dictionary';
 import {BehaviorSubject, Observable} from 'rxjs';
+import {map, switchMap, tap} from 'rxjs/internal/operators';
 
-// TODO: Move that coef to a static json file, which created while application loaded and updated every `${TIME}`
-// TODO: Create Mock default exchange rate file
-const USD_TO_UAH_DEF_COEF = 28;
-const EUR_TO_UAH_DEF_COEF = 33;
+const DEFAULT_EXCHANGE_RATE = 27.5; // DANGEROUS, PROBABLY UNTRUTH INFORMATION
 
 @Injectable()
 class CurrencyService {
@@ -35,9 +33,25 @@ class CurrencyService {
         return this.exchangeRate$;
     }
 
-    public getExchangeRate(currency: Currency): Observable<any> {
+    public getExchangeRate(currencyFrom: Currency, currencyTo: Currency): Observable<any> {
         return this.exchangeRate$
-            .filter(v => !!v) // TODO: Implement filter
+            .pipe(
+                switchMap((v: Array<IBankGovUaCurrencyModel>) => Observable.of(this.getCurrencyRate(v, currencyFrom))
+            ));
+    }
+
+    private getCurrencyRate(currencies: Array<IBankGovUaCurrencyModel>, currencyFrom: Currency): number {
+        let exchangeRate = DEFAULT_EXCHANGE_RATE;
+        const _currencyFrom = currencyFrom.toUpperCase();
+
+        currencies.forEach((currency: IBankGovUaCurrencyModel) => {
+           if(currency.cc === _currencyFrom)  {
+               exchangeRate = currency.rate;
+               return;
+           }
+        });
+
+        return exchangeRate;
     }
 }
 

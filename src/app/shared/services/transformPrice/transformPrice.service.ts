@@ -13,11 +13,11 @@ class TransformPriceService {
                 private calculatePriceService: CalculatePriceService) {
     }
 
-    transform(value: number, {currencyTo = Currency.UAH, discount = 0, toFixed = 2}): Observable<number> {
+    transform(value: number, currencyFrom: Currency, {currencyTo = Currency.UAH, discount = 0, toFixed = 2}): Observable<number> {
 
         return this.toFixedNumberService.toFixedFloatingPoint(
             this.discountService.calculateWithDiscount(
-                this.calculatePriceService.calculate(value, currencyTo)
+                this.calculatePriceService.calculate(value, currencyFrom, currencyTo)
                 , discount
             )
         );

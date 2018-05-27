@@ -10,13 +10,11 @@ class CalculatePriceService {
         this.currencyService.setCurrency(Currency.UAH);
     }
 
-    public calculate(value: number, from: Currency): Observable<number> {
-
+    public calculate(value: number, from: Currency, to?: Currency): Observable<number> {
+        // TODO: Implement converting to user currencies, not only for UAH
         return this.currencyService
-            .getExchangeRate(from)
-            .switchMap(rate => {
-                return Observable.of(value);
-            });
+            .getExchangeRate(from, to) // CURRENTLY ONLY TO UAH
+            .switchMap(rate => Observable.of(value * rate));
     }
 }
 
